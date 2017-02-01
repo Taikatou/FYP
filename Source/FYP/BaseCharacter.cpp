@@ -56,7 +56,7 @@ void ABaseCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompo
 	InputComponent->BindAxis("MoveRight", this, &ABaseCharacter::MoveRight);
 
 	// Set up "look" bindings.
-	InputComponent->BindAxis("Turn", this, &ABaseCharacter::AddControllerYawInput);
+	InputComponent->BindAxis("LookRight", this, &ABaseCharacter::AddControllerYawInput);
 	InputComponent->BindAxis("LookUp", this, &ABaseCharacter::AddControllerPitchInput);
 
 	// Set up "action" bindings.
