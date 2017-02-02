@@ -2,8 +2,6 @@
 
 #include "FYP.h"
 #include "BaseCharacter.h"
-#include "PickUpActor.h"
-#include "LifePickUpActor.h"
 
 
 // Sets default values
@@ -32,14 +30,6 @@ ABaseCharacter::ABaseCharacter()
 
 	// The owning player doesn't see the regular (third-person) body mesh.
 	GetMesh()->SetOwnerNoSee(true);
-
-	// Create collection sphere
-	CollectionSphere = CreateDefaultSubobject<USphereComponent>(TEXT("CollectionSphere"));
-	CollectionSphere->AttachTo(RootComponent);
-	CollectionSphere->SetSphereRadius(200);
-
-	// Set current life level for the character
-	CurrentLife = InitialLife;
 }
 
 // Called when the game starts or when spawned
@@ -53,7 +43,7 @@ void ABaseCharacter::BeginPlay()
 void ABaseCharacter::Tick( float DeltaTime )
 {
 	Super::Tick( DeltaTime );
-	CollectPickups();
+
 }
 
 // Called to bind functionality to input
@@ -98,58 +88,3 @@ void ABaseCharacter::StopJump()
 	bPressedJump = false;
 }
 
-float ABaseCharacter::GetInitialLife() const
-{
-	return InitialLife;
-}
-
-float ABaseCharacter::GetCurrentLife() const
-{
-	return CurrentLife;
-}
-
-void ABaseCharacter::UpdateLife(float LifeDelta)
-{
-	float TempLife = CurrentLife + LifeDelta;
-	float NewValue;
-	if(LifeDelta > 0)
-	{
-		NewValue = TempLife > InitialLife? InitialLife : TempLife;
-	}
-	else
-	{
-		NewValue = TempLife < 0 ? 0 : TempLife;
-	}
-	CurrentLife = NewValue;
-}
-
-void ABaseCharacter::CollectPickups()
-{
-	// Get all overlapping actors store them in array
-	TArray<AActor*> CollectedActors;
-	CollectionSphere->GetOverlappingActors(CollectedActors);
-	// keep track of collected life
-	float CollectedLife = 0.0f;
-	// For each actor we collect
-	for(int32 iCollected = 0; iCollected < CollectedActors.Num(); iCollected++)
-	{
-		// Cast as PickUpActor
-		APickUpActor* const TestPickup = Cast<APickUpActor>(CollectedActors[iCollected]);
-		// If cast successful and the pickup is valid and active
-		if (TestPickup && !TestPickup->IsPendingKill() && TestPickup->IsActive())
-		{
-			// Call pickup was collected function
-			TestPickup->WasCollected();
-			// Check if pickup is life
-			ALifePickUpActor* const TestLife = Cast<ALifePickUpActor>(TestPickup);
-			if(TestLife)
-			{
-				// Increase collected power
-				CollectedLife += TestLife->GetLife();
-			}
-			// Deactivate the pickup 
-			TestPickup->SetActive(false);
-		}
-	}
-	UpdateLife(CollectedLife);
-}

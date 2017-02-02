@@ -10,20 +10,6 @@ class FYP_API ABaseCharacter : public ACharacter
 {
 	GENERATED_BODY()
 
-protected:
-	// Called when we press a key to collect any pickups inside the CollectionSphere
-	UFUNCTION(BlueprintCallable, Category = "PickUps")
-	void CollectPickups();
-
-	// Starting life
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Life")
-	float InitialLife = 2000;
-
-private:
-	// Current life
-	UPROPERTY(VisibleAnywhere, Category = "Life")
-	float CurrentLife;
-
 public:
 	// Sets default values for this character's properties
 	ABaseCharacter();
@@ -60,24 +46,4 @@ public:
 	// First-person mesh (arms), visible only to the owning player.
 	UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
 		USkeletalMeshComponent* FPSMesh;
-
-	FORCEINLINE class USphereComponent* GetSphereComponent() const { return CollectionSphere; }
-
-	// Collection sphere for items
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-		class USphereComponent* CollectionSphere;
-
-	// Accessor function for initial power
-	UFUNCTION(BlueprintPure, Category = "Life")
-		float GetInitialLife() const;
-
-	// Accessor function for current power
-	UFUNCTION(BlueprintPure, Category = "Life")
-		float GetCurrentLife() const;
-
-	/* Update current power
-	* @param LifeDelta: amount to change life by, positive or negative
-	*/
-	UFUNCTION(BlueprintCallable, Category="Life")
-		void UpdateLife(float LifeDelta);
 };
