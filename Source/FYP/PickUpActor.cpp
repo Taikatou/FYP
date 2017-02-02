@@ -13,6 +13,9 @@ APickUpActor::APickUpActor()
 	//Create static mesh component
 	PickUpMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("PickupMesh"));
 	RootComponent = PickUpMesh;
+
+	//Set active on creation
+	bIsActive = true;
 }
 
 // Called when the game starts or when spawned
@@ -27,5 +30,15 @@ void APickUpActor::Tick( float DeltaTime )
 {
 	Super::Tick( DeltaTime );
 
+}
+
+bool APickUpActor::IsActive() const
+{
+	return bIsActive;
+}
+
+void APickUpActor::SetActive(bool PickupState)
+{
+	bIsActive = PickupState;
 }
 

@@ -23,6 +23,19 @@ public:
 	// Return pickup mesh
 	FORCEINLINE class UStaticMeshComponent* GetMesh() const { return PickUpMesh; }
 
+	//Pure functions do not make changes
+	//Return bIsActive
+	UFUNCTION(BlueprintPure, Category="PickUp")
+	bool IsActive() const;
+
+	//Set bIsActive
+	UFUNCTION(BlueprintCallable, Category = "PickUp")
+	void SetActive(bool PickupState);
+
+protected:
+	// true when pickup can be used
+	bool bIsActive;
+
 private:
 	//forward declaration
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="PickUp", meta = (AllowPrivateAccess="true"))
