@@ -42,3 +42,11 @@ void APickUpActor::SetActive(bool PickupState)
 	bIsActive = PickupState;
 }
 
+void APickUpActor::WasCollected_Implementation()
+{
+	// Log a debug message
+	FString PickupDebugString = GetName();
+	UE_LOG(LogClass, Log, TEXT("You have collected %s"));
+	CompleteDelegate.ExecuteIfBound();
+}
+

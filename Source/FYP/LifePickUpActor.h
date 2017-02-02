@@ -12,9 +12,18 @@ UCLASS()
 class FYP_API ALifePickUpActor : public APickUpActor
 {
 	GENERATED_BODY()
-	
+protected:
+	// Amount of life to give to the player
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Life", Meta = (BlueprintProtected))
+	float LifePower;
+
 public:
 	// Set default values
 	ALifePickUpActor();
 	
+	// Override was collected function - using implementation because it is Blueprint native
+	void WasCollected_Implementation() override;
+
+	// Accessor for LifePower
+	float GetLife() const;
 };

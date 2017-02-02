@@ -23,9 +23,36 @@ public:
 	//Return the WhereToSpawn subobject
 	FORCEINLINE class UBoxComponent* GetWhereToSpawn() const { return WhereToSpawn; }
 
+	UFUNCTION(BlueprintPure, Category = "PickUpSpawnVolume")
+		FVector GetRandomPointInVolume() const;
+
+protected:
+	// What to spawn
+	UPROPERTY(EditAnywhere, Category = "PickUpSpawnVolume")
+	TSubclassOf<class APickUpActor> WhatToSpawn;
+
+	// Timers can't be UPROPERTYS
+	FTimerHandle SpawnTimer;
+
+	// Minimum spawn delay
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PickUpSpawnVolume")
+	float SpawnDelayRangeLow;
+
+	// Max spawn delay
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PickUpSpawnVolume")
+	float SpawnDelayRangeHigh;
+
 private:
 	//Where pickups should be spawned
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category "PickUpSpawnVolume", meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "PickUpSpawnVolume", meta = (AllowPrivateAccess = "true"))
 		class UBoxComponent* WhereToSpawn;
 	
+	// Spawns new pickup
+	void SpawnPickup();
+
+	UFUNCTION()
+	void SpawnPickupTimer();
+
+	// Current spawn delay
+	float SpawnDelay;
 };

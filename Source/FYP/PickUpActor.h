@@ -32,6 +32,15 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "PickUp")
 	void SetActive(bool PickupState);
 
+	// Behaviour split between C++ and blueprints
+	// After collected
+	UFUNCTION(BlueprintNativeEvent)
+	void WasCollected();
+	virtual void WasCollected_Implementation();
+
+	DECLARE_DELEGATE(FMyDelegate)
+	FMyDelegate CompleteDelegate;
+
 protected:
 	// true when pickup can be used
 	bool bIsActive;
