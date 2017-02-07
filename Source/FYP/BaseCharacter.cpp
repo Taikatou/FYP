@@ -55,6 +55,7 @@ void ABaseCharacter::BeginPlay()
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Gun blueprint loaded."));
 		Weapon = GetWorld()->SpawnActor<AWeaponActor>(WeaponBlueprint);
+		Weapon->SetOwner(this);
 		bool gripPoint = FPSMesh->DoesSocketExist("GripPoint");
 		if(!gripPoint)
 		{

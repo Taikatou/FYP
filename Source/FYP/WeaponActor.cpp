@@ -14,7 +14,7 @@ AWeaponActor::AWeaponActor()
 	WeaponMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Weapon Mesh"));
 	WeaponMesh->bCastDynamicShadow = false;
 	WeaponMesh->CastShadow = false;
-	//WeaponMesh->SetOnlyOwnerSee(true);
+	WeaponMesh->SetOnlyOwnerSee(true);
 
 	FP_MuzzleLocation = CreateDefaultSubobject<USceneComponent>(TEXT("MuzzleLocation"));
 	FP_MuzzleLocation->SetupAttachment(WeaponMesh);
