@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include "WeaponActor.h"
 #include "GameFramework/Character.h"
 #include "BaseCharacter.generated.h"
 
@@ -13,16 +14,18 @@ class FYP_API ABaseCharacter : public ACharacter
 protected:
 	// Called when we press a key to collect any pickups inside the CollectionSphere
 	UFUNCTION(BlueprintCallable, Category = "PickUps")
-	void CollectPickups();
+		void CollectPickups();
 
 	// Starting life
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Life")
-	float InitialLife = 2000;
+		float InitialLife = 2000;
 
 private:
 	// Current life
 	UPROPERTY(VisibleAnywhere, Category = "Life")
-	float CurrentLife;
+		float CurrentLife;
+
+	AWeaponActor* Weapon;
 
 public:
 	// Sets default values for this character's properties
@@ -80,4 +83,10 @@ public:
 	*/
 	UFUNCTION(BlueprintCallable, Category="Life")
 		void UpdateLife(float LifeDelta);
+
+	/** player pressed reload action */
+	virtual void OnReload();
+
+	UPROPERTY(EditDefaultsOnly, Category = "Setup")
+		TSubclassOf<class AWeaponActor> GunBlueprint;
 };

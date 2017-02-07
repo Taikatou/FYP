@@ -2,6 +2,7 @@
 
 #include "FYP.h"
 #include "BaseCharacter.h"
+#include "Animation/AnimInstance.h"
 #include "PickUpActor.h"
 #include "LifePickUpActor.h"
 
@@ -46,7 +47,23 @@ ABaseCharacter::ABaseCharacter()
 void ABaseCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	if (GunBlueprint == nullptr)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Gun blueprint missing."));
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Gun blueprint loaded."));
+		Weapon = GetWorld()->SpawnActor<AWeaponActor>(GunBlueprint);
+		bool gripPoint = FPSMesh->DoesSocketExist("GripPoint");
+		if(!gripPoint)
+		{
+			UE_LOG(LogTemp, Warning, TEXT("GripPoint missing"));
+		}
+		Weapon->AttachToComponent(FPSMesh, FAttachmentTransformRules(EAttachmentRule::SnapToTarget, true), TEXT("GripPoint"));
+		
+		//Weapon->AnimInstance = FPSMesh->GetAnimInstance();
+	}
 }
 
 // Called every frame
@@ -62,16 +79,23 @@ void ABaseCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompo
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
 	// Set up "movement" bindings.
-	InputComponent->BindAxis("MoveForward", this, &ABaseCharacter::MoveForward);
-	InputComponent->BindAxis("MoveRight", this, &ABaseCharacter::MoveRight);
+	PlayerInputComponent->BindAxis("MoveForward", this, &ABaseCharacter::MoveForward);
+	PlayerInputComponent->BindAxis("MoveRight", this, &ABaseCharacter::MoveRight);
 
 	// Set up "look" bindings.
-	InputComponent->BindAxis("LookRight", this, &ABaseCharacter::AddControllerYawInput);
-	InputComponent->BindAxis("LookUp", this, &ABaseCharacter::AddControllerPitchInput);
+	PlayerInputComponent->BindAxis("LookRight", this, &ABaseCharacter::AddControllerYawInput);
+	PlayerInputComponent->BindAxis("LookUp", this, &ABaseCharacter::AddControllerPitchInput);
 
 	// Set up "action" bindings.
-	InputComponent->BindAction("Jump", IE_Pressed, this, &ABaseCharacter::StartJump);
-	InputComponent->BindAction("Jump", IE_Released, this, &ABaseCharacter::StopJump);
+	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ABaseCharacter::StartJump);
+	PlayerInputComponent->BindAction("Jump", IE_Released, this, &ABaseCharacter::StopJump);
+
+	// Set up "fire" bindings
+	PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &ABaseCharacter::StopJump);
+
+	// Set up "reload" bindings
+	PlayerInputComponent->BindAction("Reload", IE_Pressed, this, &ABaseCharacter::OnReload);
+
 }
 
 void ABaseCharacter::MoveForward(float Value)
@@ -121,6 +145,23 @@ void ABaseCharacter::UpdateLife(float LifeDelta)
 		NewValue = TempLife < 0 ? 0 : TempLife;
 	}
 	CurrentLife = NewValue;
+}
+
+void ABaseCharacter::OnReload()
+{
+	UE_LOG(LogTemp, Warning, TEXT("Reloading"));
+	if(Weapon->GetCanReload())
+	{
+		UAnimMontage* reloadAnimation = Weapon->Reload();
+		if(reloadAnimation != nullptr)
+		{
+			UAnimInstance* AnimInstance = FPSMesh->GetAnimInstance();
+			if (AnimInstance != nullptr)
+			{
+				AnimInstance->Montage_Play(reloadAnimation, 1.f);
+			}
+		}
+	}
 }
 
 void ABaseCharacter::CollectPickups()
