@@ -13,7 +13,7 @@ class FYP_API AReloadWeaponActor : public AWeaponActor
 {
 	GENERATED_BODY()
 private:
-	int32 CurrentCapacity = 0;;
+	int32 CurrentCapacity = 0;
 	
 public:
 	AReloadWeaponActor();
@@ -25,6 +25,10 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Capacity")
 		int32 MaxCapacity = 100;
+
+	FORCEINLINE
+		UFUNCTION(BlueprintPure, Category = "Capacity")
+		bool HasAmmo() const { return CurrentCapacity > 0; }
 
 	bool GetCanReload() override;
 };

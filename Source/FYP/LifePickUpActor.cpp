@@ -6,7 +6,7 @@
 // Set default values
 ALifePickUpActor::ALifePickUpActor()
 {
-	GetMesh()->SetSimulatePhysics(false);
+	GetMesh()->SetSimulatePhysics(true);
 	LifePower = 150.0f;
 }
 

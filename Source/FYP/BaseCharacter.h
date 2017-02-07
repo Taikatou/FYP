@@ -88,5 +88,7 @@ public:
 	virtual void OnReload();
 
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
-		TSubclassOf<class AWeaponActor> GunBlueprint;
+		TSubclassOf<class AWeaponActor> WeaponBlueprint;
+
+	virtual void Fire();
 };

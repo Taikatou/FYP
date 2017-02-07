@@ -47,22 +47,21 @@ ABaseCharacter::ABaseCharacter()
 void ABaseCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	if (GunBlueprint == nullptr)
+	if (WeaponBlueprint == nullptr)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Gun blueprint missing."));
 	}
 	else
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Gun blueprint loaded."));
-		Weapon = GetWorld()->SpawnActor<AWeaponActor>(GunBlueprint);
+		Weapon = GetWorld()->SpawnActor<AWeaponActor>(WeaponBlueprint);
 		bool gripPoint = FPSMesh->DoesSocketExist("GripPoint");
 		if(!gripPoint)
 		{
 			UE_LOG(LogTemp, Warning, TEXT("GripPoint missing"));
 		}
 		Weapon->AttachToComponent(FPSMesh, FAttachmentTransformRules(EAttachmentRule::SnapToTarget, true), TEXT("GripPoint"));
-		
-		//Weapon->AnimInstance = FPSMesh->GetAnimInstance();
+		Weapon->AnimInstance = FPSMesh->GetAnimInstance();
 	}
 }
 
@@ -91,7 +90,7 @@ void ABaseCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompo
 	PlayerInputComponent->BindAction("Jump", IE_Released, this, &ABaseCharacter::StopJump);
 
 	// Set up "fire" bindings
-	PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &ABaseCharacter::StopJump);
+	PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &ABaseCharacter::Fire);
 
 	// Set up "reload" bindings
 	PlayerInputComponent->BindAction("Reload", IE_Pressed, this, &ABaseCharacter::OnReload);
@@ -162,6 +161,12 @@ void ABaseCharacter::OnReload()
 			}
 		}
 	}
+}
+
+void ABaseCharacter::Fire()
+{
+	FRotator SpawnRotation = GetControlRotation();
+	Weapon->FireWeapon(SpawnRotation);
 }
 
 void ABaseCharacter::CollectPickups()

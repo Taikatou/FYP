@@ -2,10 +2,11 @@
 
 #pragma once
 
+#include "Projectile.h"
 #include "GameFramework/Actor.h"
 #include "WeaponActor.generated.h"
 
-UCLASS()
+UCLASS(Abstract, Blueprintable)
 class FYP_API AWeaponActor : public AActor
 {
 	GENERATED_BODY()
@@ -19,8 +20,6 @@ public:
 	
 	// Called every frame
 	void Tick( float DeltaSeconds ) override;
-
-	virtual void Fire();
 	
 	virtual bool CanFire();
 
@@ -34,6 +33,20 @@ public:
 		class USceneComponent* FP_MuzzleLocation;
 
 	virtual bool GetCanReload();
+
+	virtual void FireWeapon(FRotator SpawnRotation);
+
+	UFUNCTION(BlueprintNativeEvent)
+		void OnFire(FRotator SpawnRotation);
+	virtual void OnFire_Implementation(FRotator SpawnRotation);
+
+	/** Projectile class to spawn */
+	UPROPERTY(EditDefaultsOnly, Category = "Setup")
+		TSubclassOf<class AProjectile> ProjectileClass;
+
+	/** Gun muzzle's offset from the characters location */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
+		FVector GunOffset;
 
 private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "PickUp", meta = (AllowPrivateAccess = "true"))
