@@ -274,13 +274,15 @@ void ABaseCharacter::CollectPickups()
 	UpdateLife(CollectedLife);
 }
 
-AUsableActor* ABaseCharacter::GetUsableInView()
+AUsableActor* ABaseCharacter::GetUsableInView() const
 {
 	FVector camLoc;
 	FRotator camRot;
 
-	if (Controller == NULL)
-		return NULL;
+	if (Controller == nullptr)
+	{
+		return nullptr;
+	}
 
 	Controller->GetPlayerViewPoint(camLoc, camRot);
 	const FVector start_trace = camLoc;
@@ -294,5 +296,6 @@ AUsableActor* ABaseCharacter::GetUsableInView()
 
 	FHitResult Hit(ForceInit);
 	GetWorld()->LineTraceSingleByChannel(Hit, start_trace, end_trace, COLLISION_PROJECTILE, TraceParams);
+	UE_LOG(LogTemp, Warning, TEXT("Reloading complete, %s"), *Hit.ToString());
 	return Cast<AUsableActor>(Hit.GetActor());
 }

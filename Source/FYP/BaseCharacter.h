@@ -23,7 +23,7 @@ protected:
 	FTimerHandle AnimationTimerHandle;
 
 	// Get actor currently in players view
-	class AUsableActor* GetUsableInView();
+	class AUsableActor* GetUsableInView() const;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
 		float MaxUseDistance;
