@@ -5,6 +5,8 @@
 #include "Animation/AnimInstance.h"
 #include "PickUpActor.h"
 #include "LifePickUpActor.h"
+#include "UsableActor.h"
+#include "Animation/AnimMontage.h"
 
 
 // Sets default values
@@ -41,6 +43,8 @@ ABaseCharacter::ABaseCharacter()
 
 	// Set current life level for the character
 	CurrentLife = InitialLife;
+
+	CurrentlyReloading = false;
 }
 
 // Called when the game starts or when spawned
@@ -71,6 +75,34 @@ void ABaseCharacter::Tick( float DeltaTime )
 {
 	Super::Tick( DeltaTime );
 	CollectPickups();
+	if (Controller && Controller->IsLocalController())
+	{
+		AUsableActor* usable = GetUsableInView();
+
+		// End Focus
+		if (FocusedUsableActor != usable)
+		{
+			if (FocusedUsableActor)
+			{
+				FocusedUsableActor->EndFocusItem();
+			}
+
+			bHasNewFocus = true;
+		}
+
+		// Assign new Focus
+		FocusedUsableActor = usable;
+
+		// Start Focus.
+		if (usable)
+		{
+			if (bHasNewFocus)
+			{
+				usable->StartFocusItem();
+				bHasNewFocus = false;
+			}
+		}
+	}
 }
 
 // Called to bind functionality to input
@@ -95,6 +127,9 @@ void ABaseCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompo
 
 	// Set up "reload" bindings
 	PlayerInputComponent->BindAction("Reload", IE_Pressed, this, &ABaseCharacter::OnReload);
+
+	// Set up "use" bindings
+	InputComponent->BindAction("Use", IE_Pressed, this, &ABaseCharacter::Use);
 
 }
 
@@ -121,6 +156,25 @@ void ABaseCharacter::StopJump()
 {
 	bPressedJump = false;
 }
+
+/*
+Runs on Server. Perform "OnUsed" on currently viewed UsableActor if implemented.
+*/
+void ABaseCharacter::Use_Implementation()
+{
+	AUsableActor* usable = GetUsableInView();
+	if (usable)
+	{
+		usable->OnUsed(this);
+	}
+}
+
+bool ABaseCharacter::Use_Validate()
+{
+	// No special server-side validation performed.
+	return true;
+}
+
 
 float ABaseCharacter::GetInitialLife() const
 {
@@ -152,6 +206,7 @@ void ABaseCharacter::OnReload()
 	UE_LOG(LogTemp, Warning, TEXT("Reloading"));
 	if(Weapon->GetCanReload())
 	{
+		CurrentlyReloading = true;
 		UAnimMontage* reloadAnimation = Weapon->Reload();
 		if(reloadAnimation != nullptr)
 		{
@@ -159,6 +214,9 @@ void ABaseCharacter::OnReload()
 			if (AnimInstance != nullptr)
 			{
 				AnimInstance->Montage_Play(reloadAnimation, 1.f);
+
+				GetWorld()->GetTimerManager().SetTimer(AnimationTimerHandle, this, &ABaseCharacter::Reloaded, 2.0f, false);
+				UE_LOG(LogTemp, Warning, TEXT("Duration %d"), reloadAnimation->CalculateSequenceLength());
 			}
 		}
 	}
@@ -166,8 +224,23 @@ void ABaseCharacter::OnReload()
 
 void ABaseCharacter::Fire()
 {
-	FRotator SpawnRotation = GetControlRotation();
-	Weapon->FireWeapon(SpawnRotation);
+	if(!Weapon->CanFire())
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Reloading gun"));
+		OnReload();
+	}
+	else if(!CurrentlyReloading)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Fire"));
+		FRotator SpawnRotation = GetControlRotation();
+		Weapon->FireWeapon(SpawnRotation);
+	}
+}
+
+void ABaseCharacter::Reloaded()
+{
+	CurrentlyReloading = false;
+	UE_LOG(LogTemp, Warning, TEXT("Reloading complete"));
 }
 
 void ABaseCharacter::CollectPickups()
@@ -199,4 +272,27 @@ void ABaseCharacter::CollectPickups()
 		}
 	}
 	UpdateLife(CollectedLife);
+}
+
+AUsableActor* ABaseCharacter::GetUsableInView()
+{
+	FVector camLoc;
+	FRotator camRot;
+
+	if (Controller == NULL)
+		return NULL;
+
+	Controller->GetPlayerViewPoint(camLoc, camRot);
+	const FVector start_trace = camLoc;
+	const FVector direction = camRot.Vector();
+	const FVector end_trace = start_trace + (direction * MaxUseDistance);
+
+	FCollisionQueryParams TraceParams(FName(TEXT("")), true, this);
+	TraceParams.bTraceAsyncScene = true;
+	TraceParams.bReturnPhysicalMaterial = false;
+	TraceParams.bTraceComplex = true;
+
+	FHitResult Hit(ForceInit);
+	GetWorld()->LineTraceSingleByChannel(Hit, start_trace, end_trace, COLLISION_PROJECTILE, TraceParams);
+	return Cast<AUsableActor>(Hit.GetActor());
 }

@@ -20,6 +20,18 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Life")
 		float InitialLife = 2000;
 
+	FTimerHandle AnimationTimerHandle;
+
+	// Get actor currently in players view
+	class AUsableActor* GetUsableInView();
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
+		float MaxUseDistance;
+
+	bool bHasNewFocus;
+
+	AUsableActor* FocusedUsableActor;
+
 private:
 	// Current life
 	UPROPERTY(VisibleAnywhere, Category = "Life")
@@ -91,4 +103,13 @@ public:
 		TSubclassOf<class AWeaponActor> WeaponBlueprint;
 
 	virtual void Fire();
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
+		bool CurrentlyReloading;
+
+	void Reloaded();
+
+	/** Use the actor currently in view (if derived from UsableActor) */
+	UFUNCTION(BlueprintCallable, WithValidation, Server, Reliable, Category = PlayerAbility)
+		virtual void Use();
 };

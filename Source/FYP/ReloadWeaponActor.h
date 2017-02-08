@@ -24,11 +24,15 @@ public:
 		UAnimMontage* ReloadAnimation;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Capacity")
-		int32 MaxCapacity = 100;
+		int32 MaxCapacity = 5;
 
 	FORCEINLINE
 		UFUNCTION(BlueprintPure, Category = "Capacity")
 		bool HasAmmo() const { return CurrentCapacity > 0; }
 
 	bool GetCanReload() override;
+
+	void OnFire_Implementation(FRotator SpawnRotation) override;
+
+	bool CanFire() override;
 };
