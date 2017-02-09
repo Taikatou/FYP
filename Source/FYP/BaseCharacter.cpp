@@ -296,6 +296,5 @@ AUsableActor* ABaseCharacter::GetUsableInView() const
 
 	FHitResult Hit(ForceInit);
 	GetWorld()->LineTraceSingleByChannel(Hit, start_trace, end_trace, COLLISION_PROJECTILE, TraceParams);
-	UE_LOG(LogTemp, Warning, TEXT("Reloading complete, %s"), *Hit.ToString());
 	return Cast<AUsableActor>(Hit.GetActor());
 }
