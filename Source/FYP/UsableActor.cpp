@@ -9,4 +9,3 @@ AUsableActor::AUsableActor(const class FObjectInitializer& PCIP)
 {
 
 }
-
