@@ -13,14 +13,14 @@
 			]
 		}
 	],
-	"Plugins": [
-		{
-			"Name": "OnlineSubsystemSteam",
-			"Enabled": true
-		},
-		{
-			"Name": "SteamController",
-			"Enabled": true
-		}
-	]
+  "Plugins": [
+    {
+      "Name": "OnlineSubsystemSteam",
+      "Enabled": true
+    },
+    {
+      "Name": "SteamController",
+      "Enabled": true
+    }
+  ]
 }

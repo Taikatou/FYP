@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "WeaponActor.h"
+#include "ReloadWeaponActor.h"
 #include "GameFramework/Character.h"
 #include "BaseCharacter.generated.h"
 
@@ -37,7 +37,7 @@ private:
 	UPROPERTY(VisibleAnywhere, Category = "Life")
 		float CurrentLife;
 
-	AWeaponActor* Weapon;
+	AReloadWeaponActor* Weapon;
 
 public:
 	// Sets default values for this character's properties
@@ -100,7 +100,7 @@ public:
 	virtual void OnReload();
 
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
-		TSubclassOf<class AWeaponActor> WeaponBlueprint;
+		TSubclassOf<class AReloadWeaponActor> WeaponBlueprint;
 
 	virtual void Fire();
 
@@ -112,4 +112,11 @@ public:
 	/** Use the actor currently in view (if derived from UsableActor) */
 	UFUNCTION(BlueprintCallable, WithValidation, Server, Reliable, Category = PlayerAbility)
 		virtual void Use();
+
+	UFUNCTION(BlueprintCallable, Category = "Ammo")
+		int GetMaxAmmo() const;
+
+	UFUNCTION(BlueprintCallable, Category = "Ammo")
+		int GetCurrentAmmo() const;
+
 };

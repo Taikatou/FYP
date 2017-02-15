@@ -14,11 +14,6 @@ public class FYP : ModuleRules
         // PrivateDependencyModuleNames.AddRange(new string[] { "Slate", "SlateCore" });
 
         // Uncomment if you are using online features
-        PublicDependencyModuleNames.AddRange(new string[] {
-            "OnlineSubsystem",
-            "OnlineSubsystemUtils"
-        });
-        DynamicallyLoadedModuleNames.Add("OnlineSubsystemSteam");
-        // To include OnlineSubsystemSteam, add it to the plugins section in your uproject file with the Enabled attribute set to true
+        PrivateDependencyModuleNames.Add("OnlineSubsystem");
     }
 }
