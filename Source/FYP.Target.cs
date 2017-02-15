@@ -8,7 +8,8 @@ public class FYPTarget : TargetRules
 	public FYPTarget(TargetInfo Target)
 	{
 		Type = TargetType.Game;
-	}
+        bUsesSteam = true;
+    }
 
 	//
 	// TargetRules interface.
