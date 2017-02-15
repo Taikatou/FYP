@@ -35,4 +35,7 @@ public:
 	void OnFire_Implementation(FRotator SpawnRotation) override;
 
 	bool CanFire() override;
+
+	FORCEINLINE
+		int GetCurrentCapacity() const { return CurrentCapacity; }
 };

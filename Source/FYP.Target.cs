@@ -8,11 +8,7 @@ public class FYPTarget : TargetRules
 	public FYPTarget(TargetInfo Target)
 	{
 		Type = TargetType.Game;
-	}
-
-	//
-	// TargetRules interface.
-	//
+    }
 
 	public override void SetupBinaries(
 		TargetInfo Target,

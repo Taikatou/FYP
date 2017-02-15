@@ -58,7 +58,7 @@ void ABaseCharacter::BeginPlay()
 	else
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Gun blueprint loaded."));
-		Weapon = GetWorld()->SpawnActor<AWeaponActor>(WeaponBlueprint);
+		Weapon = GetWorld()->SpawnActor<AReloadWeaponActor>(WeaponBlueprint);
 		Weapon->SetOwner(this);
 		bool gripPoint = FPSMesh->DoesSocketExist("GripPoint");
 		if(!gripPoint)
@@ -272,6 +272,16 @@ void ABaseCharacter::CollectPickups()
 		}
 	}
 	UpdateLife(CollectedLife);
+}
+
+int ABaseCharacter::GetMaxAmmo() const
+{
+	return Weapon->MaxCapacity;
+}
+
+int ABaseCharacter::GetCurrentAmmo() const
+{
+	return Weapon->GetCurrentCapacity();
 }
 
 AUsableActor* ABaseCharacter::GetUsableInView() const
