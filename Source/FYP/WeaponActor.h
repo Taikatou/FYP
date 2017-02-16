@@ -34,11 +34,11 @@ public:
 
 	virtual bool GetCanReload();
 
-	virtual void FireWeapon(FRotator SpawnRotation);
+	virtual void FireWeapon(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera);
 
 	UFUNCTION(BlueprintNativeEvent)
-		void OnFire(FRotator SpawnRotation);
-	virtual void OnFire_Implementation(FRotator SpawnRotation);
+		void OnFire(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera);
+	virtual void OnFire_Implementation(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera);
 
 	/** Projectile class to spawn */
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
@@ -47,6 +47,9 @@ public:
 	/** Gun muzzle's offset from the characters location */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
 		FVector GunOffset;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
+		float MaxFireDistance;
 
 private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "PickUp", meta = (AllowPrivateAccess = "true"))
