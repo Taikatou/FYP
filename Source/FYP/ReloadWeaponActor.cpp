@@ -20,11 +20,11 @@ bool AReloadWeaponActor::GetCanReload()
 	return true;
 }
 
-void AReloadWeaponActor::OnFire_Implementation(FRotator SpawnRotation)
+void AReloadWeaponActor::OnFire_Implementation(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera)
 {
 	if(CanFire())
 	{
-		Super::OnFire_Implementation(SpawnRotation);
+		Super::OnFire_Implementation(SpawnRotation, Controller, Camera);
 		CurrentCapacity--;
 	}
 	else

@@ -32,7 +32,7 @@ public:
 
 	bool GetCanReload() override;
 
-	void OnFire_Implementation(FRotator SpawnRotation) override;
+	void OnFire_Implementation(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera) override;
 
 	bool CanFire() override;
 

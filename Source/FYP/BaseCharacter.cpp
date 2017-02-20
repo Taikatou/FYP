@@ -7,6 +7,7 @@
 #include "LifePickUpActor.h"
 #include "UsableActor.h"
 #include "Animation/AnimMontage.h"
+#include "Kismet/KismetMathLibrary.h"
 
 
 // Sets default values
@@ -229,11 +230,14 @@ void ABaseCharacter::Fire()
 		UE_LOG(LogTemp, Warning, TEXT("Reloading gun"));
 		OnReload();
 	}
-	else if(!CurrentlyReloading)
+	else if(!CurrentlyReloading && Controller != nullptr)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Fire"));
 		FRotator SpawnRotation = GetControlRotation();
-		Weapon->FireWeapon(SpawnRotation);
+
+		
+
+		Weapon->FireWeapon(SpawnRotation, Controller, FPSCameraComponent);
 	}
 }
 
