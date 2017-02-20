@@ -36,13 +36,8 @@ public:
 
 	virtual void FireWeapon(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera);
 
-	UFUNCTION(BlueprintNativeEvent)
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Fire")
 		void OnFire(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera);
-	virtual void OnFire_Implementation(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera);
-
-	/** Projectile class to spawn */
-	UPROPERTY(EditDefaultsOnly, Category = "Setup")
-		TSubclassOf<class AProjectile> ProjectileClass;
 
 	/** Gun muzzle's offset from the characters location */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
