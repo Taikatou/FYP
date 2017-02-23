@@ -2,8 +2,12 @@
 
 #include "FYP.h"
 #include "WeaponActor.h"
-#include "Kismet/KismetMathLibrary.h"
 
+
+int32 AWeaponActor::GetCurrentCapacity()
+{
+	return 0;
+}
 
 // Sets default values
 AWeaponActor::AWeaponActor()
@@ -36,82 +40,12 @@ void AWeaponActor::Tick( float DeltaTime )
 
 }
 
-bool AWeaponActor::CanFire()
-{
-	return true;
-}
-
-UAnimMontage* AWeaponActor::Reload()
-{
-	return nullptr;
-}
-
-bool AWeaponActor::GetCanReload()
-{
-	return false;
-}
-
-void AWeaponActor::FireWeapon(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera)
+UAnimMontage* AWeaponActor::FireWeapon(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera)
 {
 	OnFire(SpawnRotation, Controller, Camera);
+	return FireAnimation;
 }
 
 void AWeaponActor::OnFire_Implementation(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera)
 {
-	if (ProjectileClass != nullptr)
-	{
-		UWorld* const World = GetWorld();
-		if (World != nullptr)
-		{
-			UE_LOG(LogTemp, Warning, TEXT("Firing"));
-			// MuzzleOffset is in camera space, so transform it to world space before offsetting from the character location to find the final muzzle position
-			const FVector SpawnLocation = ((FP_MuzzleLocation != nullptr) ? FP_MuzzleLocation->GetComponentLocation() : GetActorLocation()) + SpawnRotation.RotateVector(GunOffset);
-
-			//Set Spawn Collision Handling Override
-			FActorSpawnParameters ActorSpawnParams;
-			ActorSpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButDontSpawnIfColliding;
-
-
-			/* Find what the crosshairs are looking at
-			FVector camLoc;
-			FRotator camRot;
-
-			Controller->GetPlayerViewPoint(camLoc, camRot);
-			const FVector start_trace = camLoc;
-			const FVector direction = camRot.Vector();
-			const FVector end_trace = start_trace + (direction * MaxFireDistance);
-
-			FCollisionQueryParams TraceParams(FName(TEXT("")), true, this);
-			TraceParams.bTraceAsyncScene = true;
-			TraceParams.bReturnPhysicalMaterial = false;
-			TraceParams.bTraceComplex = true;
-
-			FHitResult Hit(ForceInit);
-			FTransform LocalTransform;
-			FVector LocalEndLocation;
-
-
-			FVector Scale = FVector(1.0, 1.0, 1.0);
-			bool DidHit = GetWorld()->LineTraceSingleByChannel(Hit, start_trace, end_trace, COLLISION_PROJECTILE, TraceParams);
-			if (DidHit)
-			{
-				FRotator LocalRotation = UKismetMathLibrary::FindLookAtRotation(SpawnLocation, Hit.ImpactPoint);
-				LocalTransform = UKismetMathLibrary::MakeTransform(SpawnLocation, LocalRotation, Scale);
-				LocalEndLocation = Hit.ImpactPoint;
-			}
-			else
-			{
-				APawn* owner = Cast<APawn>(Camera->GetOwner());
-				FRotator LocalRotation = owner->GetControlRotation();
-				LocalTransform = UKismetMathLibrary::MakeTransform(SpawnLocation, LocalRotation, Scale);
-
-				FTransform WorldTransform = Camera->GetComponentTransform();
-				FVector EndPoint = WorldTransform.GetRotation().GetForwardVector() * 10000;
-				LocalEndLocation = WorldTransform.GetLocation() + EndPoint;
-			}*/
-
-			// spawn the projectile at the muzzle
-			World->SpawnActor<AProjectile>(ProjectileClass, SpawnLocation, SpawnRotation, ActorSpawnParams);
-		}
-	}
 }

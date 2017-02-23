@@ -59,7 +59,7 @@ void ABaseCharacter::BeginPlay()
 	else
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Gun blueprint loaded."));
-		Weapon = GetWorld()->SpawnActor<AReloadWeaponActor>(WeaponBlueprint);
+		Weapon = GetWorld()->SpawnActor<AWeaponActor>(WeaponBlueprint);
 		Weapon->SetOwner(this);
 		bool gripPoint = FPSMesh->DoesSocketExist("GripPoint");
 		if(!gripPoint)
@@ -205,39 +205,40 @@ void ABaseCharacter::UpdateLife(float LifeDelta)
 void ABaseCharacter::OnReload()
 {
 	UE_LOG(LogTemp, Warning, TEXT("Reloading"));
-	if(Weapon->GetCanReload())
+	CurrentlyReloading = true;
+	UAnimMontage* reloadAnimation = Weapon->Reload();
+	if (reloadAnimation != nullptr)
 	{
-		CurrentlyReloading = true;
-		UAnimMontage* reloadAnimation = Weapon->Reload();
-		if(reloadAnimation != nullptr)
+		UAnimInstance* AnimInstance = FPSMesh->GetAnimInstance();
+		if (AnimInstance != nullptr)
 		{
-			UAnimInstance* AnimInstance = FPSMesh->GetAnimInstance();
-			if (AnimInstance != nullptr)
-			{
-				AnimInstance->Montage_Play(reloadAnimation, 1.f);
+			AnimInstance->Montage_Play(reloadAnimation, 1.f);
 
-				GetWorld()->GetTimerManager().SetTimer(AnimationTimerHandle, this, &ABaseCharacter::Reloaded, 2.0f, false);
-				UE_LOG(LogTemp, Warning, TEXT("Duration %d"), reloadAnimation->CalculateSequenceLength());
-			}
+			GetWorld()->GetTimerManager().SetTimer(AnimationTimerHandle, this, &ABaseCharacter::Reloaded, 2.0f, false);
+			UE_LOG(LogTemp, Warning, TEXT("Duration %d"), reloadAnimation->CalculateSequenceLength());
 		}
 	}
 }
 
 void ABaseCharacter::Fire()
 {
-	if(!Weapon->CanFire())
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Reloading gun"));
-		OnReload();
-	}
-	else if(!CurrentlyReloading && Controller != nullptr)
+	if(!CurrentlyReloading && Controller != nullptr)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Fire"));
 		FRotator SpawnRotation = GetControlRotation();
 
-		
+		UAnimMontage* fireAnimation = Weapon->FireWeapon(SpawnRotation, Controller, FPSCameraComponent);
+		if (fireAnimation != nullptr)
+		{
+			UAnimInstance* AnimInstance = FPSMesh->GetAnimInstance();
+			if (AnimInstance != nullptr)
+			{
+				AnimInstance->Montage_Play(fireAnimation, 1.f);
 
-		Weapon->FireWeapon(SpawnRotation, Controller, FPSCameraComponent);
+				GetWorld()->GetTimerManager().SetTimer(AnimationTimerHandle, this, &ABaseCharacter::Reloaded, 2.0f, false);
+				UE_LOG(LogTemp, Warning, TEXT("Duration %d"), fireAnimation->CalculateSequenceLength());
+			}
+		}
 	}
 }
 
@@ -278,12 +279,12 @@ void ABaseCharacter::CollectPickups()
 	UpdateLife(CollectedLife);
 }
 
-int ABaseCharacter::GetMaxAmmo() const
+int32 ABaseCharacter::GetMaxAmmo() const
 {
 	return Weapon->MaxCapacity;
 }
 
-int ABaseCharacter::GetCurrentAmmo() const
+int32 ABaseCharacter::GetCurrentAmmo() const
 {
 	return Weapon->GetCurrentCapacity();
 }

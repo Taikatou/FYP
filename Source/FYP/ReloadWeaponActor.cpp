@@ -11,29 +11,32 @@ AReloadWeaponActor::AReloadWeaponActor()
 UAnimMontage* AReloadWeaponActor::Reload()
 {
 	CurrentCapacity = MaxCapacity;
-	UE_LOG(LogTemp, Warning, TEXT("Reloaded"));
 	return ReloadAnimation;
 }
 
-bool AReloadWeaponActor::GetCanReload()
+int32 AReloadWeaponActor::GetCurrentCapacity()
 {
-	return true;
+	return CurrentCapacity;
 }
 
-void AReloadWeaponActor::OnFire_Implementation(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera)
+UAnimMontage* AReloadWeaponActor::FireWeapon(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera)
 {
+	UAnimMontage* Animation;
 	if(CanFire())
 	{
-		Super::OnFire_Implementation(SpawnRotation, Controller, Camera);
+		OnFire(SpawnRotation, Controller, Camera);
 		CurrentCapacity--;
+		Animation = FireAnimation;
 	}
 	else
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Can't fire"));
+		Animation = Reload();
 	}
+	return Animation;
 }
 
-bool AReloadWeaponActor::CanFire()
+bool AReloadWeaponActor::CanFire() const
 {
 	return CurrentCapacity > 0;
 }
