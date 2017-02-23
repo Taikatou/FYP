@@ -11,7 +11,12 @@ class FYP_API AWeaponActor : public AActor
 {
 	GENERATED_BODY()
 	
-public:	
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
+	int32 MaxCapacity;
+
+	virtual int32 GetCurrentCapacity();
+
 	// Sets default values for this actor's properties
 	AWeaponActor();
 
@@ -20,10 +25,6 @@ public:
 	
 	// Called every frame
 	void Tick( float DeltaSeconds ) override;
-	
-	virtual bool CanFire();
-
-	virtual UAnimMontage* Reload();
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
 		class UAnimInstance* AnimInstance;
@@ -32,9 +33,7 @@ public:
 	UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
 		class USceneComponent* FP_MuzzleLocation;
 
-	virtual bool GetCanReload();
-
-	virtual void FireWeapon(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera);
+	virtual UAnimMontage* FireWeapon(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera);
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Fire")
 		void OnFire(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera);
@@ -45,6 +44,11 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
 		float MaxFireDistance;
+
+	UPROPERTY(EditAnywhere, Category = "Animation")
+		UAnimMontage* FireAnimation;
+
+	virtual UAnimMontage* Reload() { return nullptr; };
 
 private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "PickUp", meta = (AllowPrivateAccess = "true"))

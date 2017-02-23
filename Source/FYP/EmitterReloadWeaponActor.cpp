@@ -5,11 +5,11 @@
 #include "Kismet/KismetMathLibrary.h"
 
 
-FShootInformationStruct AEmitterReloadWeaponActor::CalculateShootInformationStruct(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera)
+FShootInformationStruct AEmitterReloadWeaponActor::CalculateShootInformationStruct(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera) const
 {
 	FVector camLoc;
 	FRotator camRot;
-
+	const FVector SpawnLocation = ((FP_MuzzleLocation != nullptr) ? FP_MuzzleLocation->GetComponentLocation() : GetActorLocation()) + SpawnRotation.RotateVector(GunOffset);
 	Controller->GetPlayerViewPoint(camLoc, camRot);
 	const FVector start_trace = camLoc;
 	const FVector direction = camRot.Vector();
@@ -43,4 +43,9 @@ FShootInformationStruct AEmitterReloadWeaponActor::CalculateShootInformationStru
 		FVector EndPoint = WorldTransform.GetRotation().GetForwardVector() * 10000;
 		LocalEndLocation = WorldTransform.GetLocation() + EndPoint;
 	}
+	FShootInformationStruct ShotInformation = FShootInformationStruct();
+	ShotInformation.ProjectileTransform = LocalTransform;
+	ShotInformation.EndLocation = LocalEndLocation;
+	ShotInformation.HitResult = Hit;
+	return ShotInformation;
 }

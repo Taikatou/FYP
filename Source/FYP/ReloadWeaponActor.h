@@ -17,25 +17,19 @@ private:
 	
 public:
 	AReloadWeaponActor();
-
-	UAnimMontage* Reload() override;
 	
 	UPROPERTY(EditAnywhere, Category = "Animation")
 		UAnimMontage* ReloadAnimation;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Capacity")
-		int32 MaxCapacity = 5;
 
 	FORCEINLINE
 		UFUNCTION(BlueprintPure, Category = "Capacity")
 		bool HasAmmo() const { return CurrentCapacity > 0; }
 
-	bool GetCanReload() override;
+	UAnimMontage* FireWeapon(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera) override;
 
-	void FireWeapon(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera) override;
+	bool CanFire() const;
 
-	bool CanFire() override;
+	UAnimMontage* Reload() override;
 
-	FORCEINLINE
-		int GetCurrentCapacity() const { return CurrentCapacity; }
+	int32 GetCurrentCapacity() override;
 };

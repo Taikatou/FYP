@@ -25,6 +25,7 @@ class FYP_API AEmitterReloadWeaponActor : public AReloadWeaponActor
 	
 	
 public:
-	FShootInformationStruct CalculateShootInformationStruct(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera);
+	UFUNCTION(BlueprintPure, Category = "Calculate shot information")
+	FShootInformationStruct CalculateShootInformationStruct(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera) const;
 	
 };

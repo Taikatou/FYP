@@ -4,6 +4,11 @@
 #include "WeaponActor.h"
 
 
+int32 AWeaponActor::GetCurrentCapacity()
+{
+	return 0;
+}
+
 // Sets default values
 AWeaponActor::AWeaponActor()
 {
@@ -35,24 +40,10 @@ void AWeaponActor::Tick( float DeltaTime )
 
 }
 
-bool AWeaponActor::CanFire()
-{
-	return true;
-}
-
-UAnimMontage* AWeaponActor::Reload()
-{
-	return nullptr;
-}
-
-bool AWeaponActor::GetCanReload()
-{
-	return false;
-}
-
-void AWeaponActor::FireWeapon(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera)
+UAnimMontage* AWeaponActor::FireWeapon(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera)
 {
 	OnFire(SpawnRotation, Controller, Camera);
+	return FireAnimation;
 }
 
 void AWeaponActor::OnFire_Implementation(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera)
