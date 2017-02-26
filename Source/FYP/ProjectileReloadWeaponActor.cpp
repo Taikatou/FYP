@@ -6,6 +6,7 @@
 
 void AProjectileReloadWeaponActor::OnFire_Implementation(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera)
 {
+	//FireServer(SpawnRotation, Controller, Camera);
 	if (ProjectileClass != nullptr)
 	{
 		UWorld* const World = GetWorld();

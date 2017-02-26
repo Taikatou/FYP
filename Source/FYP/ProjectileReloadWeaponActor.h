@@ -17,5 +17,4 @@ class FYP_API AProjectileReloadWeaponActor : public AReloadWeaponActor
 		TSubclassOf<class AProjectile> ProjectileClass;
 
 	void OnFire_Implementation(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera) override;
-	
 };
