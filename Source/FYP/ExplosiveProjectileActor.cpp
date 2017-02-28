@@ -31,7 +31,7 @@ void AExplosiveProjectileActor::OnDetonate()
 
 	if(GetWorld()->SweepMultiByChannel(HitActors, StartTrace, EndTrace, FQuat::FQuat(), ECC_WorldStatic, CollisionShape))
 	{
-		for(auto Actors = HitActors.CreateIterator(); Actors; Actors++)
+		for(auto Actors = HitActors.CreateIterator(); Actors; ++Actors)
 		{
 			// Check if collision is static mesh or destructable actor
 			UStaticMeshComponent* SM = Cast<UStaticMeshComponent>((*Actors).Actor->GetRootComponent());

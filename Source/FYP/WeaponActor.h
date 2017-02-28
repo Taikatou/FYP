@@ -6,6 +6,16 @@
 #include "GameFramework/Actor.h"
 #include "WeaponActor.generated.h"
 
+USTRUCT()
+struct FShootInformationStruct
+{
+	GENERATED_BODY()
+
+		FTransform ProjectileTransform;
+	FHitResult HitResult;
+	FVector EndLocation;
+};
+
 UCLASS(Abstract, Blueprintable)
 class FYP_API AWeaponActor : public AActor
 {
@@ -48,7 +58,13 @@ public:
 	UPROPERTY(EditAnywhere, Category = "Animation")
 		UAnimMontage* FireAnimation;
 
-	virtual UAnimMontage* Reload() { return nullptr; };
+	UFUNCTION(BlueprintCallable, Category = "Fire")
+		void FireProjectile(TSubclassOf<class AProjectile> projectile, FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera);
+
+	virtual UAnimMontage* Reload() { return nullptr; }
+
+	UFUNCTION(BlueprintPure, Category = "Calculate shot information")
+		FShootInformationStruct CalculateShootInformationStruct(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera) const;
 
 private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "PickUp", meta = (AllowPrivateAccess = "true"))
