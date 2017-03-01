@@ -45,7 +45,7 @@ public:
 
 	virtual UAnimMontage* FireWeapon(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera);
 
-	UFUNCTION(BlueprintCallable, Category = "Fire")
+	UFUNCTION(Server, reliable, WithValidation, Category = "Fire")
 		virtual void OnFire(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera);
 
 	/** Gun muzzle's offset from the characters location */

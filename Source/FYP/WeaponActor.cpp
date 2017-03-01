@@ -47,9 +47,14 @@ UAnimMontage* AWeaponActor::FireWeapon(FRotator SpawnRotation, AController* Cont
 	return FireAnimation;
 }
 
-void AWeaponActor::OnFire(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera)
+void AWeaponActor::OnFire_Implementation(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera)
 {
 	UE_LOG(LogTemp, Warning, TEXT("Weapon"));
+}
+
+bool AWeaponActor::OnFire_Validate(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera)
+{
+	return true;
 }
 
 FShootInformationStruct AWeaponActor::CalculateShootInformationStruct(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera) const

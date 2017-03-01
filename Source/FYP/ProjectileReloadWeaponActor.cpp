@@ -25,7 +25,7 @@ void AProjectileReloadWeaponActor::FireProjectile(TSubclassOf<class AProjectile>
 	}
 }
 
-void AProjectileReloadWeaponActor::OnFire(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera)
+void AProjectileReloadWeaponActor::OnFire_Implementation(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera)
 {
 	UE_LOG(LogTemp, Warning, TEXT("Projectile"));
 	FireProjectile(Projectile, SpawnRotation, Controller, Camera);
