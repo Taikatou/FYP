@@ -45,8 +45,8 @@ public:
 
 	virtual UAnimMontage* FireWeapon(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera);
 
-	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Fire")
-		void OnFire(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera);
+	UFUNCTION(BlueprintCallable, Category = "Fire")
+		virtual void OnFire(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera);
 
 	/** Gun muzzle's offset from the characters location */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
@@ -57,9 +57,6 @@ public:
 
 	UPROPERTY(EditAnywhere, Category = "Animation")
 		UAnimMontage* FireAnimation;
-
-	UFUNCTION(BlueprintCallable, Category = "Fire")
-		void FireProjectile(TSubclassOf<class AProjectile> projectile, FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera);
 
 	virtual UAnimMontage* Reload() { return nullptr; }
 

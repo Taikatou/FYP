@@ -47,31 +47,10 @@ UAnimMontage* AWeaponActor::FireWeapon(FRotator SpawnRotation, AController* Cont
 	return FireAnimation;
 }
 
-void AWeaponActor::OnFire_Implementation(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera)
+void AWeaponActor::OnFire(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera)
 {
+	UE_LOG(LogTemp, Warning, TEXT("Weapon"));
 }
-
-void AWeaponActor::FireProjectile(TSubclassOf<class AProjectile> projectile, FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera)
-{
-	//FireServer(SpawnRotation, Controller, Camera);
-	if (projectile != nullptr)
-	{
-		UWorld* const World = GetWorld();
-		if (World != nullptr)
-		{
-			// MuzzleOffset is in camera space, so transform it to world space before offsetting from the character location to find the final muzzle position
-			const FVector SpawnLocation = (FP_MuzzleLocation != nullptr ? FP_MuzzleLocation->GetComponentLocation() : GetActorLocation()) + SpawnRotation.RotateVector(GunOffset);
-
-			//Set Spawn Collision Handling Override
-			FActorSpawnParameters ActorSpawnParams;
-			ActorSpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButDontSpawnIfColliding;
-
-			// spawn the projectile at the muzzle
-			World->SpawnActor<AProjectile>(projectile, SpawnLocation, SpawnRotation, ActorSpawnParams);
-		}
-	}
-}
-
 
 FShootInformationStruct AWeaponActor::CalculateShootInformationStruct(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera) const
 {
