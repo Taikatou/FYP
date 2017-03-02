@@ -16,9 +16,9 @@ class FYP_API AProjectileReloadWeaponActor : public AReloadWeaponActor
 	
 public:
 	UFUNCTION(BlueprintCallable, Category = "Fire")
-		void FireProjectile(TSubclassOf<class AActor> projectile, FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera) const;
+		void FireProjectile(TSubclassOf<class AActor> projectile, FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera, FVector ForwardVector) const;
 
-	void OnFire_Implementation(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera) override;
+	void OnFire_Implementation(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera, FVector ForwardVector) override;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
 		TSubclassOf<class AActor> Projectile;

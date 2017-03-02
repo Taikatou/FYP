@@ -41,18 +41,18 @@ void AWeaponActor::Tick( float DeltaTime )
 
 }
 
-UAnimMontage* AWeaponActor::FireWeapon(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera)
+UAnimMontage* AWeaponActor::FireWeapon(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera, FVector ForwardVector)
 {
-	OnFire(SpawnRotation, Controller, Camera);
+	OnFire(SpawnRotation, Controller, Camera, ForwardVector);
 	return FireAnimation;
 }
 
-void AWeaponActor::OnFire_Implementation(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera)
+void AWeaponActor::OnFire_Implementation(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera, FVector ForwardVector)
 {
 	UE_LOG(LogTemp, Warning, TEXT("Weapon"));
 }
 
-bool AWeaponActor::OnFire_Validate(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera)
+bool AWeaponActor::OnFire_Validate(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera, FVector ForwardVector)
 {
 	return true;
 }
@@ -100,4 +100,9 @@ FShootInformationStruct AWeaponActor::CalculateShootInformationStruct(FRotator S
 	ShotInformation.EndLocation = LocalEndLocation;
 	ShotInformation.HitResult = Hit;
 	return ShotInformation;
+}
+
+void AWeaponActor::SetVisibility(bool Visible) const
+{
+	WeaponMesh->SetVisibility(Visible);
 }

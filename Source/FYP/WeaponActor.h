@@ -43,10 +43,10 @@ public:
 	UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
 		class USceneComponent* FP_MuzzleLocation;
 
-	virtual UAnimMontage* FireWeapon(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera);
+	virtual UAnimMontage* FireWeapon(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera, FVector ForwardVector);
 
 	UFUNCTION(Server, reliable, WithValidation, Category = "Fire")
-		virtual void OnFire(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera);
+		virtual void OnFire(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera, FVector ForwardVector);
 
 	/** Gun muzzle's offset from the characters location */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
@@ -62,6 +62,8 @@ public:
 
 	UFUNCTION(BlueprintPure, Category = "Calculate shot information")
 		FShootInformationStruct CalculateShootInformationStruct(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera) const;
+
+	void SetVisibility(bool Visible) const;
 
 private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "PickUp", meta = (AllowPrivateAccess = "true"))

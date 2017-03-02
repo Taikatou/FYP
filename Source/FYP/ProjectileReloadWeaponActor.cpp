@@ -2,9 +2,10 @@
 
 #include "FYP.h"
 #include "ProjectileReloadWeaponActor.h"
+#include "BulletActor.h"
 
 
-void AProjectileReloadWeaponActor::FireProjectile(TSubclassOf<class AActor> projectile, FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera) const
+void AProjectileReloadWeaponActor::FireProjectile(TSubclassOf<class AActor> projectile, FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera, FVector ForwardVector) const
 {
 	//FireServer(SpawnRotation, Controller, Camera);
 	if (projectile != nullptr)
@@ -20,14 +21,20 @@ void AProjectileReloadWeaponActor::FireProjectile(TSubclassOf<class AActor> proj
 			ActorSpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButDontSpawnIfColliding;
 
 			// spawn the projectile at the muzzle
-			World->SpawnActor<AActor>(projectile, SpawnLocation, SpawnRotation, ActorSpawnParams);
+			AActor* ProjectileActor = World->SpawnActor<AActor>(projectile, SpawnLocation, SpawnRotation, ActorSpawnParams);
+			ABulletActor* const Bullet = Cast<ABulletActor>(ProjectileActor);
+			if(Bullet)
+			{
+				FVector NewVelocity = ForwardVector * 5000.0f;
+				Bullet->Velocity = FVector(NewVelocity);
+			}
 		}
 	}
 }
 
-void AProjectileReloadWeaponActor::OnFire_Implementation(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera)
+void AProjectileReloadWeaponActor::OnFire_Implementation(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera, FVector ForwardVector)
 {
 	UE_LOG(LogTemp, Warning, TEXT("Projectile"));
-	FireProjectile(Projectile, SpawnRotation, Controller, Camera);
+	FireProjectile(Projectile, SpawnRotation, Controller, Camera, ForwardVector);
 }
 

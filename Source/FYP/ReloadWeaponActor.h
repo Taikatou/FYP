@@ -25,7 +25,7 @@ public:
 		UFUNCTION(BlueprintPure, Category = "Capacity")
 		bool HasAmmo() const { return CurrentCapacity > 0; }
 
-	UAnimMontage* FireWeapon(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera) override;
+	UAnimMontage* FireWeapon(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera, FVector ForwardVector) override;
 
 	bool CanFire() const;
 

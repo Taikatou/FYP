@@ -19,12 +19,12 @@ int32 AReloadWeaponActor::GetCurrentCapacity()
 	return CurrentCapacity;
 }
 
-UAnimMontage* AReloadWeaponActor::FireWeapon(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera)
+UAnimMontage* AReloadWeaponActor::FireWeapon(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera, FVector ForwardVector)
 {
 	UAnimMontage* Animation;
 	if(CanFire())
 	{
-		OnFire(SpawnRotation, Controller, Camera);
+		OnFire(SpawnRotation, Controller, Camera, ForwardVector);
 		CurrentCapacity--;
 		Animation = FireAnimation;
 	}

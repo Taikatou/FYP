@@ -46,6 +46,10 @@ void ABulletActor::BeginPlay()
 	GetWorldTimerManager().SetTimer(DummyHandle, this, &ABulletActor::ApplyGravity, GravityDelay, false);
 }
 
+void ABulletActor::Tick(float DeltaTime)
+{
+}
+
 void ABulletActor::OnProjectileHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
 	if(OtherActor->IsA((ATarget::StaticClass())))

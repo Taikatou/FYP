@@ -227,7 +227,8 @@ void ABaseCharacter::Fire()
 		UE_LOG(LogTemp, Warning, TEXT("Fire"));
 		FRotator SpawnRotation = GetControlRotation();
 
-		UAnimMontage* fireAnimation = Weapon->FireWeapon(SpawnRotation, Controller, FPSCameraComponent);
+		FVector ForwardVector = GetActorForwardVector();
+		UAnimMontage* fireAnimation = Weapon->FireWeapon(SpawnRotation, Controller, FPSCameraComponent, ForwardVector);
 		if (fireAnimation != nullptr)
 		{
 			UAnimInstance* AnimInstance = FPSMesh->GetAnimInstance();

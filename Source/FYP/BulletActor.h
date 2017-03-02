@@ -15,7 +15,9 @@ public:
 	ABulletActor();
 
 	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
+	void BeginPlay() override;
+
+	void Tick(float DeltaTime) override;
 
 	UPROPERTY(EditDefaultsOnly)
 		UBoxComponent* ProjectileCollision;
@@ -46,4 +48,11 @@ public:
 
 	// Once called gravity will start affecting bullet making it drop
 	void ApplyGravity() const;
+
+	UPROPERTY(EditAnywhere)
+		FVector Velocity = FVector(100.0f);
+
+	USceneComponent* RootComp;
+
+	float BulletExpiry = 0;
 };

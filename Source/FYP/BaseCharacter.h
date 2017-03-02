@@ -40,6 +40,9 @@ private:
 	AWeaponActor* Weapon;
 
 public:
+	FORCEINLINE
+		AWeaponActor* GetWeapon() { return Weapon; }
+
 	// Sets default values for this character's properties
 	ABaseCharacter();
 
@@ -118,5 +121,4 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Ammo")
 		int32 GetCurrentAmmo() const;
-
 };
