@@ -4,7 +4,7 @@
 #include "ProjectileReloadWeaponActor.h"
 
 
-void AProjectileReloadWeaponActor::FireProjectile(TSubclassOf<class AProjectile> projectile, FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera) const
+void AProjectileReloadWeaponActor::FireProjectile(TSubclassOf<class AActor> projectile, FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera) const
 {
 	//FireServer(SpawnRotation, Controller, Camera);
 	if (projectile != nullptr)
@@ -20,7 +20,7 @@ void AProjectileReloadWeaponActor::FireProjectile(TSubclassOf<class AProjectile>
 			ActorSpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButDontSpawnIfColliding;
 
 			// spawn the projectile at the muzzle
-			World->SpawnActor<AProjectile>(projectile, SpawnLocation, SpawnRotation, ActorSpawnParams);
+			World->SpawnActor<AActor>(projectile, SpawnLocation, SpawnRotation, ActorSpawnParams);
 		}
 	}
 }

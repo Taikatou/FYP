@@ -12,7 +12,12 @@ void AExplosiveProjectileActor::BeginPlay()
 	GetWorld()->GetTimerManager().SetTimer(handle, this, &AExplosiveProjectileActor::OnDetonate, 5.f, false);
 }
 
-void AExplosiveProjectileActor::OnDetonate()
+bool AExplosiveProjectileActor::OnDetonate_Validate()
+{
+	return true;
+}
+
+void AExplosiveProjectileActor::OnDetonate_Implementation()
 {
 	UE_LOG(LogTemp, Warning, TEXT("Start detonation"));
 	UParticleSystemComponent* Explosion = UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ExplosionParticles, GetActorTransform());

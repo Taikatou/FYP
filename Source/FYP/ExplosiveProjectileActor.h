@@ -25,7 +25,7 @@ class FYP_API AExplosiveProjectileActor : public AProjectile
 public:
 	void BeginPlay() override;
 
-	UFUNCTION()
+	UFUNCTION(Server, reliable, WithValidation)
 		void OnDetonate();
 
 	UFUNCTION()
