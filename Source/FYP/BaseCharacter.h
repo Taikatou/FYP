@@ -121,4 +121,6 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Ammo")
 		int32 GetCurrentAmmo() const;
+
+	virtual FVector GetSpawnLocation();
 };

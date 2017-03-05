@@ -5,7 +5,7 @@
 #include "BulletActor.h"
 
 
-void AProjectileReloadWeaponActor::FireProjectile(TSubclassOf<class AActor> projectile, FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera, FVector ForwardVector) const
+void AProjectileReloadWeaponActor::FireProjectile(TSubclassOf<class AActor> projectile, FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera, FVector SpawnLocation) const
 {
 	//FireServer(SpawnRotation, Controller, Camera);
 	if (projectile != nullptr)
@@ -13,18 +13,17 @@ void AProjectileReloadWeaponActor::FireProjectile(TSubclassOf<class AActor> proj
 		UWorld* const World = GetWorld();
 		if (World != nullptr)
 		{
-			// MuzzleOffset is in camera space, so transform it to world space before offsetting from the character location to find the final muzzle position
-			const FVector SpawnLocation = (FP_MuzzleLocation != nullptr ? FP_MuzzleLocation->GetComponentLocation() : GetActorLocation()) + SpawnRotation.RotateVector(GunOffset);
-
+			//const FVector SpawnLocation = ForwardVector * 100.0f;
 			//Set Spawn Collision Handling Override
 			FActorSpawnParameters ActorSpawnParams;
-			ActorSpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButDontSpawnIfColliding;
+			ActorSpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
 
 			// spawn the projectile at the muzzle
 			AActor* ProjectileActor = World->SpawnActor<AActor>(projectile, SpawnLocation, SpawnRotation, ActorSpawnParams);
 			ABulletActor* const Bullet = Cast<ABulletActor>(ProjectileActor);
 			if(Bullet)
 			{
+				FVector ForwardVector = Camera->GetForwardVector();
 				FVector NewVelocity = ForwardVector * 5000.0f;
 				Bullet->Velocity = FVector(NewVelocity);
 			}
@@ -32,9 +31,9 @@ void AProjectileReloadWeaponActor::FireProjectile(TSubclassOf<class AActor> proj
 	}
 }
 
-void AProjectileReloadWeaponActor::OnFire_Implementation(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera, FVector ForwardVector)
+void AProjectileReloadWeaponActor::OnFire_Implementation(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera, FVector SpawnLocation)
 {
 	UE_LOG(LogTemp, Warning, TEXT("Projectile"));
-	FireProjectile(Projectile, SpawnRotation, Controller, Camera, ForwardVector);
+	FireProjectile(Projectile, SpawnRotation, Controller, Camera, SpawnLocation);
 }
 

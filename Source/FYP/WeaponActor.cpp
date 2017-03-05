@@ -41,68 +41,30 @@ void AWeaponActor::Tick( float DeltaTime )
 
 }
 
-UAnimMontage* AWeaponActor::FireWeapon(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera, FVector ForwardVector)
+UAnimMontage* AWeaponActor::FireWeapon(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera, FVector SpawnLocation)
 {
-	OnFire(SpawnRotation, Controller, Camera, ForwardVector);
+	OnFire(SpawnRotation, Controller, Camera, SpawnLocation);
 	return FireAnimation;
 }
 
-void AWeaponActor::OnFire_Implementation(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera, FVector ForwardVector)
+void AWeaponActor::OnFire_Implementation(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera, FVector SpawnLocation)
 {
 	UE_LOG(LogTemp, Warning, TEXT("Weapon"));
 }
 
-bool AWeaponActor::OnFire_Validate(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera, FVector ForwardVector)
+bool AWeaponActor::OnFire_Validate(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera, FVector SpawnLocation)
 {
 	return true;
-}
-
-FShootInformationStruct AWeaponActor::CalculateShootInformationStruct(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera) const
-{
-	FVector camLoc;
-	FRotator camRot;
-	const FVector SpawnLocation = ((FP_MuzzleLocation != nullptr) ? FP_MuzzleLocation->GetComponentLocation() : GetActorLocation()) + SpawnRotation.RotateVector(GunOffset);
-	Controller->GetPlayerViewPoint(camLoc, camRot);
-	const FVector start_trace = camLoc;
-	const FVector direction = camRot.Vector();
-	const FVector end_trace = start_trace + (direction * MaxFireDistance);
-
-	FCollisionQueryParams TraceParams(FName(TEXT("")), true, this);
-	TraceParams.bTraceAsyncScene = true;
-	TraceParams.bReturnPhysicalMaterial = false;
-	TraceParams.bTraceComplex = true;
-
-	FHitResult Hit(ForceInit);
-	FTransform LocalTransform;
-	FVector LocalEndLocation;
-
-
-	FVector Scale = FVector(1.0, 1.0, 1.0);
-	bool DidHit = GetWorld()->LineTraceSingleByChannel(Hit, start_trace, end_trace, COLLISION_PROJECTILE, TraceParams);
-	if (DidHit)
-	{
-		FRotator LocalRotation = UKismetMathLibrary::FindLookAtRotation(SpawnLocation, Hit.ImpactPoint);
-		LocalTransform = UKismetMathLibrary::MakeTransform(SpawnLocation, LocalRotation, Scale);
-		LocalEndLocation = Hit.ImpactPoint;
-	}
-	else
-	{
-		APawn* owner = Cast<APawn>(Camera->GetOwner());
-		FRotator LocalRotation = owner->GetControlRotation();
-		LocalTransform = UKismetMathLibrary::MakeTransform(SpawnLocation, LocalRotation, Scale);
-
-		FTransform WorldTransform = Camera->GetComponentTransform();
-		FVector EndPoint = WorldTransform.GetRotation().GetForwardVector() * 10000;
-		LocalEndLocation = WorldTransform.GetLocation() + EndPoint;
-	}
-	FShootInformationStruct ShotInformation = FShootInformationStruct();
-	ShotInformation.ProjectileTransform = LocalTransform;
-	ShotInformation.EndLocation = LocalEndLocation;
-	ShotInformation.HitResult = Hit;
-	return ShotInformation;
 }
 
 void AWeaponActor::SetVisibility(bool Visible) const
 {
 	WeaponMesh->SetVisibility(Visible);
+}
+
+FVector AWeaponActor::GetSpawnLocation(FRotator SpawnRotation)
+{
+	// MuzzleOffset is in camera space, so transform it to world space before offsetting from the character location to find the final muzzle position
+	const FVector SpawnLocation = (FP_MuzzleLocation != nullptr ? FP_MuzzleLocation->GetComponentLocation() : GetActorLocation()) + SpawnRotation.RotateVector(GunOffset);
+	return SpawnLocation;
 }

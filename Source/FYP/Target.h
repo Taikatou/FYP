@@ -12,8 +12,17 @@ UCLASS()
 class FYP_API ATarget : public AStaticMeshActor
 {
 	GENERATED_BODY()
-	
-	
-	
+
+public:
+
+	float Health;
+
+	ATarget();
+
+	UStaticMeshComponent* TargetMesh;
+
+	void DestroyTarget();
+
+	void DamageTarget(float Damage);
 	
 };

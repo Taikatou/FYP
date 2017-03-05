@@ -2,19 +2,8 @@
 
 #pragma once
 
-#include "Projectile.h"
 #include "GameFramework/Actor.h"
 #include "WeaponActor.generated.h"
-
-USTRUCT()
-struct FShootInformationStruct
-{
-	GENERATED_BODY()
-
-		FTransform ProjectileTransform;
-	FHitResult HitResult;
-	FVector EndLocation;
-};
 
 UCLASS(Abstract, Blueprintable)
 class FYP_API AWeaponActor : public AActor
@@ -43,10 +32,10 @@ public:
 	UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
 		class USceneComponent* FP_MuzzleLocation;
 
-	virtual UAnimMontage* FireWeapon(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera, FVector ForwardVector);
+	virtual UAnimMontage* FireWeapon(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera, FVector SpawnLocation);
 
 	UFUNCTION(Server, reliable, WithValidation, Category = "Fire")
-		virtual void OnFire(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera, FVector ForwardVector);
+		virtual void OnFire(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera, FVector SpawnLocation);
 
 	/** Gun muzzle's offset from the characters location */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
@@ -60,10 +49,9 @@ public:
 
 	virtual UAnimMontage* Reload() { return nullptr; }
 
-	UFUNCTION(BlueprintPure, Category = "Calculate shot information")
-		FShootInformationStruct CalculateShootInformationStruct(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera) const;
-
 	void SetVisibility(bool Visible) const;
+
+	virtual FVector GetSpawnLocation(FRotator SpawnRotation);
 
 private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "PickUp", meta = (AllowPrivateAccess = "true"))

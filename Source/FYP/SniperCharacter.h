@@ -15,11 +15,21 @@ class FYP_API ASniperCharacter : public ABaseCharacter
 	
 public:
 
+	ASniperCharacter();
+
 	void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+	bool Aiming;
+
+	void Aim();
+
+	void StopAim();
 
 	UFUNCTION(BlueprintImplementableEvent)
 		void ShowSniperOverlay();
 	
 	UFUNCTION(BlueprintImplementableEvent)
 		void HideSniperOverlay();
+
+	FVector GetSpawnLocation() override;
 };

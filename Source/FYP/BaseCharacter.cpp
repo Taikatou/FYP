@@ -7,6 +7,7 @@
 #include "LifePickUpActor.h"
 #include "UsableActor.h"
 #include "Animation/AnimMontage.h"
+#include "Target.h"
 #include "Kismet/KismetMathLibrary.h"
 
 
@@ -227,8 +228,8 @@ void ABaseCharacter::Fire()
 		UE_LOG(LogTemp, Warning, TEXT("Fire"));
 		FRotator SpawnRotation = GetControlRotation();
 
-		FVector ForwardVector = GetActorForwardVector();
-		UAnimMontage* fireAnimation = Weapon->FireWeapon(SpawnRotation, Controller, FPSCameraComponent, ForwardVector);
+		// Fire Weapon
+		UAnimMontage* fireAnimation = Weapon->FireWeapon(SpawnRotation, Controller, FPSCameraComponent, GetSpawnLocation());
 		if (fireAnimation != nullptr)
 		{
 			UAnimInstance* AnimInstance = FPSMesh->GetAnimInstance();
@@ -288,6 +289,12 @@ int32 ABaseCharacter::GetMaxAmmo() const
 int32 ABaseCharacter::GetCurrentAmmo() const
 {
 	return Weapon->GetCurrentCapacity();
+}
+
+FVector ABaseCharacter::GetSpawnLocation()
+{
+	FRotator SpawnRotation = GetControlRotation();
+	return Weapon->GetSpawnLocation(SpawnRotation);
 }
 
 AUsableActor* ABaseCharacter::GetUsableInView() const

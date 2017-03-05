@@ -3,60 +3,25 @@
 #include "FYP.h"
 #include "SniperProjectileActor.h"
 
-static FORCEINLINE bool VTraceSphere(
-	AActor* ActorToIgnore,
-	const FVector& Start,
-	const FVector& End,
-	const float Radius,
-	FHitResult& HitOut,
-	ECollisionChannel TraceChannel = ECC_Pawn
-) {
-	FCollisionQueryParams TraceParams(FName(TEXT("VictoreCore Trace")), true, ActorToIgnore);
-	TraceParams.bTraceComplex = true;
-	//TraceParams.bTraceAsyncScene = true;
-	TraceParams.bReturnPhysicalMaterial = false;
-
-	//Ignore Actors
-	TraceParams.AddIgnoredActor(ActorToIgnore);
-
-	//Re-initialize hit info
-	HitOut = FHitResult(ForceInit);
-
-	//Get World Source
-	TObjectIterator< APlayerController > ThePC;
-	if (!ThePC) return false;
-
-	return ThePC->GetWorld()->SweepSingleByObjectType(
-		HitOut,
-		Start,
-		End,
-		FQuat(),
-		TraceChannel,
-		FCollisionShape::MakeSphere(Radius),
-		TraceParams
-	);
+ASniperProjectileActor::ASniperProjectileActor()
+{
+	PrimaryActorTick.bCanEverTick = true;
 }
 
 void ASniperProjectileActor::BeginPlay()
 {
-	UProjectileMovementComponent* projectile_movement_component = GetProjectileMovement();
-	projectile_movement_component->OnProjectileBounce.AddDynamic(this, &ASniperProjectileActor::OnBounce);
+	Super::BeginPlay();
+	PreviousLocation = FVector(GetActorLocation());
 }
 
-void ASniperProjectileActor::OnBounce(const FHitResult& ImpactResult, const FVector& ImpactVelocity)
+void ASniperProjectileActor::Tick(float DeltaSeconds)
 {
-
+	FVector Location = FVector(GetActorLocation());
+	DrawDebugLine(GetWorld(), PreviousLocation, Location, FColor::Green, false, 5.0f);
+	PreviousLocation = Location;
 }
 
-// If output = nullptr result not found
-FExitLocationStruct ASniperProjectileActor::ComputeExitLocation(const FHitResult& ImpactResult, const FVector& ImpactVelocity)
+void ASniperProjectileActor::CompleteHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
-	FExitLocationStruct exit_location;
-	FVector normalised_impact_velocity = ImpactVelocity.GetSafeNormal(SMALL_NUMBER);
-	FVector start_location = (normalised_impact_velocity * Distance) + ImpactResult.Location;
-	float radius = GetCollisionComp()->GetScaledSphereRadius();
-	//VTraceSphere(this, start_location, ImpactResult.Location, radius, )
-	return exit_location;
+	Destroy();
 }
-
-

@@ -5,30 +5,22 @@
 #include "Projectile.h"
 #include "SniperProjectileActor.generated.h"
 
-USTRUCT()
-struct FExitLocationStruct
-{
-	GENERATED_BODY()
-
-	UPROPERTY(VisibleAnywhere)
-		FVector ExitLocation;
-
-	UPROPERTY(VisibleAnywhere)
-		bool LocationFound;
-};
-/**
- * 
- */
 UCLASS()
 class FYP_API ASniperProjectileActor : public AProjectile
 {
 	GENERATED_BODY()
 	
 public:
+	ASniperProjectileActor();
+
 	void BeginPlay() override;
-	void OnBounce(const FHitResult& ImpactResult, const FVector& ImpactVelocity);
-	FExitLocationStruct ComputeExitLocation(const FHitResult& ImpactResult, const FVector& ImpactVelocity);
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setup")
 		float Distance = 500;
+
+	void Tick(float DeltaSeconds) override;
+
+	FVector PreviousLocation;
+
+	void CompleteHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit) override;
 };
