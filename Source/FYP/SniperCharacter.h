@@ -30,6 +30,4 @@ public:
 	
 	UFUNCTION(BlueprintImplementableEvent)
 		void HideSniperOverlay();
-
-	FVector GetSpawnLocation() override;
 };

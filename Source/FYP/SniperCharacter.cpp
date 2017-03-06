@@ -29,17 +29,3 @@ void ASniperCharacter::StopAim()
 	GetWeapon()->SetVisibility(true);
 	HideSniperOverlay();
 }
-
-FVector ASniperCharacter::GetSpawnLocation()
-{
-	FVector Location;
-	if(Aiming)
-	{
-		Location = FPSCameraComponent->GetComponentLocation();
-	}
-	else
-	{
-		Location = Super::GetSpawnLocation();
-	}
-	return Location;
-}

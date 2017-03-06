@@ -41,7 +41,7 @@ private:
 
 public:
 	FORCEINLINE
-		AWeaponActor* GetWeapon() { return Weapon; }
+		AWeaponActor* GetWeapon() const { return Weapon; }
 
 	// Sets default values for this character's properties
 	ABaseCharacter();
@@ -98,6 +98,9 @@ public:
 	*/
 	UFUNCTION(BlueprintCallable, Category="Life")
 		void UpdateLife(float LifeDelta);
+
+	UFUNCTION(BlueprintImplementableEvent)
+		void OnDeath();
 
 	/** player pressed reload action */
 	virtual void OnReload();
