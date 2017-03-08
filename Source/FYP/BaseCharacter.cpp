@@ -356,8 +356,8 @@ void ABaseCharacter::Pause()
 {
 	if (MyMainMenu)
 	{
-		//let add it to the view port
-		MyMainMenu->AddToViewport();
+		AGamePlayPlayerController* controller = Cast<AGamePlayPlayerController>(GetController());
+		controller->ShowMenu(MyMainMenu);
 	}
 }
 

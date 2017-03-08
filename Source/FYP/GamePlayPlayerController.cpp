@@ -2,3 +2,10 @@
 
 #include "FYP.h"
 #include "GamePlayPlayerController.h"
+#include "Runtime/UMG/Public/Blueprint/UserWidget.h"
+
+void AGamePlayPlayerController::ShowMenu(UUserWidget* MyMainMenu)
+{
+	bShowMouseCursor = true;
+	MyMainMenu->AddToViewport();
+}

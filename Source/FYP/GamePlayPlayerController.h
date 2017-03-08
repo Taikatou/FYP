@@ -5,6 +5,7 @@
 #include "GameFramework/PlayerController.h"
 #include "GamePlayPlayerController.generated.h"
 
+class UUserWidget;
 /**
  * 
  */
@@ -14,5 +15,6 @@ class FYP_API AGamePlayPlayerController : public APlayerController
 	GENERATED_BODY()
 	
 public:
+	void ShowMenu(UUserWidget* MyMainMenu);
 	
 };
