@@ -3,6 +3,7 @@
 #include "FYP.h"
 #include "ExplosiveProjectileActor.h"
 #include "PhysicsEngine/DestructibleActor.h"
+#include "BaseCharacter.h"
 
 
 void AExplosiveProjectileActor::BeginPlay()
@@ -41,7 +42,7 @@ void AExplosiveProjectileActor::OnDetonate_Implementation()
 			// Check if collision is static mesh or destructable actor
 			UStaticMeshComponent* SM = Cast<UStaticMeshComponent>((*Actors).Actor->GetRootComponent());
 			ADestructibleActor* DA = Cast<ADestructibleActor>((*Actors).GetActor());
-
+			ABaseCharacter* BC = Cast<ABaseCharacter>((*Actors).GetActor());
 			if(SM)
 			{
 				SM->AddRadialImpulse(GetActorLocation(), 1000.0f, 5000.0f, ERadialImpulseFalloff::RIF_Linear, true);
@@ -49,6 +50,10 @@ void AExplosiveProjectileActor::OnDetonate_Implementation()
 			else if(DA)
 			{
 				DA->GetDestructibleComponent()->ApplyRadiusDamage(10.0f, Actors->ImpactPoint, 500.0f, 3000.0f, false);
+			}
+			else if (BC)
+			{
+				BC->DamagePlayer(Damage);
 			}
 		}
 	}

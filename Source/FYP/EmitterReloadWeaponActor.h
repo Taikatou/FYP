@@ -17,4 +17,7 @@ class FYP_API AEmitterReloadWeaponActor : public AReloadWeaponActor
 public:
 	void OnFire_Implementation(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera, FVector SpawnLocation) override;
 	
+
+	UFUNCTION(BlueprintImplementableEvent)
+		void SpawnEmitter();
 };

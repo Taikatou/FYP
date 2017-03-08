@@ -72,7 +72,7 @@ public:
 		void StopJump();
 
 	// FPS camera.
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Camera")
 		UCameraComponent* FPSCameraComponent;
 
 	// First-person mesh (arms), visible only to the owning player.
@@ -93,14 +93,20 @@ public:
 	UFUNCTION(BlueprintPure, Category = "Life")
 		float GetCurrentLife() const;
 
+	UFUNCTION(BlueprintPure, Category = "Camera")
+		UCameraComponent* GetCamera() const;
+
 	/* Update current power
 	* @param LifeDelta: amount to change life by, positive or negative
 	*/
-	UFUNCTION(BlueprintCallable, Category="Life")
-		void UpdateLife(float LifeDelta);
-
+	UFUNCTION(Server, reliable, WithValidation, BlueprintCallable, Category="Life")
+		void DamagePlayer(float LifeDelta);
+	
 	UFUNCTION(BlueprintImplementableEvent)
-		void OnDeath();
+	void OnDeath();
+
+	UPROPERTY()
+		bool PlayerAlive = true;
 
 	/** player pressed reload action */
 	virtual void OnReload();
@@ -126,4 +132,22 @@ public:
 		int32 GetCurrentAmmo() const;
 
 	virtual FVector GetSpawnLocation();
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		int32 KillStreak = 0;
+
+	UFUNCTION(BlueprintCallable, Category = "Kills")
+		void SetKillStreak(int32 value);
+
+	UFUNCTION(BlueprintPure, Category = "Kills")
+		int32 GetKillStreak() const;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		int32 TotalKills = 0;
+
+	UFUNCTION(BlueprintCallable, Category = "Kills")
+		void SetTotalKills(int32 value);
+
+	UFUNCTION(BlueprintPure, Category = "Kills")
+		int32 GetTotalKills() const;
 };

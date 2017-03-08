@@ -30,7 +30,6 @@ UAnimMontage* AReloadWeaponActor::FireWeapon(FRotator SpawnRotation, AController
 	}
 	else
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Can't fire"));
 		Animation = Reload();
 	}
 	return Animation;

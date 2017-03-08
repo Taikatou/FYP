@@ -9,6 +9,7 @@
 #include "Animation/AnimMontage.h"
 #include "Target.h"
 #include "Kismet/KismetMathLibrary.h"
+#include "UnrealNetwork.h"
 
 
 // Sets default values
@@ -47,6 +48,8 @@ ABaseCharacter::ABaseCharacter()
 	CurrentLife = InitialLife;
 
 	CurrentlyReloading = false;
+
+	bReplicates = true;
 }
 
 // Called when the game starts or when spawned
@@ -188,19 +191,37 @@ float ABaseCharacter::GetCurrentLife() const
 	return CurrentLife;
 }
 
-void ABaseCharacter::UpdateLife(float LifeDelta)
+UCameraComponent* ABaseCharacter::GetCamera() const
 {
-	float TempLife = CurrentLife + LifeDelta;
-	float NewValue;
-	if(LifeDelta > 0)
+	return FPSCameraComponent;
+}
+
+bool ABaseCharacter::DamagePlayer_Validate(float LifeDelta)
+{
+	return true;
+}
+
+void ABaseCharacter::DamagePlayer_Implementation(float LifeDelta)
+{
+	if(PlayerAlive)
 	{
-		NewValue = TempLife > InitialLife? InitialLife : TempLife;
+		float TempLife = CurrentLife - LifeDelta;
+		if (TempLife < 0)
+		{
+			TempLife = 0;
+		}
+		else if (TempLife > InitialLife)
+		{
+			TempLife = InitialLife;
+		}
+		CurrentLife = TempLife;
+		if (CurrentLife == 0)
+		{
+			UE_LOG(LogTemp, Warning, TEXT("player died, %f"), CurrentLife);
+			PlayerAlive = false;
+			OnDeath();
+		}
 	}
-	else
-	{
-		NewValue = TempLife < 0 ? 0 : TempLife;
-	}
-	CurrentLife = NewValue;
 }
 
 void ABaseCharacter::OnReload()
@@ -216,7 +237,6 @@ void ABaseCharacter::OnReload()
 			AnimInstance->Montage_Play(reloadAnimation, 1.f);
 
 			GetWorld()->GetTimerManager().SetTimer(AnimationTimerHandle, this, &ABaseCharacter::Reloaded, 2.0f, false);
-			UE_LOG(LogTemp, Warning, TEXT("Duration %d"), reloadAnimation->CalculateSequenceLength());
 		}
 	}
 }
@@ -238,7 +258,6 @@ void ABaseCharacter::Fire()
 				AnimInstance->Montage_Play(fireAnimation, 1.f);
 
 				GetWorld()->GetTimerManager().SetTimer(AnimationTimerHandle, this, &ABaseCharacter::Reloaded, 2.0f, false);
-				UE_LOG(LogTemp, Warning, TEXT("Duration %d"), fireAnimation->CalculateSequenceLength());
 			}
 		}
 	}
@@ -278,7 +297,10 @@ void ABaseCharacter::CollectPickups()
 			TestPickup->SetActive(false);
 		}
 	}
-	UpdateLife(CollectedLife);
+	if(CollectedLife > 0.0f)
+	{
+		DamagePlayer(CollectedLife);
+	}
 }
 
 int32 ABaseCharacter::GetMaxAmmo() const
@@ -295,6 +317,26 @@ FVector ABaseCharacter::GetSpawnLocation()
 {
 	FRotator SpawnRotation = GetControlRotation();
 	return Weapon->GetSpawnLocation(SpawnRotation);
+}
+
+void ABaseCharacter::SetKillStreak(int32 value)
+{
+	KillStreak = value;
+}
+
+int32 ABaseCharacter::GetKillStreak() const
+{
+	return KillStreak;
+}
+
+void ABaseCharacter::SetTotalKills(int32 value)
+{
+	TotalKills = value;
+}
+
+int32 ABaseCharacter::GetTotalKills() const
+{
+	return TotalKills;
 }
 
 AUsableActor* ABaseCharacter::GetUsableInView() const

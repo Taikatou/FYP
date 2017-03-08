@@ -3,6 +3,7 @@
 #pragma once
 
 #include "ReloadWeaponActor.h"
+#include "Projectile.h"
 #include "ProjectileReloadWeaponActor.generated.h"
 
 /**
@@ -16,11 +17,11 @@ class FYP_API AProjectileReloadWeaponActor : public AReloadWeaponActor
 	
 public:
 	UFUNCTION(BlueprintCallable, Category = "Fire")
-		void FireProjectile(TSubclassOf<class AActor> projectile, FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera, FVector SpawnLocation) const;
+		void FireProjectile(TSubclassOf<class AProjectile> projectile, FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera, FVector SpawnLocation) const;
 
 	void OnFire_Implementation(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera, FVector SpawnLocation) override;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
-		TSubclassOf<class AActor> Projectile;
+		TSubclassOf<class AProjectile> Projectile;
 	
 };

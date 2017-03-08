@@ -2,6 +2,7 @@
 
 #include "FYP.h"
 #include "SniperProjectileActor.h"
+#include "BaseCharacter.h"
 
 ASniperProjectileActor::ASniperProjectileActor()
 {
@@ -23,5 +24,10 @@ void ASniperProjectileActor::Tick(float DeltaSeconds)
 
 void ASniperProjectileActor::CompleteHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
+	ABaseCharacter* BC = Cast<ABaseCharacter>(OtherActor);
+	if(BC)
+	{
+		BC->DamagePlayer(BaseDamage);
+	}
 	Destroy();
 }

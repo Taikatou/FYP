@@ -30,4 +30,7 @@ public:
 
 	UFUNCTION()
 		void CompleteHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit) override;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float Damage = 100.0f;
 };

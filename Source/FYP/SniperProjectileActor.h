@@ -23,4 +23,7 @@ public:
 	FVector PreviousLocation;
 
 	void CompleteHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit) override;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float BaseDamage = 50.0f;
 };
