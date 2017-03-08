@@ -10,6 +10,8 @@
 #include "Target.h"
 #include "Kismet/KismetMathLibrary.h"
 #include "UnrealNetwork.h"
+#include "Runtime/UMG/Public/Blueprint/UserWidget.h"
+#include "GamePlayPlayerController.h"
 
 
 // Sets default values
@@ -73,6 +75,15 @@ void ABaseCharacter::BeginPlay()
 		Weapon->AttachToComponent(FPSMesh, FAttachmentTransformRules(EAttachmentRule::SnapToTarget, true), TEXT("GripPoint"));
 		Weapon->AnimInstance = FPSMesh->GetAnimInstance();
 	}
+	if (wMainMenu) // Check if the Asset is assigned in the blueprint.
+	{
+		AGamePlayPlayerController* controller = Cast<AGamePlayPlayerController>(GetController());
+		if(controller)
+		{
+			// Create the widget and store it.
+			MyMainMenu = CreateWidget<UUserWidget>(controller, wMainMenu);
+		}
+	}
 }
 
 // Called every frame
@@ -134,7 +145,9 @@ void ABaseCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompo
 	PlayerInputComponent->BindAction("Reload", IE_Pressed, this, &ABaseCharacter::OnReload);
 
 	// Set up "use" bindings
-	InputComponent->BindAction("Use", IE_Pressed, this, &ABaseCharacter::Use);
+	PlayerInputComponent->BindAction("Use", IE_Pressed, this, &ABaseCharacter::Use);
+
+	PlayerInputComponent->BindAction("Pause", IE_Pressed, this, &ABaseCharacter::Pause);
 
 }
 
@@ -337,6 +350,15 @@ void ABaseCharacter::SetTotalKills(int32 value)
 int32 ABaseCharacter::GetTotalKills() const
 {
 	return TotalKills;
+}
+
+void ABaseCharacter::Pause()
+{
+	if (MyMainMenu)
+	{
+		//let add it to the view port
+		MyMainMenu->AddToViewport();
+	}
 }
 
 AUsableActor* ABaseCharacter::GetUsableInView() const

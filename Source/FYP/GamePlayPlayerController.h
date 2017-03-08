@@ -13,7 +13,6 @@ class FYP_API AGamePlayPlayerController : public APlayerController
 {
 	GENERATED_BODY()
 	
-	
-	
+public:
 	
 };

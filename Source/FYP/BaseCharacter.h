@@ -150,4 +150,12 @@ public:
 
 	UFUNCTION(BlueprintPure, Category = "Kills")
 		int32 GetTotalKills() const;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Widgets")
+		TSubclassOf<class UUserWidget> wMainMenu;
+
+	// Variable to hold the widget After Creating it.
+	UUserWidget* MyMainMenu;
+
+	void Pause();
 };
