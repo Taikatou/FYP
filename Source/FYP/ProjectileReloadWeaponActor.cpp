@@ -5,8 +5,12 @@
 #include "BulletActor.h"
 #include "BaseCharacter.h"
 
+AProjectileReloadWeaponActor::AProjectileReloadWeaponActor()
+{
 
-void AProjectileReloadWeaponActor::FireProjectile(TSubclassOf<class AProjectile> projectile, FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera, FVector SpawnLocation) const
+}
+
+void AProjectileReloadWeaponActor::FireProjectile_Implementation(TSubclassOf<class AProjectile> projectile, FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera, FVector SpawnLocation) const
 {
 	//FireServer(SpawnRotation, Controller, Camera);
 	if (projectile != nullptr)
@@ -31,6 +35,11 @@ void AProjectileReloadWeaponActor::FireProjectile(TSubclassOf<class AProjectile>
 			}
 		}
 	}
+}
+
+bool AProjectileReloadWeaponActor::FireProjectile_Validate(TSubclassOf<class AProjectile> projectile, FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera, FVector SpawnLocation)
+{
+	return true;
 }
 
 void AProjectileReloadWeaponActor::OnFire_Implementation(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera, FVector SpawnLocation)

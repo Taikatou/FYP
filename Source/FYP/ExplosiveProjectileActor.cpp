@@ -18,13 +18,23 @@ bool AExplosiveProjectileActor::OnDetonate_Validate()
 	return true;
 }
 
-void AExplosiveProjectileActor::OnDetonate_Implementation()
+bool AExplosiveProjectileActor::Explosion_Validate()
 {
-	UE_LOG(LogTemp, Warning, TEXT("Start detonation"));
+	return true;
+}
+
+void AExplosiveProjectileActor::Explosion_Implementation()
+{
 	UParticleSystemComponent* Explosion = UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ExplosionParticles, GetActorTransform());
 	// particle effect very small
 	Explosion->SetRelativeScale3D(FVector(4.0f));
 	UGameplayStatics::PlaySoundAtLocation(GetWorld(), ExplosionSound, GetActorLocation());
+}
+
+
+void AExplosiveProjectileActor::OnDetonate_Implementation()
+{
+	UE_LOG(LogTemp, Warning, TEXT("Start detonation"));
 
 	TArray<FHitResult> HitActors;
 	FVector StartTrace = GetActorLocation();
@@ -53,14 +63,21 @@ void AExplosiveProjectileActor::OnDetonate_Implementation()
 			}
 			else if (BC)
 			{
-				BC->DamagePlayer(Damage);
+				BC->DamagePlayer(Damage, FiredFrom);
 			}
 		}
 	}
+	Explosion();
 	Destroy();
 }
 
-void AExplosiveProjectileActor::CompleteHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
+bool AExplosiveProjectileActor::CompleteHit_Validate(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
+{
+	return true;
+}
+
+
+void AExplosiveProjectileActor::CompleteHit_Implementation(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
 	OnDetonate();
 }

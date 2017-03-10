@@ -6,6 +6,7 @@
 #include "GameFramework/Character.h"
 #include "BaseCharacter.generated.h"
 
+class AGamePlayPlayerController;
 UCLASS()
 class FYP_API ABaseCharacter : public ACharacter
 {
@@ -14,11 +15,11 @@ class FYP_API ABaseCharacter : public ACharacter
 protected:
 	// Called when we press a key to collect any pickups inside the CollectionSphere
 	UFUNCTION(BlueprintCallable, Category = "PickUps")
-		void CollectPickups();
+	void CollectPickups();
 
 	// Starting life
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Life")
-		float InitialLife = 2000;
+	float InitialLife = 2000;
 
 	FTimerHandle AnimationTimerHandle;
 
@@ -26,7 +27,7 @@ protected:
 	class AUsableActor* GetUsableInView() const;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
-		float MaxUseDistance;
+	float MaxUseDistance;
 
 	bool bHasNewFocus;
 
@@ -35,13 +36,13 @@ protected:
 private:
 	// Current life
 	UPROPERTY(VisibleAnywhere, Category = "Life")
-		float CurrentLife;
+	float CurrentLife;
 
 	AWeaponActor* Weapon;
 
 public:
 	FORCEINLINE
-		AWeaponActor* GetWeapon() const { return Weapon; }
+	AWeaponActor* GetWeapon() const { return Weapon; }
 
 	// Sets default values for this character's properties
 	ABaseCharacter();
@@ -57,97 +58,89 @@ public:
 
 	// Handles input for moving forward and backward.
 	UFUNCTION()
-		void MoveForward(float Value);
+	void MoveForward(float Value);
 
 	// Handles input for moving right and left.
 	UFUNCTION()
-		void MoveRight(float Value);
+	void MoveRight(float Value);
 
 	// Sets jump flag when key is pressed.
 	UFUNCTION()
-		void StartJump();
+	void StartJump();
 
 	// Clears jump flag when key is released.
 	UFUNCTION()
-		void StopJump();
+	void StopJump();
 
 	// FPS camera.
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Camera")
-		UCameraComponent* FPSCameraComponent;
+	UCameraComponent* FPSCameraComponent;
 
 	// First-person mesh (arms), visible only to the owning player.
 	UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
-		USkeletalMeshComponent* FPSMesh;
+	USkeletalMeshComponent* FPSMesh;
 
 	FORCEINLINE class USphereComponent* GetSphereComponent() const { return CollectionSphere; }
 
 	// Collection sphere for items
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-		class USphereComponent* CollectionSphere;
+	class USphereComponent* CollectionSphere;
 
 	// Accessor function for initial power
 	UFUNCTION(BlueprintPure, Category = "Life")
-		float GetInitialLife() const;
+	float GetInitialLife() const;
 
 	// Accessor function for current power
 	UFUNCTION(BlueprintPure, Category = "Life")
-		float GetCurrentLife() const;
+	float GetCurrentLife() const;
 
 	UFUNCTION(BlueprintPure, Category = "Camera")
-		UCameraComponent* GetCamera() const;
+	UCameraComponent* GetCamera() const;
 
 	/* Update current power
 	* @param LifeDelta: amount to change life by, positive or negative
 	*/
 	UFUNCTION(Server, reliable, WithValidation, BlueprintCallable, Category="Life")
-		void DamagePlayer(float LifeDelta);
+	void DamagePlayer(float LifeDelta, ABaseCharacter* Killer);
 	
 	UFUNCTION(BlueprintImplementableEvent)
-	void OnDeath();
+	void OnDeath(AGamePlayPlayerController* PlayerController);
 
-	UPROPERTY()
-		bool PlayerAlive = true;
+	bool PlayerAlive = true;
 
 	/** player pressed reload action */
 	virtual void OnReload();
 
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
-		TSubclassOf<class AWeaponActor> WeaponBlueprint;
+	TSubclassOf<class AWeaponActor> WeaponBlueprint;
 
+	UFUNCTION(Server, WithValidation, reliable)
 	virtual void Fire();
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
-		bool CurrentlyReloading;
+	bool CurrentlyReloading;
 
 	void Reloaded();
 
 	/** Use the actor currently in view (if derived from UsableActor) */
 	UFUNCTION(BlueprintCallable, WithValidation, Server, Reliable, Category = PlayerAbility)
-		virtual void Use();
+	virtual void Use();
 
 	UFUNCTION(BlueprintCallable, Category = "Ammo")
-		int32 GetMaxAmmo() const;
+	int32 GetMaxAmmo() const;
 
 	UFUNCTION(BlueprintCallable, Category = "Ammo")
-		int32 GetCurrentAmmo() const;
+	int32 GetCurrentAmmo() const;
 
 	virtual FVector GetSpawnLocation();
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		int32 KillStreak = 0;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Widgets")
+	TSubclassOf<class UUserWidget> wMainMenu;
 
-	UFUNCTION(BlueprintCallable, Category = "Kills")
-		void SetKillStreak(int32 value);
+	// Variable to hold the widget After Creating it.
+	UUserWidget* MyMainMenu;
 
-	UFUNCTION(BlueprintPure, Category = "Kills")
-		int32 GetKillStreak() const;
+	void Pause();
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		int32 TotalKills = 0;
-
-	UFUNCTION(BlueprintCallable, Category = "Kills")
-		void SetTotalKills(int32 value);
-
-	UFUNCTION(BlueprintPure, Category = "Kills")
-		int32 GetTotalKills() const;
+	class AGamePlayPlayerController* GetGamePlayController();
 };

@@ -6,6 +6,8 @@
 ASniperCharacter::ASniperCharacter()
 {
 	Aiming = false;
+	CameraLocation = CreateDefaultSubobject<USceneComponent>(TEXT("CameraLocation"));
+	CameraLocation->SetupAttachment(FPSCameraComponent);
 }
 
 void ASniperCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
@@ -28,4 +30,16 @@ void ASniperCharacter::StopAim()
 	Aiming = false;
 	GetWeapon()->SetVisibility(true);
 	HideSniperOverlay();
+}
+
+FVector ASniperCharacter::GetSpawnLocation()
+{
+	if(Aiming)
+	{
+		return CameraLocation->GetComponentLocation();
+	}
+	else
+	{
+		return Super::GetSpawnLocation();
+	}
 }
