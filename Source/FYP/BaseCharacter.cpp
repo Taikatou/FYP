@@ -7,9 +7,6 @@
 #include "LifePickUpActor.h"
 #include "UsableActor.h"
 #include "Animation/AnimMontage.h"
-#include "Target.h"
-#include "Kismet/KismetMathLibrary.h"
-#include "UnrealNetwork.h"
 #include "Runtime/UMG/Public/Blueprint/UserWidget.h"
 #include "GamePlayPlayerController.h"
 
@@ -46,9 +43,6 @@ ABaseCharacter::ABaseCharacter()
 	CollectionSphere->AttachTo(RootComponent);
 	CollectionSphere->SetSphereRadius(200);
 
-	// Set current life level for the character
-	CurrentLife = InitialLife;
-
 	CurrentlyReloading = false;
 
 	bReplicates = true;
@@ -77,13 +71,17 @@ void ABaseCharacter::BeginPlay()
 	}
 	if (wMainMenu) // Check if the Asset is assigned in the blueprint.
 	{
-		AGamePlayPlayerController* controller = Cast<AGamePlayPlayerController>(GetController());
+		AGamePlayPlayerController* controller = GetGamePlayController();
 		if(controller)
 		{
 			// Create the widget and store it.
 			MyMainMenu = CreateWidget<UUserWidget>(controller, wMainMenu);
 		}
 	}
+
+	// Set current life level for the character
+	CurrentLife = InitialLife;
+
 }
 
 // Called every frame
@@ -209,12 +207,12 @@ UCameraComponent* ABaseCharacter::GetCamera() const
 	return FPSCameraComponent;
 }
 
-bool ABaseCharacter::DamagePlayer_Validate(float LifeDelta)
+bool ABaseCharacter::DamagePlayer_Validate(float LifeDelta, ABaseCharacter* Killer)
 {
 	return true;
 }
 
-void ABaseCharacter::DamagePlayer_Implementation(float LifeDelta)
+void ABaseCharacter::DamagePlayer_Implementation(float LifeDelta, ABaseCharacter* Killer)
 {
 	if(PlayerAlive)
 	{
@@ -232,7 +230,12 @@ void ABaseCharacter::DamagePlayer_Implementation(float LifeDelta)
 		{
 			UE_LOG(LogTemp, Warning, TEXT("player died, %f"), CurrentLife);
 			PlayerAlive = false;
-			OnDeath();
+			if(Killer && Killer != this)
+			{
+				AGamePlayPlayerController* controller = Killer->GetGamePlayController();
+				controller->IncrementKills();
+			}
+			OnDeath(GetGamePlayController());
 		}
 	}
 }
@@ -254,7 +257,12 @@ void ABaseCharacter::OnReload()
 	}
 }
 
-void ABaseCharacter::Fire()
+bool ABaseCharacter::Fire_Validate()
+{
+	return true;
+}
+
+void ABaseCharacter::Fire_Implementation()
 {
 	if(!CurrentlyReloading && Controller != nullptr)
 	{
@@ -312,7 +320,8 @@ void ABaseCharacter::CollectPickups()
 	}
 	if(CollectedLife > 0.0f)
 	{
-		DamagePlayer(CollectedLife);
+		ABaseCharacter* BCOwner = Cast<ABaseCharacter>(GetOwner());
+		DamagePlayer(-CollectedLife, BCOwner);
 	}
 }
 
@@ -332,26 +341,6 @@ FVector ABaseCharacter::GetSpawnLocation()
 	return Weapon->GetSpawnLocation(SpawnRotation);
 }
 
-void ABaseCharacter::SetKillStreak(int32 value)
-{
-	KillStreak = value;
-}
-
-int32 ABaseCharacter::GetKillStreak() const
-{
-	return KillStreak;
-}
-
-void ABaseCharacter::SetTotalKills(int32 value)
-{
-	TotalKills = value;
-}
-
-int32 ABaseCharacter::GetTotalKills() const
-{
-	return TotalKills;
-}
-
 void ABaseCharacter::Pause()
 {
 	if (MyMainMenu)
@@ -359,6 +348,11 @@ void ABaseCharacter::Pause()
 		AGamePlayPlayerController* controller = Cast<AGamePlayPlayerController>(GetController());
 		controller->ShowMenu(MyMainMenu);
 	}
+}
+
+AGamePlayPlayerController* ABaseCharacter::GetGamePlayController()
+{
+	return Cast<AGamePlayPlayerController>(GetController());
 }
 
 AUsableActor* ABaseCharacter::GetUsableInView() const

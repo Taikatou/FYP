@@ -30,4 +30,8 @@ public:
 	
 	UFUNCTION(BlueprintImplementableEvent)
 		void HideSniperOverlay();
+
+	/** Location on gun mesh where projectiles should spawn. */
+	UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
+		class USceneComponent* CameraLocation;
 };

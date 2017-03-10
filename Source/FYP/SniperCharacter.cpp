@@ -6,6 +6,8 @@
 ASniperCharacter::ASniperCharacter()
 {
 	Aiming = false;
+	CameraLocation = CreateDefaultSubobject<USceneComponent>(TEXT("CameraLocation"));
+	CameraLocation->SetupAttachment(FPSCameraComponent);
 }
 
 void ASniperCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)

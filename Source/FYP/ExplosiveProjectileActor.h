@@ -28,7 +28,10 @@ public:
 	UFUNCTION(Server, reliable, WithValidation)
 		void OnDetonate();
 
-	UFUNCTION()
+	UFUNCTION(NetMulticast, reliable, WithValidation)
+		void Explosion();
+
+	UFUNCTION(Server, reliable, WithValidation)
 		void CompleteHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit) override;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)

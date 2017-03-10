@@ -27,7 +27,7 @@ void ASniperProjectileActor::CompleteHit(UPrimitiveComponent* HitComp, AActor* O
 	ABaseCharacter* BC = Cast<ABaseCharacter>(OtherActor);
 	if(BC)
 	{
-		BC->DamagePlayer(BaseDamage);
+		BC->DamagePlayer(BaseDamage, FiredFrom);
 	}
 	Destroy();
 }
