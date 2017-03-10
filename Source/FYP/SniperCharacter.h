@@ -34,4 +34,6 @@ public:
 	/** Location on gun mesh where projectiles should spawn. */
 	UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
 		class USceneComponent* CameraLocation;
+
+	FVector GetSpawnLocation() override;
 };
