@@ -117,6 +117,9 @@ public:
 	UFUNCTION(Server, WithValidation, reliable)
 	virtual void Fire();
 
+	UFUNCTION(BlueprintNativeEvent, Category = "Fire")
+		void FireEvent();
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
 	bool CurrentlyReloading;
 

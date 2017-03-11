@@ -282,6 +282,12 @@ void ABaseCharacter::Fire_Implementation()
 			}
 		}
 	}
+	FireEvent();
+}
+
+void ABaseCharacter::FireEvent_Implementation()
+{
+	
 }
 
 void ABaseCharacter::Reloaded()
