@@ -147,6 +147,8 @@ public:
 
 	class AGamePlayPlayerController* GetGamePlayController();
 
+	class AGameModePlayerState* GetGamePlayState();
+
 	UFUNCTION(BlueprintCallable, Category = "Name")
 		void SetName(FText NewName);
 

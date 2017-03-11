@@ -9,6 +9,7 @@
 #include "Animation/AnimMontage.h"
 #include "Runtime/UMG/Public/Blueprint/UserWidget.h"
 #include "GamePlayPlayerController.h"
+#include "GameModePlayerState.h"
 
 
 // Sets default values
@@ -232,8 +233,11 @@ void ABaseCharacter::DamagePlayer_Implementation(float LifeDelta, ABaseCharacter
 			PlayerAlive = false;
 			if(Killer && Killer != this)
 			{
-				AGamePlayPlayerController* controller = Killer->GetGamePlayController();
-				controller->IncrementKills();
+				AGameModePlayerState* state = GetGamePlayState();
+				if(state)
+				{
+					state->IncrementKills();
+				}
 			}
 			OnDeath(GetGamePlayController());
 		}
@@ -361,21 +365,26 @@ AGamePlayPlayerController* ABaseCharacter::GetGamePlayController()
 	return Cast<AGamePlayPlayerController>(GetController());
 }
 
+AGameModePlayerState* ABaseCharacter::GetGamePlayState()
+{
+	return Cast<AGameModePlayerState>(GetController()->PlayerState);
+}
+
 void ABaseCharacter::SetName(FText NewName)
 {
-	AGamePlayPlayerController* controller = GetGamePlayController();
-	if(controller)
+	AGameModePlayerState* state = GetGamePlayState();
+	if(state)
 	{
-		controller->SetName(NewName);
+		state->SetName(NewName);
 	}
 }
 
 FText ABaseCharacter::GetName()
 {
-	AGamePlayPlayerController* controller = GetGamePlayController();
-	if(controller)
+	AGameModePlayerState* state = GetGamePlayState();
+	if(state)
 	{
-		return controller->GetName();
+		return state->GetName();
 	}
 	return FText();
 }
