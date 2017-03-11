@@ -29,6 +29,7 @@ void AGameModePlayerState::ResetKillStreak()
 
 int32 AGameModePlayerState::GetTotalKills() const
 {
+	UE_LOG(LogTemp, Warning, TEXT("Get Total Kills"));
 	return TotalKills;
 }
 
@@ -51,5 +52,6 @@ void AGameModePlayerState::SetName(FText NewName)
 
 FText AGameModePlayerState::GetName() const
 {
+	UE_LOG(LogTemp, Warning, TEXT("Get name"));
 	return Name;
 }
