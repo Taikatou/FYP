@@ -145,7 +145,7 @@ public:
 
 	void Pause();
 
-	class AGamePlayPlayerController* GetGamePlayController() const;
+	class AGamePlayPlayerController* GetGamePlayController();
 
 	UFUNCTION(BlueprintCallable, Category = "Name")
 		void SetName(FText NewName);
