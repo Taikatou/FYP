@@ -54,7 +54,7 @@ void AGamePlayPlayerController::IncrementKills(int32 Killed)
 
 void AGamePlayPlayerController::SetName(FText NewName)
 {
-	Name = NewName;
+	Name = FText(NewName);
 }
 
 FText AGamePlayPlayerController::GetName() const

@@ -364,13 +364,20 @@ AGamePlayPlayerController* ABaseCharacter::GetGamePlayController()
 void ABaseCharacter::SetName(FText NewName)
 {
 	AGamePlayPlayerController* controller = GetGamePlayController();
-	controller->SetName(NewName);
+	if(controller)
+	{
+		controller->SetName(NewName);
+	}
 }
 
 FText ABaseCharacter::GetName()
 {
 	AGamePlayPlayerController* controller = GetGamePlayController();
-	return controller->GetName();
+	if(controller)
+	{
+		return controller->GetName();
+	}
+	return FText();
 }
 
 AUsableActor* ABaseCharacter::GetUsableInView() const
