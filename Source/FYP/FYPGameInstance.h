@@ -18,7 +18,7 @@ protected:
 	int32 MaxLevelTime = 15*60;
 
 	UPROPERTY(Replicated)
-	int32 LevelTime = 5*60;
+	int32 LevelTime = 10;
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "LevelInfo")
