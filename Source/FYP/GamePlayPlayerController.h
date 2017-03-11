@@ -46,4 +46,13 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Kills")
 		void IncrementKills(int32 Killed = 1);
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		FText Name;
+
+	UFUNCTION(BlueprintCallable, Category = "Name")
+		void SetName(FText NewName);
+
+	UFUNCTION(BlueprintCallable, Category = "Name")
+		FText GetName() const;
 };

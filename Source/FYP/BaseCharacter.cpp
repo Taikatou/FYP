@@ -361,6 +361,18 @@ AGamePlayPlayerController* ABaseCharacter::GetGamePlayController()
 	return Cast<AGamePlayPlayerController>(GetController());
 }
 
+void ABaseCharacter::SetName(FText NewName)
+{
+	AGamePlayPlayerController* controller = GetGamePlayController();
+	controller->SetName(NewName);
+}
+
+FText ABaseCharacter::GetName()
+{
+	AGamePlayPlayerController* controller = GetGamePlayController();
+	return controller->GetName();
+}
+
 AUsableActor* ABaseCharacter::GetUsableInView() const
 {
 	FVector camLoc;
