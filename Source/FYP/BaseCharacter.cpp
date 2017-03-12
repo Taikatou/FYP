@@ -233,10 +233,10 @@ void ABaseCharacter::DamagePlayer_Implementation(float LifeDelta, ABaseCharacter
 			PlayerAlive = false;
 			if(Killer && Killer != this)
 			{
-				AGameModePlayerState* state = GetGamePlayState();
-				if(state)
+				AGamePlayPlayerController* controller = Cast<AGamePlayPlayerController>(GetController());
+				if(controller)
 				{
-					state->IncrementKills();
+					controller->IncrementKills();
 				}
 			}
 			OnDeath(GetGamePlayController());
@@ -372,19 +372,19 @@ AGameModePlayerState* ABaseCharacter::GetGamePlayState()
 
 void ABaseCharacter::SetName(FText NewName)
 {
-	AGameModePlayerState* state = GetGamePlayState();
-	if(state)
+	AGamePlayPlayerController* controller = Cast<AGamePlayPlayerController>(GetController());
+	if(controller)
 	{
-		state->SetName(NewName);
+		controller->SetName(NewName);
 	}
 }
 
 FText ABaseCharacter::GetName()
 {
-	AGameModePlayerState* state = GetGamePlayState();
-	if(state)
+	AGamePlayPlayerController* controller = Cast<AGamePlayPlayerController>(GetController());
+	if(controller)
 	{
-		return state->GetName();
+		return controller->GetName();
 	}
 	return FText();
 }
