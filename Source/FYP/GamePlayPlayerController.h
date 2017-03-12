@@ -16,4 +16,7 @@ class FYP_API AGamePlayPlayerController : public APlayerController
 	
 public:
 	void ShowMenu(UUserWidget* MyMainMenu);
+
+	UFUNCTION(BlueprintPure, Category = "State")
+		class AGameModePlayerState* GetGamePlayState();
 };
