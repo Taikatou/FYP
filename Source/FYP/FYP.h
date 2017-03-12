@@ -3,5 +3,7 @@
 #pragma once
 
 #include "Engine.h"
+#include "UnrealNetwork.h"
+#include "Online.h"
 
 #define COLLISION_PROJECTILE	ECC_GameTraceChannel1
