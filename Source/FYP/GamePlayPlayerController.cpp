@@ -4,6 +4,7 @@
 #include "GamePlayPlayerController.h"
 #include "Runtime/UMG/Public/Blueprint/UserWidget.h"
 #include "GameModePlayerState.h"
+#include "UnrealNetwork.h"
 
 void AGamePlayPlayerController::ShowMenu(UUserWidget* MyMainMenu)
 {
@@ -69,3 +70,12 @@ FText AGamePlayPlayerController::GetName() const
 	UE_LOG(LogTemp, Warning, TEXT("Get name"));
 	return Name;
 }
+
+void AGamePlayPlayerController::GetLifetimeReplicatedProps(TArray< FLifetimeProperty > & OutLifetimeProps) const
+{
+	DOREPLIFETIME(AGamePlayPlayerController, Name);
+	DOREPLIFETIME(AGamePlayPlayerController, TotalKills);
+	DOREPLIFETIME(AGamePlayPlayerController, KillStreak);
+	DOREPLIFETIME(AGamePlayPlayerController, BestKillStreak);
+}
+

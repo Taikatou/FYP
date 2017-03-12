@@ -20,10 +20,10 @@ public:
 	UFUNCTION(BlueprintPure, Category = "State")
 		class AGameModePlayerState* GetGamePlayState();
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, replicated)
 		int32 KillStreak = 0;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, replicated)
 		int32 BestKillStreak = 0;
 
 	UFUNCTION(BlueprintCallable, Category = "Kills")
@@ -32,7 +32,7 @@ public:
 	UFUNCTION(BlueprintPure, Category = "Kills")
 		int32 GetKillStreak() const;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, replicated)
 		int32 TotalKills = 0;
 
 	UFUNCTION(BlueprintCallable, Category = "Kills")
@@ -50,7 +50,7 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Kills")
 		void IncrementKills(int32 Killed = 1);
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, replicated)
 		FText Name;
 
 	UFUNCTION(BlueprintCallable, Category = "Name")
