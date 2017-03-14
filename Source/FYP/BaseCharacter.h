@@ -3,6 +3,7 @@
 #pragma once
 
 #include "WeaponActor.h"
+#include "ThirdPersonWeapon.h"
 #include "GameFramework/Character.h"
 #include "BaseCharacter.generated.h"
 
@@ -49,6 +50,8 @@ public:
 
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+	void EndPlay(EEndPlayReason::Type EndPlayReason) override;
 	
 	// Called every frame
 	virtual void Tick( float DeltaSeconds ) override;
@@ -86,6 +89,9 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	class USphereComponent* CollectionSphere;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		AThirdPersonWeapon* ThirdPersonWeapon;
+
 	// Accessor function for initial power
 	UFUNCTION(BlueprintPure, Category = "Life")
 	float GetInitialLife() const;
@@ -113,6 +119,9 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
 	TSubclassOf<class AWeaponActor> WeaponBlueprint;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Setup")
+		TSubclassOf<class AThirdPersonWeapon> ThirdPersonWeaponBlueprint;
 
 	UFUNCTION(Server, WithValidation, reliable)
 	virtual void Fire();
@@ -155,4 +164,15 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Name")
 		FText GetName();
+
+	void PlayDeathAnimation() const;
+
+	UPROPERTY(EditAnywhere, Category = "Animation")
+		UAnimMontage* DeathAnimation;
+
+	UFUNCTION(BlueprintCallable, Category = "Weapon")
+		void DestroyWeapon() const;
+
+	UPROPERTY(EditAnywhere, Category = "Weapon")
+		bool SpawnThirdPersonWeapon = false;
 };

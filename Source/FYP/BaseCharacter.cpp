@@ -69,6 +69,19 @@ void ABaseCharacter::BeginPlay()
 		}
 		Weapon->AttachToComponent(FPSMesh, FAttachmentTransformRules(EAttachmentRule::SnapToTarget, true), TEXT("GripPoint"));
 		Weapon->AnimInstance = FPSMesh->GetAnimInstance();
+
+		if(ThirdPersonWeaponBlueprint != nullptr && SpawnThirdPersonWeapon)
+		{
+			ThirdPersonWeapon = GetWorld()->SpawnActor<AThirdPersonWeapon>(ThirdPersonWeaponBlueprint);
+			ThirdPersonWeapon->SetOwner(this);
+			bool gripPoint = GetMesh()->DoesSocketExist("GripPoint");
+			if (!gripPoint)
+			{
+				UE_LOG(LogTemp, Warning, TEXT("GripPoint missing"));
+			}
+			UE_LOG(LogTemp, Warning, TEXT("Spawn third person weapon"));
+			ThirdPersonWeapon->AttachToComponent(GetMesh(), FAttachmentTransformRules(EAttachmentRule::SnapToTarget, true), TEXT("GripPoint"));
+		}
 	}
 	if (wMainMenu) // Check if the Asset is assigned in the blueprint.
 	{
@@ -83,6 +96,11 @@ void ABaseCharacter::BeginPlay()
 	// Set current life level for the character
 	CurrentLife = InitialLife;
 
+}
+
+void ABaseCharacter::EndPlay(EEndPlayReason::Type EndPlayReason)
+{
+	DestroyWeapon();
 }
 
 // Called every frame
@@ -239,6 +257,7 @@ void ABaseCharacter::DamagePlayer_Implementation(float LifeDelta, ABaseCharacter
 					controller->IncrementKills();
 				}
 			}
+			PlayDeathAnimation();
 			OnDeath(GetGamePlayController());
 		}
 	}
@@ -387,6 +406,27 @@ FText ABaseCharacter::GetName()
 		return controller->GetName();
 	}
 	return FText();
+}
+
+void ABaseCharacter::PlayDeathAnimation() const
+{
+	UAnimInstance* AnimInstance = GetMesh()->GetAnimInstance();
+	if (AnimInstance != nullptr)
+	{
+		AnimInstance->Montage_Play(DeathAnimation, 1.f);
+	}
+}
+
+void ABaseCharacter::DestroyWeapon() const
+{
+	if(ThirdPersonWeapon)
+	{
+		ThirdPersonWeapon->Destroy();
+	}
+	if(Weapon)
+	{
+		Weapon->Destroy();
+	}
 }
 
 AUsableActor* ABaseCharacter::GetUsableInView() const

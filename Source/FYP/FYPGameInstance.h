@@ -18,7 +18,7 @@ protected:
 	int32 MaxLevelTime = 15*60;
 
 	UPROPERTY(Replicated)
-	int32 LevelTime = 10;
+	int32 LevelTime = 1*60;
 
 public:
 	UFYPGameInstance();
