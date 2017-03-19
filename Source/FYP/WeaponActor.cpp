@@ -23,6 +23,7 @@ AWeaponActor::AWeaponActor()
 	WeaponMesh->SetOnlyOwnerSee(true);
 
 	FP_MuzzleLocation = CreateDefaultSubobject<USceneComponent>(TEXT("MuzzleLocation"));
+	
 	FP_MuzzleLocation->SetupAttachment(WeaponMesh);
 	FP_MuzzleLocation->SetRelativeLocation(FVector(0.2f, 48.4f, -10.6f));
 }

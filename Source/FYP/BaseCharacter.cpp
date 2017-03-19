@@ -11,6 +11,7 @@
 #include "GamePlayPlayerController.h"
 #include "GameModePlayerState.h"
 
+DEFINE_LOG_CATEGORY_STATIC(LogFPChar, Warning, All);
 
 // Sets default values
 ABaseCharacter::ABaseCharacter()

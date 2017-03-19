@@ -175,4 +175,7 @@ public:
 
 	UPROPERTY(EditAnywhere, Category = "Weapon")
 		bool SpawnThirdPersonWeapon = false;
+
+	/** Resets HMD orientation and position in VR. */
+	void OnResetVR();
 };

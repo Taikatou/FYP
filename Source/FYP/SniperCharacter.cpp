@@ -43,3 +43,11 @@ FVector ASniperCharacter::GetSpawnLocation()
 		return Super::GetSpawnLocation();
 	}
 }
+
+void ASniperCharacter::EndPlay(EEndPlayReason::Type EndPlayReason)
+{
+	if(Aiming)
+	{
+		HideSniperOverlay();
+	}
+}
