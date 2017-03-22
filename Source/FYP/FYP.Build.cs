@@ -6,7 +6,7 @@ public class FYP : ModuleRules
 {
 	public FYP(TargetInfo Target)
 	{
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "UMG", "Slate", "SlateCore", "HeadMountedDisplay" });
+		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "UMG", "Slate", "SlateCore" });
 
 		PrivateDependencyModuleNames.AddRange(new string[] {  });
 

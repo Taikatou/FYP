@@ -21,9 +21,9 @@ public:
 
 	bool Aiming;
 
-	void Aim();
+	virtual void Aim();
 
-	void StopAim();
+	virtual void StopAim();
 
 	UFUNCTION(BlueprintImplementableEvent)
 		void ShowSniperOverlay();
@@ -31,6 +31,8 @@ public:
 	UFUNCTION(BlueprintImplementableEvent)
 		void HideSniperOverlay();
 
+	UFUNCTION(BlueprintCallable, Category="EndGame")
+		void EndGame();
 	/** Location on gun mesh where projectiles should spawn. */
 	UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
 		class USceneComponent* CameraLocation;

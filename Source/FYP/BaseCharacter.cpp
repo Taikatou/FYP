@@ -11,8 +11,6 @@
 #include "GamePlayPlayerController.h"
 #include "GameModePlayerState.h"
 
-DEFINE_LOG_CATEGORY_STATIC(LogFPChar, Warning, All);
-
 // Sets default values
 ABaseCharacter::ABaseCharacter()
 {
@@ -84,19 +82,15 @@ void ABaseCharacter::BeginPlay()
 			ThirdPersonWeapon->AttachToComponent(GetMesh(), FAttachmentTransformRules(EAttachmentRule::SnapToTarget, true), TEXT("GripPoint"));
 		}
 	}
-	if (wMainMenu) // Check if the Asset is assigned in the blueprint.
-	{
-		AGamePlayPlayerController* controller = GetGamePlayController();
-		if(controller)
-		{
-			// Create the widget and store it.
-			MyMainMenu = CreateWidget<UUserWidget>(controller, wMainMenu);
-		}
-	}
 
 	// Set current life level for the character
 	CurrentLife = InitialLife;
 
+}
+
+AWeaponActor* ABaseCharacter::GetWeapon()
+{
+	return Weapon;
 }
 
 void ABaseCharacter::EndPlay(EEndPlayReason::Type EndPlayReason)
@@ -373,6 +367,16 @@ FVector ABaseCharacter::GetSpawnLocation()
 
 void ABaseCharacter::Pause()
 {
+	if (!MyMainMenu && wMainMenu) // Check if the Asset is assigned in the blueprint.
+	{
+		AGamePlayPlayerController* controller = GetGamePlayController();
+		if (controller)
+		{
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Create menu"));
+			// Create the widget and store it.
+			MyMainMenu = CreateWidget<UUserWidget>(controller, wMainMenu);
+		}
+	}
 	if (MyMainMenu)
 	{
 		AGamePlayPlayerController* controller = Cast<AGamePlayPlayerController>(GetController());
@@ -382,7 +386,8 @@ void ABaseCharacter::Pause()
 
 AGamePlayPlayerController* ABaseCharacter::GetGamePlayController()
 {
-	return Cast<AGamePlayPlayerController>(GetController());
+	AGamePlayPlayerController* Controller =  Cast<AGamePlayPlayerController>(GetController());
+	return Controller;
 }
 
 AGameModePlayerState* ABaseCharacter::GetGamePlayState()

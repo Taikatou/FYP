@@ -26,7 +26,7 @@ UAnimMontage* AReloadWeaponActor::FireWeapon(FRotator SpawnRotation, AController
 	{
 		OnFire(SpawnRotation, Controller, Camera, SpawnLocation);
 		CurrentCapacity--;
-		Animation = FireAnimation;
+		Animation = GetFireAnimation();
 	}
 	else
 	{

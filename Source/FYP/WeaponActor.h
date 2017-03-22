@@ -47,6 +47,9 @@ public:
 	UPROPERTY(EditAnywhere, Category = "Animation")
 		UAnimMontage* FireAnimation;
 
+	UFUNCTION(BlueprintNativeEvent, Category="Fire Animation")
+		UAnimMontage* GetFireAnimation();
+
 	virtual UAnimMontage* Reload() { return nullptr; }
 
 	void SetVisibility(bool Visible) const;

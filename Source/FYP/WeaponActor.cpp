@@ -2,7 +2,6 @@
 
 #include "FYP.h"
 #include "WeaponActor.h"
-#include "Kismet/KismetMathLibrary.h"
 
 
 int32 AWeaponActor::GetCurrentCapacity()
@@ -56,6 +55,11 @@ void AWeaponActor::OnFire_Implementation(FRotator SpawnRotation, AController* Co
 bool AWeaponActor::OnFire_Validate(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera, FVector SpawnLocation)
 {
 	return true;
+}
+
+UAnimMontage* AWeaponActor::GetFireAnimation_Implementation()
+{
+	return FireAnimation;
 }
 
 void AWeaponActor::SetVisibility(bool Visible) const

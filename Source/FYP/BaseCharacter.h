@@ -51,6 +51,8 @@ public:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	virtual AWeaponActor* GetWeapon();
+
 	void EndPlay(EEndPlayReason::Type EndPlayReason) override;
 	
 	// Called every frame
@@ -175,7 +177,4 @@ public:
 
 	UPROPERTY(EditAnywhere, Category = "Weapon")
 		bool SpawnThirdPersonWeapon = false;
-
-	/** Resets HMD orientation and position in VR. */
-	void OnResetVR();
 };
