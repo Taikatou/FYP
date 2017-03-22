@@ -4,6 +4,9 @@
 #include "ExplosiveProjectileActor.h"
 #include "PhysicsEngine/DestructibleActor.h"
 #include "BaseCharacter.h"
+#include "GoogleAnalyticsBlueprintLibrary.h"
+#include "Runtime/Analytics/Analytics/Public/Analytics.h"
+#include "Runtime/Analytics/Analytics/Public/Interfaces/IAnalyticsProvider.h"
 
 
 void AExplosiveProjectileActor::BeginPlay()
@@ -63,6 +66,8 @@ void AExplosiveProjectileActor::OnDetonate_Implementation()
 			}
 			else if (BC)
 			{
+				UGoogleAnalyticsBlueprintLibrary::RecordGoogleEvent(TEXT("Apply Damage"),
+					TEXT("Explosive projectile"), TEXT("Event Label"), 1);
 				BC->DamagePlayer(Damage, FiredFrom);
 			}
 		}

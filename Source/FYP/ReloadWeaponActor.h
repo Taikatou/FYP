@@ -32,4 +32,6 @@ public:
 	UAnimMontage* Reload() override;
 
 	int32 GetCurrentCapacity() override;
+
+	void BeginPlay() override;
 };

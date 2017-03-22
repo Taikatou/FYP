@@ -3,6 +3,9 @@
 #include "FYP.h"
 #include "SniperProjectileActor.h"
 #include "BaseCharacter.h"
+#include "GoogleAnalyticsBlueprintLibrary.h"
+#include "Runtime/Analytics/Analytics/Public/Analytics.h"
+#include "Runtime/Analytics/Analytics/Public/Interfaces/IAnalyticsProvider.h"
 
 ASniperProjectileActor::ASniperProjectileActor()
 {
@@ -28,6 +31,8 @@ void ASniperProjectileActor::CompleteHit(UPrimitiveComponent* HitComp, AActor* O
 	if(BC)
 	{
 		BC->DamagePlayer(BaseDamage, FiredFrom);
+		UGoogleAnalyticsBlueprintLibrary::RecordGoogleEvent(TEXT("Apply Damage"),
+			TEXT("sniper projectile"), TEXT("Event Label"), 1);
 	}
 	Destroy();
 }

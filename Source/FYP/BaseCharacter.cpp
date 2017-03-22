@@ -10,6 +10,9 @@
 #include "Runtime/UMG/Public/Blueprint/UserWidget.h"
 #include "GamePlayPlayerController.h"
 #include "GameModePlayerState.h"
+#include "GoogleAnalyticsBlueprintLibrary.h"
+#include "Runtime/Analytics/Analytics/Public/Analytics.h"
+#include "Runtime/Analytics/Analytics/Public/Interfaces/IAnalyticsProvider.h"
 
 // Sets default values
 ABaseCharacter::ABaseCharacter()
@@ -52,6 +55,7 @@ ABaseCharacter::ABaseCharacter()
 void ABaseCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+	FAnalytics::Get().GetDefaultConfiguredProvider()->StartSession();
 	if (WeaponBlueprint == nullptr)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Gun blueprint missing."));
@@ -282,6 +286,7 @@ bool ABaseCharacter::Fire_Validate()
 
 void ABaseCharacter::Fire_Implementation()
 {
+	UGoogleAnalyticsBlueprintLibrary::RecordGoogleEvent(TEXT("Fire"), TEXT("Attempt Fire"), TEXT("Fire"), 1);
 	if(!CurrentlyReloading && Controller != nullptr)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Fire"));
@@ -372,7 +377,6 @@ void ABaseCharacter::Pause()
 		AGamePlayPlayerController* controller = GetGamePlayController();
 		if (controller)
 		{
-			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Create menu"));
 			// Create the widget and store it.
 			MyMainMenu = CreateWidget<UUserWidget>(controller, wMainMenu);
 		}

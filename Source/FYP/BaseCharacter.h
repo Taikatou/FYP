@@ -177,4 +177,5 @@ public:
 
 	UPROPERTY(EditAnywhere, Category = "Weapon")
 		bool SpawnThirdPersonWeapon = false;
+
 };
