@@ -87,6 +87,14 @@ void ABaseCharacter::BeginPlay()
 		}
 	}
 
+	if (BloodHudBlueprint) // Check if the Asset is assigned in the blueprint.
+	{
+		// Create the widget and store it.
+		BloodHud = CreateWidget<UUserWidget>(this, BloodHudBlueprint);
+		AGamePlayPlayerController* controller = Cast<AGamePlayPlayerController>(GetController());
+		controller->ShowMenu(BloodHud);
+	}
+
 	// Set current life level for the character
 	CurrentLife = InitialLife;
 

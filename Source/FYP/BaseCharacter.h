@@ -178,4 +178,10 @@ public:
 	UPROPERTY(EditAnywhere, Category = "Weapon")
 		bool SpawnThirdPersonWeapon = false;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Widgets")
+		TSubclassOf<class UUserWidget> BloodHudBlueprint;
+
+	// Variable to hold the widget After Creating it.
+	UUserWidget* BloodHud;
+
 };

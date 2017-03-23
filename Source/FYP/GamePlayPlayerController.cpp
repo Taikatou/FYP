@@ -6,12 +6,10 @@
 #include "GameModePlayerState.h"
 #include "UnrealNetwork.h"
 
-void AGamePlayPlayerController::ShowMenu(UUserWidget* MyMainMenu)
+void AGamePlayPlayerController::ShowMenu(UUserWidget* MyMainMenu, bool ShowMouse)
 {
-	bShowMouseCursor = true;
-	FInputModeUIOnly input = FInputModeUIOnly();
-	SetInputMode(input);
 	MyMainMenu->AddToViewport();
+	SetInputMouse();
 }
 
 AGameModePlayerState* AGamePlayPlayerController::GetGamePlayState()
@@ -69,6 +67,13 @@ FText AGamePlayPlayerController::GetName() const
 {
 	UE_LOG(LogTemp, Warning, TEXT("Get name"));
 	return Name;
+}
+
+void AGamePlayPlayerController::SetInputMouse()
+{
+	bShowMouseCursor = true;
+	FInputModeUIOnly input = FInputModeUIOnly();
+	SetInputMode(input);
 }
 
 void AGamePlayPlayerController::GetLifetimeReplicatedProps(TArray< FLifetimeProperty > & OutLifetimeProps) const

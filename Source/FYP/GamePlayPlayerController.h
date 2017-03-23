@@ -15,7 +15,7 @@ class FYP_API AGamePlayPlayerController : public APlayerController
 	GENERATED_BODY()
 	
 public:
-	void ShowMenu(UUserWidget* MyMainMenu);
+	void ShowMenu(UUserWidget* MyMainMenu, bool ShowMouse=true);
 
 	UFUNCTION(BlueprintPure, Category = "State")
 		class AGameModePlayerState* GetGamePlayState();
@@ -58,4 +58,6 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Name")
 		FText GetName() const;
+
+	void SetInputMouse();
 };
