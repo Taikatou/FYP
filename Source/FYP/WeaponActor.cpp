@@ -73,3 +73,8 @@ FVector AWeaponActor::GetSpawnLocation(FRotator SpawnRotation)
 	const FVector SpawnLocation = (FP_MuzzleLocation != nullptr ? FP_MuzzleLocation->GetComponentLocation() : GetActorLocation()) + SpawnRotation.RotateVector(GunOffset);
 	return SpawnLocation;
 }
+
+void AWeaponActor::SetOwnerOnlySee(bool visible) const
+{
+	WeaponMesh->SetOnlyOwnerSee(visible);
+}

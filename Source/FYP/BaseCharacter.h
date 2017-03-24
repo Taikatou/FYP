@@ -60,6 +60,9 @@ public:
 	UFUNCTION(Server, WithValidation, reliable)
 	virtual void Fire();
 
+	UFUNCTION(BlueprintCallable, Category="Fire")
+	virtual void FireBlueprint();
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
 	bool CurrentlyReloading;
 

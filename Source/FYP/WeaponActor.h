@@ -56,6 +56,8 @@ public:
 
 	virtual FVector GetSpawnLocation(FRotator SpawnRotation);
 
+	void SetOwnerOnlySee(bool visible) const;
+
 private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "PickUp", meta = (AllowPrivateAccess = "true"))
 		USkeletalMeshComponent* WeaponMesh;

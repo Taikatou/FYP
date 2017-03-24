@@ -21,9 +21,6 @@ APlayerCharacter::APlayerCharacter()
 	FPSMesh->bCastDynamicShadow = false;
 	FPSMesh->CastShadow = false;
 
-	// The owning player doesn't see the regular (third-person) body mesh.
-	GetMesh()->SetOwnerNoSee(true);
-
 	// Create collection sphere
 	CollectionSphere = CreateDefaultSubobject<USphereComponent>(TEXT("CollectionSphere"));
 	CollectionSphere->AttachTo(RootComponent);
@@ -68,6 +65,8 @@ void APlayerCharacter::CollectPickups()
 void APlayerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+	// The owning player doesn't see the regular (third-person) body mesh.
+	GetMesh()->SetOwnerNoSee(true);
 	if (WeaponBlueprint != nullptr)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Gun blueprint loaded."));
@@ -80,6 +79,7 @@ void APlayerCharacter::BeginPlay()
 		}
 		Weapon->AttachToComponent(FPSMesh, FAttachmentTransformRules(EAttachmentRule::SnapToTarget, true), TEXT("GripPoint"));
 		Weapon->AnimInstance = FPSMesh->GetAnimInstance();
+		Weapon->SetOwnerOnlySee(true);
 	}
 	else
 	{

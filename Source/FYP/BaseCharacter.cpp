@@ -34,11 +34,11 @@ ABaseCharacter::ABaseCharacter()
 void ABaseCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+	
 	FAnalytics::Get().GetDefaultConfiguredProvider()->StartSession();
 	if (ThirdPersonWeaponBlueprint != nullptr && SpawnThirdPersonWeapon)
 	{
 		VisibleWeapon = GetWorld()->SpawnActor<AWeaponActor>(ThirdPersonWeaponBlueprint);
-		VisibleWeapon->SetOwner(this);
 		bool gripPoint = GetMesh()->DoesSocketExist("GripPoint");
 		if (!gripPoint)
 		{
@@ -46,6 +46,10 @@ void ABaseCharacter::BeginPlay()
 		}
 		UE_LOG(LogTemp, Warning, TEXT("Spawn third person weapon"));
 		VisibleWeapon->AttachToComponent(GetMesh(), FAttachmentTransformRules(EAttachmentRule::SnapToTarget, true), TEXT("GripPoint"));
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("No third person gun"));
 	}
 
 	// Set current life level for the character
@@ -156,6 +160,11 @@ void ABaseCharacter::OnReload()
 	}
 }
 
+void ABaseCharacter::FireBlueprint()
+{
+	Fire();
+}
+
 bool ABaseCharacter::Fire_Validate()
 {
 	return true;
@@ -209,7 +218,7 @@ FVector ABaseCharacter::GetSpawnLocation()
 }
 
 
-AGamePlayPlayerController* ABaseCharacter::GetGamePlayController()
+AGamePlayPlayerController* ABaseCharacter::GetGamePlayController() const
 {
 	AGamePlayPlayerController* Controller =  Cast<AGamePlayPlayerController>(GetController());
 	return Controller;
