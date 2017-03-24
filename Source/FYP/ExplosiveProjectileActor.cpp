@@ -47,6 +47,7 @@ void AExplosiveProjectileActor::OnDetonate_Implementation()
 	FCollisionShape CollisionShape;
 	CollisionShape.ShapeType = ECollisionShape::Sphere;
 	CollisionShape.SetSphere(Radius);
+	
 
 	if(GetWorld()->SweepMultiByChannel(HitActors, StartTrace, EndTrace, FQuat::FQuat(), ECC_WorldStatic, CollisionShape))
 	{
@@ -56,11 +57,11 @@ void AExplosiveProjectileActor::OnDetonate_Implementation()
 			UStaticMeshComponent* SM = Cast<UStaticMeshComponent>((*Actors).Actor->GetRootComponent());
 			ADestructibleActor* DA = Cast<ADestructibleActor>((*Actors).GetActor());
 			ABaseCharacter* BC = Cast<ABaseCharacter>((*Actors).GetActor());
-			if(SM)
+			if (SM)
 			{
 				SM->AddRadialImpulse(GetActorLocation(), 1000.0f, 5000.0f, ERadialImpulseFalloff::RIF_Linear, true);
 			}
-			else if(DA)
+			else if (DA)
 			{
 				DA->GetDestructibleComponent()->ApplyRadiusDamage(10.0f, Actors->ImpactPoint, 500.0f, 3000.0f, false);
 			}

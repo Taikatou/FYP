@@ -1,9 +1,9 @@
 {
 	"Changelist" : 3249277,
 	"CompatibleChangelist" : 3195953,
-	"BuildId" : "02267a37-8237-4b39-989f-cfdf345e60a4",
+	"BuildId" : "c4591171-fb41-4fdb-9322-b8f04b39b7b1",
 	"Modules" : 
 	{
-		"PlayFab" : "UE4Editor-PlayFab-8671.dll"
+		"PlayFab" : "UE4Editor-PlayFab-7719.dll"
 	}
 }
