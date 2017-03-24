@@ -1,9 +1,9 @@
 {
 	"Changelist" : 3249277,
 	"CompatibleChangelist" : 3195953,
-	"BuildId" : "",
+	"BuildId" : "02267a37-8237-4b39-989f-cfdf345e60a4",
 	"Modules" : 
 	{
-		"GoogleAnalytics" : "UE4Editor-GoogleAnalytics.dll"
+		"GoogleAnalytics" : "UE4Editor-GoogleAnalytics-1733.dll"
 	}
 }

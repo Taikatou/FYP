@@ -99,6 +99,7 @@ AWeaponActor* ABaseCharacter::GetWeapon()
 
 void ABaseCharacter::EndPlay(EEndPlayReason::Type EndPlayReason)
 {
+	MyMainMenu->RemoveFromParent();
 	DestroyWeapon();
 }
 
