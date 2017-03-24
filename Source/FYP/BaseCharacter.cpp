@@ -76,6 +76,17 @@ FText ABaseCharacter::GetName()
 	return FText();
 }
 
+bool ABaseCharacter::GetDead() const
+{
+	return CurrentLife <= 0;
+}
+
+float ABaseCharacter::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
+{
+	DamagePlayer(DamageAmount, DamageCauser);
+	return DamageAmount;
+}
+
 AWeaponActor* ABaseCharacter::GetWeapon()
 {
 	return VisibleWeapon;
@@ -102,12 +113,12 @@ float ABaseCharacter::GetCurrentLife() const
 	return CurrentLife;
 }
 
-bool ABaseCharacter::DamagePlayer_Validate(float LifeDelta, ABaseCharacter* Killer)
+bool ABaseCharacter::DamagePlayer_Validate(float LifeDelta, AActor* Killer)
 {
 	return true;
 }
 
-void ABaseCharacter::DamagePlayer_Implementation(float LifeDelta, ABaseCharacter* Killer)
+void ABaseCharacter::DamagePlayer_Implementation(float LifeDelta, AActor* Killer)
 {
 	if(PlayerAlive)
 	{
@@ -135,10 +146,7 @@ void ABaseCharacter::DamagePlayer_Implementation(float LifeDelta, ABaseCharacter
 			}
 			PlayDeathAnimation();
 			OnDeath(GetGamePlayController());
-			if(DestroyOnDeath)
-			{
-				
-			}
+			DeathEvent();
 		}
 	}
 }

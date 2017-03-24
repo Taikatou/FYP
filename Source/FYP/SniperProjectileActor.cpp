@@ -30,7 +30,8 @@ void ASniperProjectileActor::CompleteHit(UPrimitiveComponent* HitComp, AActor* O
 	ABaseCharacter* BC = Cast<ABaseCharacter>(OtherActor);
 	if(BC)
 	{
-		BC->DamagePlayer(BaseDamage, FiredFrom);
+		UGameplayStatics::ApplyDamage(BC, BaseDamage,
+			GetInstigatorController(), this, UDamageType::StaticClass());
 		UGoogleAnalyticsBlueprintLibrary::RecordGoogleEvent(TEXT("Apply Damage"),
 			TEXT("sniper projectile"), TEXT("Event Label"), 1);
 	}

@@ -48,29 +48,14 @@ void AExplosiveProjectileActor::OnDetonate_Implementation()
 	CollisionShape.ShapeType = ECollisionShape::Sphere;
 	CollisionShape.SetSphere(Radius);
 	
-
-	if(GetWorld()->SweepMultiByChannel(HitActors, StartTrace, EndTrace, FQuat::FQuat(), ECC_WorldStatic, CollisionShape))
+	for (TActorIterator<ABaseCharacter> aItr(GetWorld()); aItr; ++aItr)
 	{
-		for(auto Actors = HitActors.CreateIterator(); Actors; ++Actors)
+		float distance = GetDistanceTo(*aItr);
+
+		if (distance <= 300)
 		{
-			// Check if collision is static mesh or destructable actor
-			UStaticMeshComponent* SM = Cast<UStaticMeshComponent>((*Actors).Actor->GetRootComponent());
-			ADestructibleActor* DA = Cast<ADestructibleActor>((*Actors).GetActor());
-			ABaseCharacter* BC = Cast<ABaseCharacter>((*Actors).GetActor());
-			if (SM)
-			{
-				SM->AddRadialImpulse(GetActorLocation(), 1000.0f, 5000.0f, ERadialImpulseFalloff::RIF_Linear, true);
-			}
-			else if (DA)
-			{
-				DA->GetDestructibleComponent()->ApplyRadiusDamage(10.0f, Actors->ImpactPoint, 500.0f, 3000.0f, false);
-			}
-			else if (BC)
-			{
-				UGoogleAnalyticsBlueprintLibrary::RecordGoogleEvent(TEXT("Apply Damage"),
-					TEXT("Explosive projectile"), TEXT("Event Label"), 1);
-				BC->DamagePlayer(Damage, FiredFrom);
-			}
+			UGameplayStatics::ApplyDamage(*aItr, Damage,
+				GetInstigatorController(), this, UDamageType::StaticClass());
 		}
 	}
 	Explosion();

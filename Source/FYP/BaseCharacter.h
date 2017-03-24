@@ -40,7 +40,7 @@ public:
 	* @param LifeDelta: amount to change life by, positive or negative
 	*/
 	UFUNCTION(Server, reliable, WithValidation, BlueprintCallable, Category="Life")
-		void DamagePlayer(float LifeDelta, ABaseCharacter* Killer);
+		void DamagePlayer(float LifeDelta, AActor* Killer);
 	
 	UFUNCTION(BlueprintImplementableEvent)
 	void OnDeath(AGamePlayPlayerController* PlayerController);
@@ -48,9 +48,6 @@ public:
 	// FPS camera.
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Camera")
 		UCameraComponent* FPSCameraComponent;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		bool DestroyOnDeath = false;
 
 	bool PlayerAlive = true;
 
@@ -94,7 +91,7 @@ public:
 
 	void PlayDeathAnimation() const;
 
-	class AGamePlayPlayerController* GetGamePlayController();
+	class AGamePlayPlayerController* GetGamePlayController() const;
 
 	FTimerHandle AnimationTimerHandle;
 
@@ -111,7 +108,14 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Name")
 		void SetName(FText NewName);
 
-
 	UFUNCTION(BlueprintCallable, Category = "Name")
 		FText GetName();
+
+	UFUNCTION(BlueprintPure, Category = "Death")
+		bool GetDead() const;
+
+	float TakeDamage(float DamageAmount, struct FDamageEvent const & DamageEvent, class AController * EventInstigator, AActor * DamageCauser) override;
+
+	UFUNCTION(BlueprintImplementableEvent, Category = "Death")
+		void DeathEvent();
 };
