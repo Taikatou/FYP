@@ -18,5 +18,8 @@ private:
 public:
 	UFUNCTION(BlueprintPure, Category = "Patrol Route")
 		TArray<AActor*> GetPatrolPoints() const;
+
+	UFUNCTION(BlueprintCallable, Category = "Patrol Route")
+		void AddActorToPatrolRoute(AActor* AddActor);
 	
 };

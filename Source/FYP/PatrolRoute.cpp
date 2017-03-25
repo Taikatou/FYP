@@ -7,3 +7,8 @@ TArray<AActor*> UPatrolRoute::GetPatrolPoints() const
 {
 	return PatrolPointsCPP;
 }
+
+void UPatrolRoute::AddActorToPatrolRoute(AActor* AddActor)
+{
+	PatrolPointsCPP.Add(AddActor);
+}
