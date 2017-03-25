@@ -7,6 +7,7 @@
 #include "BaseCharacter.generated.h"
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FUpdateHealth);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FToggleSwitch);
 
 class AGamePlayPlayerController;
 UCLASS()
@@ -20,10 +21,9 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Life")
 	float InitialLife = 2000;
 
-private:
 	// Current life
-	UPROPERTY(VisibleAnywhere, Category = "Life")
-	float CurrentLife;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Life")
+		float CurrentLife;
 
 public:
 
