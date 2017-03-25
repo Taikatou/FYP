@@ -6,12 +6,33 @@
 #include "GameModePlayerState.h"
 #include "UnrealNetwork.h"
 
-void AGamePlayPlayerController::ShowMenu(UUserWidget* MyMainMenu)
+bool AGamePlayPlayerController::GetPaused()
 {
-	bShowMouseCursor = true;
-	FInputModeUIOnly input = FInputModeUIOnly();
-	SetInputMode(input);
-	MyMainMenu->AddToViewport();
+	return MyMainMenu->GetRootWidget()->Visibility == ESlateVisibility::Visible;
+}
+
+void AGamePlayPlayerController::ShowMainMenu()
+{
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Pause"));
+	MyMainMenu->GetRootWidget()->SetVisibility(ESlateVisibility::Visible);
+}
+
+void AGamePlayPlayerController::HideMainMenu()
+{
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Play"));
+	MyMainMenu->GetRootWidget()->SetVisibility(ESlateVisibility::Hidden);
+}
+
+void AGamePlayPlayerController::TogglePauseMenu()
+{
+	if(GetPaused())
+	{
+		HideMainMenu();
+	}
+	else
+	{
+		ShowMainMenu();
+	}
 }
 
 AGameModePlayerState* AGamePlayPlayerController::GetGamePlayState()
@@ -69,6 +90,24 @@ FText AGamePlayPlayerController::GetName() const
 {
 	UE_LOG(LogTemp, Warning, TEXT("Get name"));
 	return Name;
+}
+
+void AGamePlayPlayerController::BeginPlay()
+{
+	if (wMainMenu) // Check if the Asset is assigned in the blueprint.
+	{
+		// Create the widget and store it.
+		MyMainMenu = CreateWidget<UUserWidget>(this, wMainMenu);
+
+		// now you can use the widget directly since you have a referance for it.
+		// Extra check to  make sure the pointer holds the widget.
+		if (MyMainMenu)
+		{
+			//let add it to the view port
+			MyMainMenu->AddToViewport();
+			MyMainMenu->GetRootWidget()->SetVisibility(ESlateVisibility::Hidden);
+		}
+	}
 }
 
 void AGamePlayPlayerController::GetLifetimeReplicatedProps(TArray< FLifetimeProperty > & OutLifetimeProps) const

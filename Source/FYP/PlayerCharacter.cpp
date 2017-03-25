@@ -241,19 +241,10 @@ AUsableActor* APlayerCharacter::GetUsableInView() const
 
 void APlayerCharacter::Pause()
 {
-	if (!MyMainMenu && wMainMenu) // Check if the Asset is assigned in the blueprint.
+	AGamePlayPlayerController* controller = GetGamePlayController();
+	if (controller)
 	{
-		AGamePlayPlayerController* controller = GetGamePlayController();
-		if (controller)
-		{
-			// Create the widget and store it.
-			MyMainMenu = CreateWidget<UUserWidget>(controller, wMainMenu);
-		}
-	}
-	if (MyMainMenu)
-	{
-		AGamePlayPlayerController* controller = Cast<AGamePlayPlayerController>(GetController());
-		controller->ShowMenu(MyMainMenu);
+		controller->TogglePauseMenu();
 	}
 }
 

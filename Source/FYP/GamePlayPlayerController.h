@@ -13,9 +13,17 @@ UCLASS()
 class FYP_API AGamePlayPlayerController : public APlayerController
 {
 	GENERATED_BODY()
+
+protected:
+	bool GetPaused();
+
+private:
+	void ShowMainMenu();
+
+	void HideMainMenu();
 	
 public:
-	void ShowMenu(UUserWidget* MyMainMenu);
+	void TogglePauseMenu();
 
 	UFUNCTION(BlueprintPure, Category = "State")
 		class AGameModePlayerState* GetGamePlayState();
@@ -58,4 +66,12 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Name")
 		FText GetName() const;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Widgets")
+		TSubclassOf<class UUserWidget> wMainMenu;
+
+	// Variable to hold the widget After Creating it.
+	UUserWidget* MyMainMenu;
+
+	void BeginPlay() override;
 };

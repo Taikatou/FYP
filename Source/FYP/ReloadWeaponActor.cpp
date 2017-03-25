@@ -5,6 +5,7 @@
 #include "GoogleAnalyticsBlueprintLibrary.h"
 #include "Runtime/Analytics/Analytics/Public/Analytics.h"
 #include "Runtime/Analytics/Analytics/Public/Interfaces/IAnalyticsProvider.h"
+#include "Perception/AISense_Hearing.h"
 
 AReloadWeaponActor::AReloadWeaponActor()
 {
@@ -36,6 +37,7 @@ UAnimMontage* AReloadWeaponActor::FireWeapon(FRotator SpawnRotation, AController
 		OnFire(SpawnRotation, Controller, Camera, SpawnLocation);
 		CurrentCapacity--;
 		Animation = GetFireAnimation();
+		UAISense_Hearing::ReportNoiseEvent(this, GetActorLocation(), 1.0, this);
 	}
 	else
 	{
