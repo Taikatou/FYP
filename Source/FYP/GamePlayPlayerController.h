@@ -23,7 +23,8 @@ private:
 	void HideMainMenu();
 	
 public:
-	void TogglePauseMenu();
+	UFUNCTION(BlueprintCallable, Category="Pause")
+		void TogglePauseMenu();
 
 	UFUNCTION(BlueprintPure, Category = "State")
 		class AGameModePlayerState* GetGamePlayState();
@@ -74,4 +75,10 @@ public:
 	UUserWidget* MyMainMenu;
 
 	void BeginPlay() override;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Widgets")
+		TSubclassOf<class UUserWidget> wBloodHud;
+
+	// Variable to hold the widget After Creating it.
+	UUserWidget* MyBloodHud;
 };

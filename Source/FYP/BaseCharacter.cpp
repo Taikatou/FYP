@@ -84,6 +84,7 @@ bool ABaseCharacter::GetDead() const
 float ABaseCharacter::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
 {
 	DamagePlayer(DamageAmount, DamageCauser);
+	UpdateHeatlth.Broadcast();
 	return DamageAmount;
 }
 

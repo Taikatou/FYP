@@ -6,6 +6,8 @@
 #include "GameFramework/Character.h"
 #include "BaseCharacter.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FUpdateHealth);
+
 class AGamePlayPlayerController;
 UCLASS()
 class FYP_API ABaseCharacter : public ACharacter
@@ -118,4 +120,7 @@ public:
 
 	UFUNCTION(BlueprintImplementableEvent, Category = "Death")
 		void DeathEvent();
+
+	UPROPERTY(BlueprintAssignable, Category = "Update Health")
+		FUpdateHealth UpdateHeatlth;
 };

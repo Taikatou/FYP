@@ -74,7 +74,8 @@ public:
 	UFUNCTION(BlueprintCallable, WithValidation, Server, Reliable, Category = PlayerAbility)
 		virtual void Use();
 
-	void Pause();
+	UFUNCTION(BlueprintCallable, Category="Pause")
+		void Pause();
 
 	AWeaponActor* Weapon;
 

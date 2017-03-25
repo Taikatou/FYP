@@ -13,13 +13,17 @@ bool AGamePlayPlayerController::GetPaused()
 
 void AGamePlayPlayerController::ShowMainMenu()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Pause"));
+	bShowMouseCursor = true;
+	FInputModeUIOnly input = FInputModeUIOnly();
+	SetInputMode(input);
 	MyMainMenu->GetRootWidget()->SetVisibility(ESlateVisibility::Visible);
 }
 
 void AGamePlayPlayerController::HideMainMenu()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Play"));
+	bShowMouseCursor = false;
+	FInputModeGameOnly input = FInputModeGameOnly();
+	SetInputMode(input);
 	MyMainMenu->GetRootWidget()->SetVisibility(ESlateVisibility::Hidden);
 }
 
@@ -94,6 +98,18 @@ FText AGamePlayPlayerController::GetName() const
 
 void AGamePlayPlayerController::BeginPlay()
 {
+	if (wBloodHud) // Check if the Asset is assigned in the blueprint.
+	{
+		MyBloodHud = CreateWidget<UUserWidget>(this, wBloodHud);
+
+		// now you can use the widget directly since you have a referance for it.
+		// Extra check to  make sure the pointer holds the widget.
+		if (MyBloodHud)
+		{
+			//let add it to the view port
+			MyBloodHud->AddToViewport();
+		}
+	}
 	if (wMainMenu) // Check if the Asset is assigned in the blueprint.
 	{
 		// Create the widget and store it.

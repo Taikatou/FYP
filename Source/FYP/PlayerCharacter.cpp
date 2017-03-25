@@ -6,6 +6,7 @@
 #include "UserWidget.h"
 #include "GamePlayPlayerController.h"
 #include "UsableActor.h"
+#include "Runtime/UMG/Public/Blueprint/UserWidget.h"
 
 
 APlayerCharacter::APlayerCharacter()
