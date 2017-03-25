@@ -58,6 +58,8 @@ public:
 
 	void SetOwnerOnlySee(bool visible) const;
 
+	void SetOwnerNoSee(bool visible) const;
+
 private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "PickUp", meta = (AllowPrivateAccess = "true"))
 		USkeletalMeshComponent* WeaponMesh;

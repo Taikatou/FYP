@@ -78,3 +78,8 @@ void AWeaponActor::SetOwnerOnlySee(bool visible) const
 {
 	WeaponMesh->SetOnlyOwnerSee(visible);
 }
+
+void AWeaponActor::SetOwnerNoSee(bool visible) const
+{
+	WeaponMesh->SetOwnerNoSee(visible);
+}

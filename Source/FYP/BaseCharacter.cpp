@@ -39,6 +39,7 @@ void ABaseCharacter::BeginPlay()
 	if (ThirdPersonWeaponBlueprint != nullptr && SpawnThirdPersonWeapon)
 	{
 		VisibleWeapon = GetWorld()->SpawnActor<AWeaponActor>(ThirdPersonWeaponBlueprint);
+		VisibleWeapon->SetOwner(this);
 		bool gripPoint = GetMesh()->DoesSocketExist("GripPoint");
 		if (!gripPoint)
 		{
@@ -46,6 +47,8 @@ void ABaseCharacter::BeginPlay()
 		}
 		UE_LOG(LogTemp, Warning, TEXT("Spawn third person weapon"));
 		VisibleWeapon->AttachToComponent(GetMesh(), FAttachmentTransformRules(EAttachmentRule::SnapToTarget, true), TEXT("GripPoint"));
+		VisibleWeapon->SetOwnerNoSee(true);
+		VisibleWeapon->Tags.Add(FName("Enemy"));
 	}
 	else
 	{
