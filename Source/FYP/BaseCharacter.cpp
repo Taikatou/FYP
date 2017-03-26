@@ -57,7 +57,6 @@ void ABaseCharacter::BeginPlay()
 
 	// Set current life level for the character
 	CurrentLife = InitialLife;
-
 }
 
 void ABaseCharacter::SetName(FText NewName)
@@ -87,8 +86,25 @@ bool ABaseCharacter::GetDead() const
 float ABaseCharacter::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
 {
 	DamagePlayer(DamageAmount, DamageCauser);
-	UpdateHeatlth.Broadcast();
+	UpdateHealth();
+	if(CurrentLife == 0)
+	{
+		auto Controller = GetGamePlayController();
+		if (Controller)
+		{
+			Controller->BroadcastResetHealth();
+		}
+	}
 	return DamageAmount;
+}
+
+void ABaseCharacter::UpdateHealth() const
+{
+	auto Controller = GetGamePlayController();
+	if (Controller)
+	{
+		Controller->BroadcastUpdateHealth();
+	}
 }
 
 AWeaponActor* ABaseCharacter::GetWeapon()

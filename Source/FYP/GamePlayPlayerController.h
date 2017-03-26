@@ -9,6 +9,8 @@ class UUserWidget;
 /**
  * 
  */
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FUpdateHealth);
+
 UCLASS()
 class FYP_API AGamePlayPlayerController : public APlayerController
 {
@@ -81,4 +83,16 @@ public:
 
 	// Variable to hold the widget After Creating it.
 	UUserWidget* MyBloodHud;
+
+	UPROPERTY(BlueprintAssignable, Category = "Update Health")
+		FUpdateHealth UpdateHeatlth;
+
+	UFUNCTION(BlueprintCallable, Category = "Update Health")
+		void BroadcastUpdateHealth() const;
+
+	UPROPERTY(BlueprintAssignable, Category = "Update Health")
+		FUpdateHealth ResetHealth;
+
+	UFUNCTION(BlueprintCallable, Category = "Update Health")
+		void BroadcastResetHealth() const;
 };
