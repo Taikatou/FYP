@@ -76,14 +76,6 @@ public:
 	// Variable to hold the widget After Creating it.
 	UUserWidget* MyMainMenu;
 
-	void BeginPlay() override;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Widgets")
-		TSubclassOf<class UUserWidget> wBloodHud;
-
-	// Variable to hold the widget After Creating it.
-	UUserWidget* MyBloodHud;
-
 	UPROPERTY(BlueprintAssignable, Category = "Update Health")
 		FResetHealth ResetHealth;
 
@@ -95,4 +87,7 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Update Health")
 		void BroadcastUpdateHealth() const;
+
+	UFUNCTION(BlueprintCallable, Category = "Menu")
+		void InitMenuSystem();
 };

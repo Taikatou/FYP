@@ -96,20 +96,8 @@ FText AGamePlayPlayerController::GetName() const
 	return Name;
 }
 
-void AGamePlayPlayerController::BeginPlay()
+void AGamePlayPlayerController::InitMenuSystem()
 {
-	if (wBloodHud) // Check if the Asset is assigned in the blueprint.
-	{
-		MyBloodHud = CreateWidget<UUserWidget>(this, wBloodHud);
-
-		// now you can use the widget directly since you have a referance for it.
-		// Extra check to  make sure the pointer holds the widget.
-		if (MyBloodHud)
-		{
-			//let add it to the view port
-			MyBloodHud->AddToViewport();
-		}
-	}
 	if (wMainMenu) // Check if the Asset is assigned in the blueprint.
 	{
 		// Create the widget and store it.
