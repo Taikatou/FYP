@@ -11,672 +11,672 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define PLAYFAB_PlayFabClientModels_generated_h
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_3063_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_3075_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientValidateWindowsReceiptResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_3044_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_3056_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientValidateWindowsReceiptRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_3026_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_3038_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetPlayerTagsResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_3013_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_3025_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetPlayerTagsRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_3003_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_3015_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetPlayerSegmentsResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2996_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_3008_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetPlayerSegmentsRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2979_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2991_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientAttributeInstallResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2966_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2978_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientAttributeInstallRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2951_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2963_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientOpenTradeResponse(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2935_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2947_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientOpenTradeRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2925_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2937_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetTradeStatusResponse(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2912_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2924_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetTradeStatusRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2899_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2911_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetPlayerTradesResponse(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2889_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2901_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetPlayerTradesRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2879_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2891_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientCancelTradeResponse(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2869_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2881_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientCancelTradeRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2859_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2871_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientAcceptTradeResponse(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2843_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2855_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientAcceptTradeRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2831_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2843_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientValidateAmazonReceiptResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2809_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2821_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientValidateAmazonReceiptRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2794_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2806_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientUpdateCharacterDataResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2775_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2787_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientUpdateCharacterDataRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2759_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2771_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetCharacterDataResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2740_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2752_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetCharacterDataRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2728_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2740_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientUpdateCharacterStatisticsResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2715_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2727_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientUpdateCharacterStatisticsRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2699_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2711_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGrantCharacterToUserResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2683_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2695_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGrantCharacterToUserRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2673_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2685_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetLeaderboardForUsersCharactersResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2660_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2672_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetLeaderboardForUsersCharactersRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2650_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2662_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetLeaderboardAroundCharacterResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2631_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2643_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetLeaderboardAroundCharacterRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2621_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2633_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetCharacterStatisticsResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2611_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2623_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetCharacterStatisticsRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2601_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2613_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetCharacterLeaderboardResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2582_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2594_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetCharacterLeaderboardRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2572_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2584_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientListUsersCharactersResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2562_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2574_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientListUsersCharactersRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2547_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2559_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetContentDownloadUrlResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2531_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2543_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetContentDownloadUrlRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2491_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2503_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientExecuteCloudScriptResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2469_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2481_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientExecuteCloudScriptRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2452_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2464_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientUpdateSharedGroupDataResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2433_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2445_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientUpdateSharedGroupDataRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2426_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2438_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientRemoveSharedGroupMembersResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2413_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2425_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientRemoveSharedGroupMembersRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2400_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2412_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetSharedGroupDataResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2384_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2396_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetSharedGroupDataRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2374_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2386_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientCreateSharedGroupResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2364_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2376_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientCreateSharedGroupRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2357_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2369_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientAddSharedGroupMembersResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2344_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2356_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientAddSharedGroupMembersRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2323_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2335_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientWriteTitleEventRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2307_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2319_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientWriteClientPlayerEventRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2297_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2309_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientWriteEventResponse(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2278_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2290_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientWriteClientCharacterEventRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2266_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2278_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientValidateGooglePlayPurchaseResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2247_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2259_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientValidateGooglePlayPurchaseRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2240_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2252_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientAndroidDevicePushNotificationRegistrationResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2224_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2236_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientAndroidDevicePushNotificationRegistrationRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2194_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2206_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientStartGameResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2169_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2181_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientStartGameRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2141_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2153_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientMatchmakeResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2110_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2122_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientMatchmakeRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2100_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2112_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGameServerRegionsResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2090_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2102_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGameServerRegionsRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2074_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2086_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientCurrentGamesResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2052_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2064_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientCurrentGamesRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2040_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2052_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientValidateIOSReceiptResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2024_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2036_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientValidateIOSReceiptRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2017_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2029_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientRestoreIOSPurchasesResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2007_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2019_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientRestoreIOSPurchasesRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2000_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_2012_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientRegisterForIOSPushNotificationResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1984_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1996_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientRegisterForIOSPushNotificationRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1972_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1984_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientSetFriendTagsResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1959_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1971_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientSetFriendTagsRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1952_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1964_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientRemoveFriendResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1942_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1954_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientRemoveFriendRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1932_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1944_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetFriendsListResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1919_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1931_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetFriendsListRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1909_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1921_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientAddFriendResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1890_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1902_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientAddFriendRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1869_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1881_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientUnlockContainerItemRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1850_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1862_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientUnlockContainerItemResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1831_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1843_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientUnlockContainerInstanceRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1818_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1830_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientSubtractUserVirtualCurrencyRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1799_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1811_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientStartPurchaseResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1783_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1795_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientStartPurchaseRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1773_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1785_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientRedeemCouponResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1757_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1769_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientRedeemCouponRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1747_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1759_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientPurchaseItemResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1722_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1734_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientPurchaseItemRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1685_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1697_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientPayForPurchaseResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1666_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1678_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientPayForPurchaseRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1650_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1662_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetUserInventoryResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1643_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1655_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetUserInventoryRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1618_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1630_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetPurchaseResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1608_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1620_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetPurchaseRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1589_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1601_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetCharacterInventoryResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1576_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1588_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetCharacterInventoryRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1563_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1575_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientConsumeItemResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1547_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1559_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientConsumeItemRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1531_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1543_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientConfirmPurchaseResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1521_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1533_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientConfirmPurchaseRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1502_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1514_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientModifyUserVirtualCurrencyResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1489_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1501_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientAddUserVirtualCurrencyRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1474_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1486_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetTitleNewsResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1464_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1476_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetTitleNewsRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1454_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1466_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetTitleDataResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1444_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1456_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetTitleDataRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1434_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1446_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetTimeResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1427_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1439_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetTimeRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1405_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1417_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetStoreItemsResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1392_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1404_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetStoreItemsRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1382_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1394_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetPublisherDataResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1372_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1384_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetPublisherDataRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1362_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1374_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetCatalogItemsResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1352_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1364_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetCatalogItemsRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1337_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1349_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientUpdateUserDataResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1321_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1333_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientUpdateUserDataRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1314_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1326_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientUpdatePlayerStatisticsResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1304_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1316_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientUpdatePlayerStatisticsRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1291_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1303_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetUserDataResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1275_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1287_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetUserDataRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1265_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1277_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetPlayerStatisticVersionsResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1255_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1267_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetPlayerStatisticVersionsRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1245_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1257_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetPlayerStatisticsResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1232_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1244_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetPlayerStatisticsRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1216_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1228_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetLeaderboardAroundPlayerResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1194_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1203_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetLeaderboardAroundPlayerRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1172_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1178_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetLeaderboardRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1156_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1162_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetFriendLeaderboardAroundPlayerResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1128_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1131_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetFriendLeaderboardAroundPlayerRequest(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 
 
-#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1112_GENERATED_BODY \
+#define FYP_Plugins_PluginFiles_PlayFab_Source_PlayFab_Classes_PlayFabClientModels_h_1115_GENERATED_BODY \
 	friend PLAYFAB_API class UScriptStruct* Z_Construct_UScriptStruct_FClientGetLeaderboardResult(); \
 	PLAYFAB_API static class UScriptStruct* StaticStruct();
 

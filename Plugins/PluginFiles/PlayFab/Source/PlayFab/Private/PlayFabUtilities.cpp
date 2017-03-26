@@ -300,6 +300,16 @@ FString UPlayFabUtilities::getErrorText(int32 code)
     case 1273: returnText = "InvalidSignature"; break;
     case 1274: returnText = "InvalidPublicKey"; break;
     case 1275: returnText = "GoogleOAuthNoIdTokenIncludedInResponse"; break;
+    case 1276: returnText = "StatisticUpdateInProgress"; break;
+    case 1277: returnText = "LeaderboardVersionNotAvailable"; break;
+    case 1279: returnText = "StatisticAlreadyHasPrizeTable"; break;
+    case 1280: returnText = "PrizeTableHasOverlappingRanks"; break;
+    case 1281: returnText = "PrizeTableHasMissingRanks"; break;
+    case 1282: returnText = "PrizeTableRankStartsAtZero"; break;
+    case 1283: returnText = "InvalidStatistic"; break;
+    case 1284: returnText = "ExpressionParseFailure"; break;
+    case 1285: returnText = "ExpressionInvokeFailure"; break;
+    case 1286: returnText = "ExpressionTooLong"; break;
     }
 
     // Return the text

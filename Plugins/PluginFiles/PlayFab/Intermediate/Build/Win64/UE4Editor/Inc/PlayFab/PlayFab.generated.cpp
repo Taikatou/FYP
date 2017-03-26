@@ -5060,7 +5060,7 @@ static struct FScriptStruct_PlayFab_StaticRegisterNativesFClientGetPhotonAuthent
 		FNativeFunctionRegistrar::RegisterFunction(UPlayFabClientAPI::StaticClass(), "WritePlayerEvent",(Native)&UPlayFabClientAPI::execWritePlayerEvent);
 		FNativeFunctionRegistrar::RegisterFunction(UPlayFabClientAPI::StaticClass(), "WriteTitleEvent",(Native)&UPlayFabClientAPI::execWriteTitleEvent);
 	}
-	IMPLEMENT_CLASS(UPlayFabClientAPI, 2593173768);
+	IMPLEMENT_CLASS(UPlayFabClientAPI, 1295123506);
 	void UPlayFabClientModelDecoder::StaticRegisterNativesUPlayFabClientModelDecoder()
 	{
 		FNativeFunctionRegistrar::RegisterFunction(UPlayFabClientModelDecoder::StaticClass(), "decodeAcceptTradeResponseResponse",(Native)&UPlayFabClientModelDecoder::execdecodeAcceptTradeResponseResponse);
@@ -11792,6 +11792,7 @@ static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_EPFJson(EPFJson_StaticEn
 		if (!ReturnStruct)
 		{
 			ReturnStruct = new(EC_InternalUseOnlyConstructor, Outer, TEXT("ClientGetLeaderboardAroundPlayerRequest"), RF_Public|RF_Transient|RF_MarkAsNative) UScriptStruct(FObjectInitializer(), NULL, new UScriptStruct::TCppStructOps<FClientGetLeaderboardAroundPlayerRequest>, EStructFlags(0x00000001));
+			UProperty* NewProp_ProfileConstraints = new(EC_InternalUseOnlyConstructor, ReturnStruct, TEXT("ProfileConstraints"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(ProfileConstraints, FClientGetLeaderboardAroundPlayerRequest), 0x0010000000000005, Z_Construct_UClass_UPlayFabJsonObject_NoRegister());
 			CPP_BOOL_PROPERTY_BITMASK_STRUCT(UseSpecificVersion, FClientGetLeaderboardAroundPlayerRequest, bool);
 			UProperty* NewProp_UseSpecificVersion = new(EC_InternalUseOnlyConstructor, ReturnStruct, TEXT("UseSpecificVersion"), RF_Public|RF_Transient|RF_MarkAsNative) UBoolProperty(FObjectInitializer(), EC_CppProperty, CPP_BOOL_PROPERTY_OFFSET(UseSpecificVersion, FClientGetLeaderboardAroundPlayerRequest), 0x0010000000000005, CPP_BOOL_PROPERTY_BITMASK(UseSpecificVersion, FClientGetLeaderboardAroundPlayerRequest), sizeof(bool), true);
 			UProperty* NewProp_Version = new(EC_InternalUseOnlyConstructor, ReturnStruct, TEXT("Version"), RF_Public|RF_Transient|RF_MarkAsNative) UIntProperty(CPP_PROPERTY_BASE(Version, FClientGetLeaderboardAroundPlayerRequest), 0x0010000000000005);
@@ -11803,6 +11804,9 @@ static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_EPFJson(EPFJson_StaticEn
 			UMetaData* MetaData = ReturnStruct->GetOutermost()->GetMetaData();
 			MetaData->SetValue(ReturnStruct, TEXT("BlueprintType"), TEXT("true"));
 			MetaData->SetValue(ReturnStruct, TEXT("ModuleRelativePath"), TEXT("Classes/PlayFabClientModels.h"));
+			MetaData->SetValue(NewProp_ProfileConstraints, TEXT("Category"), TEXT("PlayFab | Client | Player Data Management Models"));
+			MetaData->SetValue(NewProp_ProfileConstraints, TEXT("ModuleRelativePath"), TEXT("Classes/PlayFabClientModels.h"));
+			MetaData->SetValue(NewProp_ProfileConstraints, TEXT("ToolTip"), TEXT("If non-null, this determines which properties of the profile to return. If null, playfab will only include display names. On client, only ShowDisplayName, ShowStatistics, ShowAvatarUrl are allowed."));
 			MetaData->SetValue(NewProp_UseSpecificVersion, TEXT("Category"), TEXT("PlayFab | Client | Player Data Management Models"));
 			MetaData->SetValue(NewProp_UseSpecificVersion, TEXT("ModuleRelativePath"), TEXT("Classes/PlayFabClientModels.h"));
 			MetaData->SetValue(NewProp_UseSpecificVersion, TEXT("ToolTip"), TEXT("If true, uses the specified version. If false, gets the most recent version."));
@@ -11822,7 +11826,7 @@ static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_EPFJson(EPFJson_StaticEn
 		}
 		return ReturnStruct;
 	}
-	uint32 Get_Z_Construct_UScriptStruct_FClientGetLeaderboardAroundPlayerRequest_CRC() { return 3316657456U; }
+	uint32 Get_Z_Construct_UScriptStruct_FClientGetLeaderboardAroundPlayerRequest_CRC() { return 974309648U; }
 	UScriptStruct* Z_Construct_UScriptStruct_FClientGetLeaderboardRequest()
 	{
 		UPackage* Outer = Z_Construct_UPackage__Script_PlayFab();
@@ -11831,6 +11835,7 @@ static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_EPFJson(EPFJson_StaticEn
 		if (!ReturnStruct)
 		{
 			ReturnStruct = new(EC_InternalUseOnlyConstructor, Outer, TEXT("ClientGetLeaderboardRequest"), RF_Public|RF_Transient|RF_MarkAsNative) UScriptStruct(FObjectInitializer(), NULL, new UScriptStruct::TCppStructOps<FClientGetLeaderboardRequest>, EStructFlags(0x00000001));
+			UProperty* NewProp_ProfileConstraints = new(EC_InternalUseOnlyConstructor, ReturnStruct, TEXT("ProfileConstraints"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(ProfileConstraints, FClientGetLeaderboardRequest), 0x0010000000000005, Z_Construct_UClass_UPlayFabJsonObject_NoRegister());
 			CPP_BOOL_PROPERTY_BITMASK_STRUCT(UseSpecificVersion, FClientGetLeaderboardRequest, bool);
 			UProperty* NewProp_UseSpecificVersion = new(EC_InternalUseOnlyConstructor, ReturnStruct, TEXT("UseSpecificVersion"), RF_Public|RF_Transient|RF_MarkAsNative) UBoolProperty(FObjectInitializer(), EC_CppProperty, CPP_BOOL_PROPERTY_OFFSET(UseSpecificVersion, FClientGetLeaderboardRequest), 0x0010000000000005, CPP_BOOL_PROPERTY_BITMASK(UseSpecificVersion, FClientGetLeaderboardRequest), sizeof(bool), true);
 			UProperty* NewProp_Version = new(EC_InternalUseOnlyConstructor, ReturnStruct, TEXT("Version"), RF_Public|RF_Transient|RF_MarkAsNative) UIntProperty(CPP_PROPERTY_BASE(Version, FClientGetLeaderboardRequest), 0x0010000000000005);
@@ -11842,6 +11847,9 @@ static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_EPFJson(EPFJson_StaticEn
 			UMetaData* MetaData = ReturnStruct->GetOutermost()->GetMetaData();
 			MetaData->SetValue(ReturnStruct, TEXT("BlueprintType"), TEXT("true"));
 			MetaData->SetValue(ReturnStruct, TEXT("ModuleRelativePath"), TEXT("Classes/PlayFabClientModels.h"));
+			MetaData->SetValue(NewProp_ProfileConstraints, TEXT("Category"), TEXT("PlayFab | Client | Player Data Management Models"));
+			MetaData->SetValue(NewProp_ProfileConstraints, TEXT("ModuleRelativePath"), TEXT("Classes/PlayFabClientModels.h"));
+			MetaData->SetValue(NewProp_ProfileConstraints, TEXT("ToolTip"), TEXT("If non-null, this determines which properties of the profile to return. If null, playfab will only include display names. On client, only ShowDisplayName, ShowStatistics, ShowAvatarUrl are allowed."));
 			MetaData->SetValue(NewProp_UseSpecificVersion, TEXT("Category"), TEXT("PlayFab | Client | Player Data Management Models"));
 			MetaData->SetValue(NewProp_UseSpecificVersion, TEXT("ModuleRelativePath"), TEXT("Classes/PlayFabClientModels.h"));
 			MetaData->SetValue(NewProp_UseSpecificVersion, TEXT("ToolTip"), TEXT("If true, uses the specified version. If false, gets the most recent version."));
@@ -11861,7 +11869,7 @@ static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_EPFJson(EPFJson_StaticEn
 		}
 		return ReturnStruct;
 	}
-	uint32 Get_Z_Construct_UScriptStruct_FClientGetLeaderboardRequest_CRC() { return 2230136694U; }
+	uint32 Get_Z_Construct_UScriptStruct_FClientGetLeaderboardRequest_CRC() { return 735381139U; }
 	UScriptStruct* Z_Construct_UScriptStruct_FClientGetFriendLeaderboardAroundPlayerResult()
 	{
 		UPackage* Outer = Z_Construct_UPackage__Script_PlayFab();
@@ -11901,6 +11909,7 @@ static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_EPFJson(EPFJson_StaticEn
 		if (!ReturnStruct)
 		{
 			ReturnStruct = new(EC_InternalUseOnlyConstructor, Outer, TEXT("ClientGetFriendLeaderboardAroundPlayerRequest"), RF_Public|RF_Transient|RF_MarkAsNative) UScriptStruct(FObjectInitializer(), NULL, new UScriptStruct::TCppStructOps<FClientGetFriendLeaderboardAroundPlayerRequest>, EStructFlags(0x00000001));
+			UProperty* NewProp_ProfileConstraints = new(EC_InternalUseOnlyConstructor, ReturnStruct, TEXT("ProfileConstraints"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(ProfileConstraints, FClientGetFriendLeaderboardAroundPlayerRequest), 0x0010000000000005, Z_Construct_UClass_UPlayFabJsonObject_NoRegister());
 			CPP_BOOL_PROPERTY_BITMASK_STRUCT(UseSpecificVersion, FClientGetFriendLeaderboardAroundPlayerRequest, bool);
 			UProperty* NewProp_UseSpecificVersion = new(EC_InternalUseOnlyConstructor, ReturnStruct, TEXT("UseSpecificVersion"), RF_Public|RF_Transient|RF_MarkAsNative) UBoolProperty(FObjectInitializer(), EC_CppProperty, CPP_BOOL_PROPERTY_OFFSET(UseSpecificVersion, FClientGetFriendLeaderboardAroundPlayerRequest), 0x0010000000000005, CPP_BOOL_PROPERTY_BITMASK(UseSpecificVersion, FClientGetFriendLeaderboardAroundPlayerRequest), sizeof(bool), true);
 			UProperty* NewProp_Version = new(EC_InternalUseOnlyConstructor, ReturnStruct, TEXT("Version"), RF_Public|RF_Transient|RF_MarkAsNative) UIntProperty(CPP_PROPERTY_BASE(Version, FClientGetFriendLeaderboardAroundPlayerRequest), 0x0010000000000005);
@@ -11916,6 +11925,9 @@ static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_EPFJson(EPFJson_StaticEn
 			UMetaData* MetaData = ReturnStruct->GetOutermost()->GetMetaData();
 			MetaData->SetValue(ReturnStruct, TEXT("BlueprintType"), TEXT("true"));
 			MetaData->SetValue(ReturnStruct, TEXT("ModuleRelativePath"), TEXT("Classes/PlayFabClientModels.h"));
+			MetaData->SetValue(NewProp_ProfileConstraints, TEXT("Category"), TEXT("PlayFab | Client | Player Data Management Models"));
+			MetaData->SetValue(NewProp_ProfileConstraints, TEXT("ModuleRelativePath"), TEXT("Classes/PlayFabClientModels.h"));
+			MetaData->SetValue(NewProp_ProfileConstraints, TEXT("ToolTip"), TEXT("If non-null, this determines which properties of the profile to return. If null, playfab will only include display names. On client, only ShowDisplayName, ShowStatistics, ShowAvatarUrl are allowed."));
 			MetaData->SetValue(NewProp_UseSpecificVersion, TEXT("Category"), TEXT("PlayFab | Client | Player Data Management Models"));
 			MetaData->SetValue(NewProp_UseSpecificVersion, TEXT("ModuleRelativePath"), TEXT("Classes/PlayFabClientModels.h"));
 			MetaData->SetValue(NewProp_UseSpecificVersion, TEXT("ToolTip"), TEXT("If true, uses the specified version. If false, gets the most recent version."));
@@ -11941,7 +11953,7 @@ static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_EPFJson(EPFJson_StaticEn
 		}
 		return ReturnStruct;
 	}
-	uint32 Get_Z_Construct_UScriptStruct_FClientGetFriendLeaderboardAroundPlayerRequest_CRC() { return 2517231847U; }
+	uint32 Get_Z_Construct_UScriptStruct_FClientGetFriendLeaderboardAroundPlayerRequest_CRC() { return 2580498110U; }
 	UScriptStruct* Z_Construct_UScriptStruct_FClientGetLeaderboardResult()
 	{
 		UPackage* Outer = Z_Construct_UPackage__Script_PlayFab();
@@ -11981,6 +11993,7 @@ static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_EPFJson(EPFJson_StaticEn
 		if (!ReturnStruct)
 		{
 			ReturnStruct = new(EC_InternalUseOnlyConstructor, Outer, TEXT("ClientGetFriendLeaderboardRequest"), RF_Public|RF_Transient|RF_MarkAsNative) UScriptStruct(FObjectInitializer(), NULL, new UScriptStruct::TCppStructOps<FClientGetFriendLeaderboardRequest>, EStructFlags(0x00000001));
+			UProperty* NewProp_ProfileConstraints = new(EC_InternalUseOnlyConstructor, ReturnStruct, TEXT("ProfileConstraints"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(ProfileConstraints, FClientGetFriendLeaderboardRequest), 0x0010000000000005, Z_Construct_UClass_UPlayFabJsonObject_NoRegister());
 			CPP_BOOL_PROPERTY_BITMASK_STRUCT(UseSpecificVersion, FClientGetFriendLeaderboardRequest, bool);
 			UProperty* NewProp_UseSpecificVersion = new(EC_InternalUseOnlyConstructor, ReturnStruct, TEXT("UseSpecificVersion"), RF_Public|RF_Transient|RF_MarkAsNative) UBoolProperty(FObjectInitializer(), EC_CppProperty, CPP_BOOL_PROPERTY_OFFSET(UseSpecificVersion, FClientGetFriendLeaderboardRequest), 0x0010000000000005, CPP_BOOL_PROPERTY_BITMASK(UseSpecificVersion, FClientGetFriendLeaderboardRequest), sizeof(bool), true);
 			UProperty* NewProp_Version = new(EC_InternalUseOnlyConstructor, ReturnStruct, TEXT("Version"), RF_Public|RF_Transient|RF_MarkAsNative) UIntProperty(CPP_PROPERTY_BASE(Version, FClientGetFriendLeaderboardRequest), 0x0010000000000005);
@@ -11997,6 +12010,9 @@ static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_EPFJson(EPFJson_StaticEn
 			MetaData->SetValue(ReturnStruct, TEXT("BlueprintType"), TEXT("true"));
 			MetaData->SetValue(ReturnStruct, TEXT("ModuleRelativePath"), TEXT("Classes/PlayFabClientModels.h"));
 			MetaData->SetValue(ReturnStruct, TEXT("ToolTip"), TEXT("/\n Player Data Management"));
+			MetaData->SetValue(NewProp_ProfileConstraints, TEXT("Category"), TEXT("PlayFab | Client | Player Data Management Models"));
+			MetaData->SetValue(NewProp_ProfileConstraints, TEXT("ModuleRelativePath"), TEXT("Classes/PlayFabClientModels.h"));
+			MetaData->SetValue(NewProp_ProfileConstraints, TEXT("ToolTip"), TEXT("If non-null, this determines which properties of the profile to return. If null, playfab will only include display names. On client, only ShowDisplayName, ShowStatistics, ShowAvatarUrl are allowed."));
 			MetaData->SetValue(NewProp_UseSpecificVersion, TEXT("Category"), TEXT("PlayFab | Client | Player Data Management Models"));
 			MetaData->SetValue(NewProp_UseSpecificVersion, TEXT("ModuleRelativePath"), TEXT("Classes/PlayFabClientModels.h"));
 			MetaData->SetValue(NewProp_UseSpecificVersion, TEXT("ToolTip"), TEXT("If true, uses the specified version. If false, gets the most recent version."));
@@ -12022,7 +12038,7 @@ static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_EPFJson(EPFJson_StaticEn
 		}
 		return ReturnStruct;
 	}
-	uint32 Get_Z_Construct_UScriptStruct_FClientGetFriendLeaderboardRequest_CRC() { return 127847572U; }
+	uint32 Get_Z_Construct_UScriptStruct_FClientGetFriendLeaderboardRequest_CRC() { return 2307339470U; }
 	UScriptStruct* Z_Construct_UScriptStruct_FClientUpdateUserTitleDisplayNameResult()
 	{
 		UPackage* Outer = Z_Construct_UPackage__Script_PlayFab();
@@ -17371,7 +17387,7 @@ static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_EPFJson(EPFJson_StaticEn
 			MetaData->SetValue(ReturnFunction, TEXT("BlueprintInternalUseOnly"), TEXT("true"));
 			MetaData->SetValue(ReturnFunction, TEXT("Category"), TEXT("PlayFab | Client | Trading"));
 			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("Classes/PlayFabClientAPI.h"));
-			MetaData->SetValue(ReturnFunction, TEXT("ToolTip"), TEXT("Accepts an open trade. If the call is successful, the offered and accepted items will be swapped between the two players' inventories."));
+			MetaData->SetValue(ReturnFunction, TEXT("ToolTip"), TEXT("Accepts an open trade (one that has not yet been accepted or cancelled), if the locally signed-in player is in the  allowed player list for the trade, or it is open to all players. If the call is successful, the offered and accepted items will be swapped  between the two players' inventories."));
 #endif
 		}
 		return ReturnFunction;
@@ -17627,7 +17643,7 @@ static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_EPFJson(EPFJson_StaticEn
 			MetaData->SetValue(ReturnFunction, TEXT("BlueprintInternalUseOnly"), TEXT("true"));
 			MetaData->SetValue(ReturnFunction, TEXT("Category"), TEXT("PlayFab | Client | Trading"));
 			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("Classes/PlayFabClientAPI.h"));
-			MetaData->SetValue(ReturnFunction, TEXT("ToolTip"), TEXT("Cancels an open trade."));
+			MetaData->SetValue(ReturnFunction, TEXT("ToolTip"), TEXT("Cancels an open trade (one that has not yet been accepted or cancelled). Note that only the player who created the trade  can cancel it via this API call, to prevent griefing of the trade system (cancelling trades in order to prevent other players from accepting  them, for trades that can be claimed by more than one player)."));
 #endif
 		}
 		return ReturnFunction;
@@ -23710,7 +23726,7 @@ static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_EPFJson(EPFJson_StaticEn
 			MetaData->SetValue(ReturnFunction, TEXT("BlueprintInternalUseOnly"), TEXT("true"));
 			MetaData->SetValue(ReturnFunction, TEXT("Category"), TEXT("PlayFab | Client | Trading"));
 			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("Classes/PlayFabClientAPI.h"));
-			MetaData->SetValue(ReturnFunction, TEXT("ToolTip"), TEXT("Opens a new outstanding trade."));
+			MetaData->SetValue(ReturnFunction, TEXT("ToolTip"), TEXT("Opens a new outstanding trade. Note that a given item instance may only be in one open trade at a time."));
 #endif
 		}
 		return ReturnFunction;
@@ -25496,7 +25512,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 				UProperty* NewProp_RequestJsonObj = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("RequestJsonObj"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(RequestJsonObj, UPlayFabClientAPI), 0x0020080000000000, Z_Construct_UClass_UPlayFabJsonObject_NoRegister());
 				UProperty* NewProp_OnPlayFabResponse = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("OnPlayFabResponse"), RF_Public|RF_Transient|RF_MarkAsNative) UMulticastDelegateProperty(CPP_PROPERTY_BASE(OnPlayFabResponse, UPlayFabClientAPI), 0x0010000010080000, Z_Construct_UDelegateFunction_PlayFab_OnPlayFabClientRequestCompleted__DelegateSignature());
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
-				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UPlayFabClientAPI_AcceptTrade(), "AcceptTrade"); // 2873533824
+				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UPlayFabClientAPI_AcceptTrade(), "AcceptTrade"); // 301409463
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UPlayFabClientAPI_AddFriend(), "AddFriend"); // 3196659570
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UPlayFabClientAPI_AddGenericID(), "AddGenericID"); // 4059343928
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UPlayFabClientAPI_AddSharedGroupMembers(), "AddSharedGroupMembers"); // 763100826
@@ -25504,7 +25520,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UPlayFabClientAPI_AddUserVirtualCurrency(), "AddUserVirtualCurrency"); // 1514662659
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UPlayFabClientAPI_AndroidDevicePushNotificationRegistration(), "AndroidDevicePushNotificationRegistration"); // 2247207157
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UPlayFabClientAPI_AttributeInstall(), "AttributeInstall"); // 1494340277
-				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UPlayFabClientAPI_CancelTrade(), "CancelTrade"); // 2781000427
+				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UPlayFabClientAPI_CancelTrade(), "CancelTrade"); // 4082147804
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UPlayFabClientAPI_ConfirmPurchase(), "ConfirmPurchase"); // 1273102416
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UPlayFabClientAPI_ConsumeItem(), "ConsumeItem"); // 3973193528
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UPlayFabClientAPI_CreateSharedGroup(), "CreateSharedGroup"); // 1522523776
@@ -25834,7 +25850,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UPlayFabClientAPI_LoginWithTwitch(), "LoginWithTwitch"); // 4130963037
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UPlayFabClientAPI_LoginWithWindowsHello(), "LoginWithWindowsHello"); // 500181138
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UPlayFabClientAPI_Matchmake(), "Matchmake"); // 1064398265
-				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UPlayFabClientAPI_OpenTrade(), "OpenTrade"); // 1865572878
+				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UPlayFabClientAPI_OpenTrade(), "OpenTrade"); // 2817709660
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UPlayFabClientAPI_PayForPurchase(), "PayForPurchase"); // 4105450686
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UPlayFabClientAPI_PurchaseItem(), "PurchaseItem"); // 3768251574
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UPlayFabClientAPI_RedeemCoupon(), "RedeemCoupon"); // 3257423178
@@ -29328,7 +29344,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 			ReturnPackage = CastChecked<UPackage>(StaticFindObjectFast(UPackage::StaticClass(), NULL, FName(TEXT("/Script/PlayFab")), false, false));
 			ReturnPackage->SetPackageFlags(PKG_CompiledIn | 0x00000000);
 			FGuid Guid;
-			Guid.A = 0xCE41117C;
+			Guid.A = 0xE9260DD9;
 			Guid.B = 0x74E33125;
 			Guid.C = 0x00000000;
 			Guid.D = 0x00000000;

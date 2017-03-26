@@ -3091,6 +3091,7 @@ UPlayFabClientAPI* UPlayFabClientAPI::GetFriendLeaderboard(FClientGetFriendLeade
     OutRestJsonObj->SetBoolField(TEXT("IncludeFacebookFriends"), request.IncludeFacebookFriends);
     OutRestJsonObj->SetNumberField(TEXT("Version"), request.Version);
     OutRestJsonObj->SetBoolField(TEXT("UseSpecificVersion"), request.UseSpecificVersion);
+    if (request.ProfileConstraints != nullptr) OutRestJsonObj->SetObjectField(TEXT("ProfileConstraints"), request.ProfileConstraints);
 
     // Add Request to manager
     manager->SetRequestObject(OutRestJsonObj);
@@ -3155,6 +3156,7 @@ UPlayFabClientAPI* UPlayFabClientAPI::GetFriendLeaderboardAroundPlayer(FClientGe
     OutRestJsonObj->SetBoolField(TEXT("IncludeFacebookFriends"), request.IncludeFacebookFriends);
     OutRestJsonObj->SetNumberField(TEXT("Version"), request.Version);
     OutRestJsonObj->SetBoolField(TEXT("UseSpecificVersion"), request.UseSpecificVersion);
+    if (request.ProfileConstraints != nullptr) OutRestJsonObj->SetObjectField(TEXT("ProfileConstraints"), request.ProfileConstraints);
 
     // Add Request to manager
     manager->SetRequestObject(OutRestJsonObj);
@@ -3213,6 +3215,7 @@ UPlayFabClientAPI* UPlayFabClientAPI::GetLeaderboard(FClientGetLeaderboardReques
     OutRestJsonObj->SetNumberField(TEXT("MaxResultsCount"), request.MaxResultsCount);
     OutRestJsonObj->SetNumberField(TEXT("Version"), request.Version);
     OutRestJsonObj->SetBoolField(TEXT("UseSpecificVersion"), request.UseSpecificVersion);
+    if (request.ProfileConstraints != nullptr) OutRestJsonObj->SetObjectField(TEXT("ProfileConstraints"), request.ProfileConstraints);
 
     // Add Request to manager
     manager->SetRequestObject(OutRestJsonObj);
@@ -3275,6 +3278,7 @@ UPlayFabClientAPI* UPlayFabClientAPI::GetLeaderboardAroundPlayer(FClientGetLeade
     OutRestJsonObj->SetNumberField(TEXT("MaxResultsCount"), request.MaxResultsCount);
     OutRestJsonObj->SetNumberField(TEXT("Version"), request.Version);
     OutRestJsonObj->SetBoolField(TEXT("UseSpecificVersion"), request.UseSpecificVersion);
+    if (request.ProfileConstraints != nullptr) OutRestJsonObj->SetObjectField(TEXT("ProfileConstraints"), request.ProfileConstraints);
 
     // Add Request to manager
     manager->SetRequestObject(OutRestJsonObj);
@@ -7130,7 +7134,7 @@ void UPlayFabClientAPI::HelperValidateAmazonIAPReceipt(FPlayFabBaseModel respons
 ///////////////////////////////////////////////////////
 // Trading
 //////////////////////////////////////////////////////
-/** Accepts an open trade. If the call is successful, the offered and accepted items will be swapped between the two players' inventories. */
+/** Accepts an open trade (one that has not yet been accepted or cancelled), if the locally signed-in player is in the  allowed player list for the trade, or it is open to all players. If the call is successful, the offered and accepted items will be swapped  between the two players' inventories. */
 UPlayFabClientAPI* UPlayFabClientAPI::AcceptTrade(FClientAcceptTradeRequest request,
     FDelegateOnSuccessAcceptTrade onSuccess,
     FDelegateOnFailurePlayFabError onFailure,
@@ -7197,7 +7201,7 @@ void UPlayFabClientAPI::HelperAcceptTrade(FPlayFabBaseModel response, UObject* c
     }
 }
 
-/** Cancels an open trade. */
+/** Cancels an open trade (one that has not yet been accepted or cancelled). Note that only the player who created the trade  can cancel it via this API call, to prevent griefing of the trade system (cancelling trades in order to prevent other players from accepting  them, for trades that can be claimed by more than one player). */
 UPlayFabClientAPI* UPlayFabClientAPI::CancelTrade(FClientCancelTradeRequest request,
     FDelegateOnSuccessCancelTrade onSuccess,
     FDelegateOnFailurePlayFabError onFailure,
@@ -7362,7 +7366,7 @@ void UPlayFabClientAPI::HelperGetTradeStatus(FPlayFabBaseModel response, UObject
     }
 }
 
-/** Opens a new outstanding trade. */
+/** Opens a new outstanding trade. Note that a given item instance may only be in one open trade at a time. */
 UPlayFabClientAPI* UPlayFabClientAPI::OpenTrade(FClientOpenTradeRequest request,
     FDelegateOnSuccessOpenTrade onSuccess,
     FDelegateOnFailurePlayFabError onFailure,
