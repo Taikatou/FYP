@@ -98,10 +98,11 @@ float ABaseCharacter::TakeDamage(float DamageAmount, FDamageEvent const& DamageE
 	return DamageAmount;
 }
 
-void ABaseCharacter::UpdateHealth() const
+void ABaseCharacter::UpdateHealth()
 {
+	UpdateHealthEvent.Broadcast();
 	auto Controller = GetGamePlayController();
-	if (Controller)
+	if(Controller)
 	{
 		Controller->BroadcastUpdateHealth();
 	}

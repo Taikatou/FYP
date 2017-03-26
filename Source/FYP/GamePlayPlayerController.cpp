@@ -126,14 +126,14 @@ void AGamePlayPlayerController::BeginPlay()
 	}
 }
 
-void AGamePlayPlayerController::BroadcastUpdateHealth() const
-{
-	UpdateHeatlth.Broadcast();
-}
-
 void AGamePlayPlayerController::BroadcastResetHealth() const
 {
 	ResetHealth.Broadcast();
+}
+
+void AGamePlayPlayerController::BroadcastUpdateHealth() const
+{
+	UpdateHealthEvent.Broadcast();
 }
 
 void AGamePlayPlayerController::GetLifetimeReplicatedProps(TArray< FLifetimeProperty > & OutLifetimeProps) const

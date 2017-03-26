@@ -9,7 +9,7 @@ class UUserWidget;
 /**
  * 
  */
-DECLARE_DYNAMIC_MULTICAST_DELEGATE(FUpdateHealth);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FResetHealth);
 
 UCLASS()
 class FYP_API AGamePlayPlayerController : public APlayerController
@@ -85,14 +85,14 @@ public:
 	UUserWidget* MyBloodHud;
 
 	UPROPERTY(BlueprintAssignable, Category = "Update Health")
-		FUpdateHealth UpdateHeatlth;
-
-	UFUNCTION(BlueprintCallable, Category = "Update Health")
-		void BroadcastUpdateHealth() const;
-
-	UPROPERTY(BlueprintAssignable, Category = "Update Health")
-		FUpdateHealth ResetHealth;
+		FResetHealth ResetHealth;
 
 	UFUNCTION(BlueprintCallable, Category = "Update Health")
 		void BroadcastResetHealth() const;
+
+	UPROPERTY(BlueprintAssignable, Category = "Update Health")
+		FResetHealth UpdateHealthEvent;
+
+	UFUNCTION(BlueprintCallable, Category = "Update Health")
+		void BroadcastUpdateHealth() const;
 };
