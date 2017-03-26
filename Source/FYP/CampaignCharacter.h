@@ -2,14 +2,14 @@
 
 #pragma once
 
-#include "SniperCharacter.h"
+#include "PlayerCharacter.h"
 #include "CampaignCharacter.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class FYP_API ACampaignCharacter : public ASniperCharacter
+class FYP_API ACampaignCharacter : public APlayerCharacter
 {
 	GENERATED_BODY()
 	
