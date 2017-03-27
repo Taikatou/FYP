@@ -46,33 +46,7 @@ public:
 	UFUNCTION(BlueprintImplementableEvent)
 	void OnDeath(AGamePlayPlayerController* PlayerController);
 
-	// FPS camera.
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Camera")
-		UCameraComponent* FPSCameraComponent;
-
 	bool PlayerAlive = true;
-
-	/** player pressed reload action */
-	virtual void OnReload();
-
-	UFUNCTION(Server, WithValidation, reliable)
-	virtual void Fire();
-
-	UFUNCTION(BlueprintCallable, Category="Fire")
-	virtual void FireBlueprint();
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
-	bool CurrentlyReloading;
-
-	void Reloaded();
-
-	UFUNCTION(BlueprintCallable, Category = "Ammo")
-	int32 GetMaxAmmo();
-
-	UFUNCTION(BlueprintCallable, Category = "Ammo")
-	int32 GetCurrentAmmo();
-
-	virtual FVector GetSpawnLocation();
 
 	UPROPERTY(EditAnywhere, Category = "Animation")
 		UAnimMontage* DeathAnimation;
@@ -86,7 +60,6 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		AWeaponActor* VisibleWeapon;
 
-
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
 		TSubclassOf<class AWeaponActor> ThirdPersonWeaponBlueprint;
 
@@ -96,12 +69,7 @@ public:
 
 	FTimerHandle AnimationTimerHandle;
 
-	virtual AWeaponActor* GetWeapon();
-
-
 	void EndPlay(EEndPlayReason::Type EndPlayReason) override;
-	
-	virtual UAnimInstance* GetArmsAnimInstance();
 
 	// Called when the game starts or when spawned
 	void BeginPlay() override;
@@ -124,4 +92,10 @@ public:
 		FHealth UpdateHealthEvent;
 
 	void UpdateHealth();
+
+	UFUNCTION(BlueprintPure, Category = "Widgets")
+		TSubclassOf<class UUserWidget> GetUI() const;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Widgets")
+		TSubclassOf<class UUserWidget> UI;
 };
