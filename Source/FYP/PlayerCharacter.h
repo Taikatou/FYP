@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "BaseCharacter.h"
+#include "FPSCharacter.h"
 #include "WeaponActor.h"
 #include "PlayerCharacter.generated.h"
 
@@ -10,7 +10,7 @@
  * 
  */
 UCLASS()
-class FYP_API APlayerCharacter : public ABaseCharacter
+class FYP_API APlayerCharacter : public AFPSCharacter
 {
 	GENERATED_BODY()
 	
