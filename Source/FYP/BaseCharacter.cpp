@@ -21,26 +21,7 @@ ABaseCharacter::ABaseCharacter()
 void ABaseCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	
 	FAnalytics::Get().GetDefaultConfiguredProvider()->StartSession();
-	if (ThirdPersonWeaponBlueprint != nullptr && SpawnThirdPersonWeapon)
-	{
-		VisibleWeapon = GetWorld()->SpawnActor<AWeaponActor>(ThirdPersonWeaponBlueprint);
-		VisibleWeapon->SetOwner(this);
-		bool gripPoint = GetMesh()->DoesSocketExist("GripPoint");
-		if (!gripPoint)
-		{
-			UE_LOG(LogTemp, Warning, TEXT("GripPoint missing"));
-		}
-		UE_LOG(LogTemp, Warning, TEXT("Spawn third person weapon"));
-		VisibleWeapon->AttachToComponent(GetMesh(), FAttachmentTransformRules(EAttachmentRule::SnapToTarget, true), TEXT("GripPoint"));
-		VisibleWeapon->SetOwnerNoSee(true);
-		VisibleWeapon->Tags.Add(FName("Enemy"));
-	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT("No third person gun"));
-	}
 
 	// Set current life level for the character
 	CurrentLife = InitialLife;
@@ -79,6 +60,14 @@ void ABaseCharacter::DamagePlayer_Implementation(float LifeDelta, AActor* Killer
 	}
 }
 
+void ABaseCharacter::Pause()
+{
+	AGamePlayPlayerController* controller = GetGamePlayController();
+	if (controller)
+	{
+		controller->TogglePauseMenu();
+	}
+}
 
 void ABaseCharacter::SetName(FText NewName)
 {
@@ -161,13 +150,5 @@ void ABaseCharacter::PlayDeathAnimation() const
 	if (AnimInstance != nullptr)
 	{
 		AnimInstance->Montage_Play(DeathAnimation, 1.f);
-	}
-}
-
-void ABaseCharacter::DestroyWeapon()
-{
-	if(VisibleWeapon)
-	{
-		VisibleWeapon->Destroy();
 	}
 }

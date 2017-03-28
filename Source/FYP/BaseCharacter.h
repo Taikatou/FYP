@@ -51,28 +51,11 @@ public:
 	UPROPERTY(EditAnywhere, Category = "Animation")
 		UAnimMontage* DeathAnimation;
 
-	UFUNCTION(BlueprintCallable, Category = "Weapon")
-		virtual void DestroyWeapon();
-
-	UPROPERTY(EditAnywhere, Category = "Weapon")
-		bool SpawnThirdPersonWeapon = false;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		AWeaponActor* VisibleWeapon;
-
-	UPROPERTY(EditDefaultsOnly, Category = "Setup")
-		TSubclassOf<class AWeaponActor> ThirdPersonWeaponBlueprint;
-
 	void PlayDeathAnimation() const;
 
 	class AGamePlayPlayerController* GetGamePlayController() const;
 
 	FTimerHandle AnimationTimerHandle;
-
-	void EndPlay(EEndPlayReason::Type EndPlayReason) override;
-
-	// Called when the game starts or when spawned
-	void BeginPlay() override;
 
 	UFUNCTION(BlueprintCallable, Category = "Name")
 		void SetName(FText NewName);
@@ -98,4 +81,10 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Widgets")
 		TSubclassOf<class UUserWidget> UI;
+
+	// Called when the game starts or when spawned
+	void BeginPlay() override;
+
+	UFUNCTION(BlueprintCallable, Category = "Pause")
+		void Pause();
 };

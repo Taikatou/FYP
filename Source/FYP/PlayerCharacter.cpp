@@ -240,15 +240,6 @@ AUsableActor* APlayerCharacter::GetUsableInView() const
 	return Cast<AUsableActor>(Hit.GetActor());
 }
 
-void APlayerCharacter::Pause()
-{
-	AGamePlayPlayerController* controller = GetGamePlayController();
-	if (controller)
-	{
-		controller->TogglePauseMenu();
-	}
-}
-
 
 UCameraComponent* APlayerCharacter::GetCamera() const
 {

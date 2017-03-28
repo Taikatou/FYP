@@ -46,4 +46,21 @@ public:
 	virtual UAnimInstance* GetArmsAnimInstance();
 
 	virtual AWeaponActor* GetWeapon();
+
+	UPROPERTY(EditAnywhere, Category = "Weapon")
+		bool SpawnThirdPersonWeapon = false;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		AWeaponActor* VisibleWeapon;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Setup")
+		TSubclassOf<class AWeaponActor> ThirdPersonWeaponBlueprint;
+
+	// Called when the game starts or when spawned
+	void BeginPlay() override;
+
+	UFUNCTION(BlueprintCallable, Category = "Weapon")
+		virtual void DestroyWeapon();
+
+	void EndPlay(EEndPlayReason::Type EndPlayReason) override;
 };

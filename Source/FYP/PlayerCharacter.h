@@ -74,9 +74,6 @@ public:
 	UFUNCTION(BlueprintCallable, WithValidation, Server, Reliable, Category = PlayerAbility)
 		virtual void Use();
 
-	UFUNCTION(BlueprintCallable, Category="Pause")
-		void Pause();
-
 	AWeaponActor* Weapon;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")

@@ -8,6 +8,7 @@
 #include "GoogleAnalyticsBlueprintLibrary.h"
 #include "Animation/AnimInstance.h"
 #include "GamePlayPlayerController.h"
+#include "Analytics.h"
 
 AFPSCharacter::AFPSCharacter()
 {
@@ -102,14 +103,45 @@ AWeaponActor* AFPSCharacter::GetWeapon()
 	return VisibleWeapon;
 }
 
-void ABaseCharacter::EndPlay(EEndPlayReason::Type EndPlayReason)
+void AFPSCharacter::EndPlay(EEndPlayReason::Type EndPlayReason)
 {
 	DestroyWeapon();
+}
+
+void AFPSCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+	if (ThirdPersonWeaponBlueprint != nullptr && SpawnThirdPersonWeapon)
+	{
+		VisibleWeapon = GetWorld()->SpawnActor<AWeaponActor>(ThirdPersonWeaponBlueprint);
+		VisibleWeapon->SetOwner(this);
+		bool gripPoint = GetMesh()->DoesSocketExist("GripPoint");
+		if (!gripPoint)
+		{
+			UE_LOG(LogTemp, Warning, TEXT("GripPoint missing"));
+		}
+		UE_LOG(LogTemp, Warning, TEXT("Spawn third person weapon"));
+		VisibleWeapon->AttachToComponent(GetMesh(), FAttachmentTransformRules(EAttachmentRule::SnapToTarget, true), TEXT("GripPoint"));
+		VisibleWeapon->SetOwnerNoSee(true);
+		VisibleWeapon->Tags.Add(FName("Enemy"));
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("No third person gun"));
+	}
 }
 
 UAnimInstance* AFPSCharacter::GetArmsAnimInstance()
 {
 	return nullptr;
+}
+
+void AFPSCharacter::DestroyWeapon()
+{
+	if (VisibleWeapon)
+	{
+		VisibleWeapon->Destroy();
+	}
 }
 
 

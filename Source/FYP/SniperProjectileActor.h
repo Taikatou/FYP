@@ -2,11 +2,11 @@
 
 #pragma once
 
-#include "Projectile.h"
+#include "PointDamageProjectile.h"
 #include "SniperProjectileActor.generated.h"
 
 UCLASS()
-class FYP_API ASniperProjectileActor : public AProjectile
+class FYP_API ASniperProjectileActor : public APointDamageProjectile
 {
 	GENERATED_BODY()
 	
@@ -21,9 +21,4 @@ public:
 	void Tick(float DeltaSeconds) override;
 
 	FVector PreviousLocation;
-
-	void CompleteHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit) override;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		float BaseDamage = 50.0f;
 };

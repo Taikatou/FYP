@@ -3,20 +3,6 @@
 #include "FYP.h"
 #include "Projectile.h"
 
-// Called when the game starts or when spawned
-void AProjectile::BeginPlay()
-{
-	Super::BeginPlay();
-	
-}
-
-// Called every frame
-void AProjectile::Tick( float DeltaTime )
-{
-	Super::Tick( DeltaTime );
-
-}
-
 AProjectile::AProjectile()
 {
 	// Use a sphere as a simple collision representation
@@ -58,7 +44,6 @@ void AProjectile::CompleteHit(UPrimitiveComponent* HitComp, AActor* OtherActor, 
 	if((OtherComp != nullptr) && OtherComp->IsSimulatingPhysics())
 	{
 		OtherComp->AddImpulseAtLocation(GetVelocity() * 100.0f, GetActorLocation());
-
 		Destroy();
 	}
 }
