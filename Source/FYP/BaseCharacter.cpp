@@ -15,10 +15,6 @@ ABaseCharacter::ABaseCharacter()
 {
 	PrimaryActorTick.bCanEverTick = true;
 	bReplicates = true;
-	FAnalytics::Get().GetDefaultConfiguredProvider()->StartSession();
-
-	// Set current life level for the character
-	CurrentLife = InitialLife;
 }
 
 // Called when the game starts or when spawned
