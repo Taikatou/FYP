@@ -73,4 +73,14 @@ public:
 	AWeaponActor* GetWeapon() override;
 
 	UAnimInstance* GetArmsAnimInstance() override;
+
+	// First-person mesh (arms), visible only to the owning player.
+	UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
+		USkeletalMeshComponent* FPSMesh;
+
+	// First-person mesh (arms), visible only to the owning player.
+	UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
+		USkeletalMeshComponent* VisibleWeapon;
+
+	USkeletalMeshComponent* GetAttachMesh() override;
 };

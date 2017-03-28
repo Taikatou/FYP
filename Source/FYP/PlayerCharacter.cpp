@@ -15,6 +15,18 @@ APlayerCharacter::APlayerCharacter()
 	CollectionSphere = CreateDefaultSubobject<USphereComponent>(TEXT("CollectionSphere"));
 	CollectionSphere->AttachTo(RootComponent);
 	CollectionSphere->SetSphereRadius(200);
+
+	// Create a first person mesh component for the owning player.
+	FPSMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("FirstPersonMesh"));
+	// Only the owning player sees this mesh.
+	FPSMesh->SetOnlyOwnerSee(true);
+	// Attach the FPS mesh to the FPS camera.
+	FPSMesh->AttachTo(FPSCameraComponent);
+	// Disable some environmental shadowing to preserve the illusion of having a single mesh.
+	FPSMesh->bCastDynamicShadow = false;
+	FPSMesh->CastShadow = false;
+
+	VisibleWeapon = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("GunMesh"));
 }
 
 void APlayerCharacter::CollectPickups()
@@ -57,6 +69,15 @@ void APlayerCharacter::BeginPlay()
 	Super::BeginPlay();
 	// The owning player doesn't see the regular (third-person) body mesh.
 	GetMesh()->SetOwnerNoSee(true);
+
+	VisibleWeapon->SetOwnerNoSee(true);
+	bool gripPoint = GetMesh()->DoesSocketExist("GripPoint");
+	if (!gripPoint)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("GripPoint missing"));
+	}
+	UE_LOG(LogTemp, Warning, TEXT("Spawn third person weapon"));
+	VisibleWeapon->AttachToComponent(GetMesh(), FAttachmentTransformRules(EAttachmentRule::SnapToTarget, true), TEXT("GripPoint"));
 }
 
 // Called every frame
@@ -156,6 +177,11 @@ AWeaponActor* APlayerCharacter::GetWeapon()
 UAnimInstance* APlayerCharacter::GetArmsAnimInstance()
 {
 	return FPSMesh->GetAnimInstance();
+}
+
+USkeletalMeshComponent* APlayerCharacter::GetAttachMesh()
+{
+	return FPSMesh;
 }
 
 /*
