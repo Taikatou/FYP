@@ -56,9 +56,6 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
 		TSubclassOf<class AWeaponActor> ThirdPersonWeaponBlueprint;
 
-	// Called when the game starts or when spawned
-	void BeginPlay() override;
-
 	UFUNCTION(BlueprintCallable, Category = "Weapon")
 		virtual void DestroyWeapon();
 

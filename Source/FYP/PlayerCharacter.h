@@ -51,7 +51,7 @@ public:
 
 	// Sets jump flag when key is pressed.
 	UFUNCTION()
-		void StartJump();
+		virtual void StartJump();
 
 	// Clears jump flag when key is released.
 	UFUNCTION()
