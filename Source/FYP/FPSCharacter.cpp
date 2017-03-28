@@ -3,11 +3,8 @@
 #include "FYP.h"
 #include "FPSCharacter.h"
 #include "GoogleAnalyticsBlueprintLibrary.h"
-#include "GameModePlayerState.h"
 #include "Animation/AnimMontage.h"
-#include "GoogleAnalyticsBlueprintLibrary.h"
 #include "Animation/AnimInstance.h"
-#include "GamePlayPlayerController.h"
 #include "Analytics.h"
 
 AFPSCharacter::AFPSCharacter()
@@ -22,6 +19,18 @@ AFPSCharacter::AFPSCharacter()
 	FPSCameraComponent->SetRelativeLocation(FVector(0.0f, 0.0f, 50.0f + BaseEyeHeight));
 	// Allow the pawn to control camera rotation.
 	FPSCameraComponent->bUsePawnControlRotation = true;
+
+	// Create a first person mesh component for the owning player.
+	FPSMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("FirstPersonMesh"));
+	// Only the owning player sees this mesh.
+	FPSMesh->SetOnlyOwnerSee(true);
+	// Attach the FPS mesh to the FPS camera.
+	FPSMesh->AttachTo(FPSCameraComponent);
+	// Disable some environmental shadowing to preserve the illusion of having a single mesh.
+	FPSMesh->bCastDynamicShadow = false;
+	FPSMesh->CastShadow = false;
+
+	VisibleWeapon = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("GunMesh"));
 }
 
 void AFPSCharacter::OnReload()
@@ -100,7 +109,7 @@ FVector AFPSCharacter::GetSpawnLocation()
 
 AWeaponActor* AFPSCharacter::GetWeapon()
 {
-	return VisibleWeapon;
+	return Weapon;
 }
 
 void AFPSCharacter::EndPlay(EEndPlayReason::Type EndPlayReason)
@@ -111,23 +120,32 @@ void AFPSCharacter::EndPlay(EEndPlayReason::Type EndPlayReason)
 void AFPSCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	if (ThirdPersonWeaponBlueprint != nullptr && SpawnThirdPersonWeapon)
+	if (WeaponBlueprint != nullptr)
 	{
-		VisibleWeapon = GetWorld()->SpawnActor<AWeaponActor>(ThirdPersonWeaponBlueprint);
-		VisibleWeapon->SetOwner(this);
-		bool gripPoint = GetMesh()->DoesSocketExist("GripPoint");
+		UE_LOG(LogTemp, Warning, TEXT("Gun blueprint loaded."));
+		Weapon = GetWorld()->SpawnActor<AWeaponActor>(WeaponBlueprint);
+		Weapon->SetOwner(this);
+		bool gripPoint = FPSMesh->DoesSocketExist("GripPoint");
 		if (!gripPoint)
 		{
 			UE_LOG(LogTemp, Warning, TEXT("GripPoint missing"));
 		}
-		UE_LOG(LogTemp, Warning, TEXT("Spawn third person weapon"));
-		VisibleWeapon->AttachToComponent(GetMesh(), FAttachmentTransformRules(EAttachmentRule::SnapToTarget, true), TEXT("GripPoint"));
-		VisibleWeapon->Tags.Add(FName("Enemy"));
+		Weapon->AttachToComponent(FPSMesh, FAttachmentTransformRules(EAttachmentRule::SnapToTarget, true), TEXT("GripPoint"));
+		Weapon->AnimInstance = FPSMesh->GetAnimInstance();
 	}
 	else
 	{
-		UE_LOG(LogTemp, Warning, TEXT("No third person gun"));
+		UE_LOG(LogTemp, Warning, TEXT("Gun blueprint missing!!!!! FPS"));
 	}
+
+	VisibleWeapon->SetOwnerNoSee(true);
+	bool gripPoint = GetMesh()->DoesSocketExist("GripPoint");
+	if (!gripPoint)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("GripPoint missing"));
+	}
+	UE_LOG(LogTemp, Warning, TEXT("Spawn third person weapon"));
+	VisibleWeapon->AttachToComponent(GetMesh(), FAttachmentTransformRules(EAttachmentRule::SnapToTarget, true), TEXT("GripPoint"));
 }
 
 UAnimInstance* AFPSCharacter::GetArmsAnimInstance()
@@ -137,9 +155,9 @@ UAnimInstance* AFPSCharacter::GetArmsAnimInstance()
 
 void AFPSCharacter::DestroyWeapon()
 {
-	if (VisibleWeapon)
+	if (Weapon)
 	{
-		VisibleWeapon->Destroy();
+		Weapon->Destroy();
 	}
 }
 

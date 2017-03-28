@@ -57,10 +57,6 @@ public:
 	UFUNCTION()
 		void StopJump();
 
-	// First-person mesh (arms), visible only to the owning player.
-	UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
-		USkeletalMeshComponent* FPSMesh;
-
 	FORCEINLINE class USphereComponent* GetSphereComponent() const { return CollectionSphere; }
 
 	// Collection sphere for items
@@ -73,13 +69,6 @@ public:
 	/** Use the actor currently in view (if derived from UsableActor) */
 	UFUNCTION(BlueprintCallable, WithValidation, Server, Reliable, Category = PlayerAbility)
 		virtual void Use();
-
-	AWeaponActor* Weapon;
-
-	UPROPERTY(EditDefaultsOnly, Category = "Setup")
-		TSubclassOf<class AWeaponActor> WeaponBlueprint;
-
-	void DestroyWeapon() override;
 
 	AWeaponActor* GetWeapon() override;
 

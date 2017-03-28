@@ -47,17 +47,23 @@ public:
 
 	virtual AWeaponActor* GetWeapon();
 
-	UPROPERTY(EditAnywhere, Category = "Weapon")
-		bool SpawnThirdPersonWeapon = false;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		AWeaponActor* VisibleWeapon;
-
-	UPROPERTY(EditDefaultsOnly, Category = "Setup")
-		TSubclassOf<class AWeaponActor> ThirdPersonWeaponBlueprint;
-
 	UFUNCTION(BlueprintCallable, Category = "Weapon")
 		virtual void DestroyWeapon();
 
 	void EndPlay(EEndPlayReason::Type EndPlayReason) override;
+
+	void BeginPlay() override;
+
+	// First-person mesh (arms), visible only to the owning player.
+	UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
+		USkeletalMeshComponent* FPSMesh;
+
+	// First-person mesh (arms), visible only to the owning player.
+	UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
+		USkeletalMeshComponent* VisibleWeapon;
+
+	AWeaponActor* Weapon;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Setup")
+		TSubclassOf<class AWeaponActor> WeaponBlueprint;
 };
