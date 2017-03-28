@@ -19,12 +19,6 @@ public:
 	// Sets default values for this actor's properties
 	AWeaponActor();
 
-	// Called when the game starts or when spawned
-	void BeginPlay() override;
-	
-	// Called every frame
-	void Tick( float DeltaSeconds ) override;
-
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
 		class UAnimInstance* AnimInstance;
 
@@ -55,10 +49,6 @@ public:
 	void SetVisibility(bool Visible) const;
 
 	virtual FVector GetSpawnLocation(FRotator SpawnRotation);
-
-	void SetOwnerOnlySee(bool visible) const;
-
-	void SetOwnerNoSee(bool visible) const;
 
 private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "PickUp", meta = (AllowPrivateAccess = "true"))

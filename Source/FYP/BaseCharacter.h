@@ -17,11 +17,11 @@ class FYP_API ABaseCharacter : public ACharacter
 protected:
 
 	// Starting life
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Life")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, replicated, Category="Life")
 	float InitialLife = 2000;
 
 	// Current life
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Life")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, replicated, Category = "Life")
 		float CurrentLife;
 
 public:
@@ -58,10 +58,10 @@ public:
 	FTimerHandle AnimationTimerHandle;
 
 	UFUNCTION(BlueprintCallable, Category = "Name")
-		void SetName(FText NewName);
+		void SetName(FText NewName) const;
 
 	UFUNCTION(BlueprintCallable, Category = "Name")
-		FText GetName();
+		FText GetName() const;
 
 	UFUNCTION(BlueprintPure, Category = "Death")
 		bool GetDead() const;
@@ -74,7 +74,7 @@ public:
 	UPROPERTY(BlueprintAssignable, Category = "Update Health")
 		FHealth UpdateHealthEvent;
 
-	void UpdateHealth();
+	void UpdateHealth() const;
 
 	UFUNCTION(BlueprintPure, Category = "Widgets")
 		TSubclassOf<class UUserWidget> GetUI() const;

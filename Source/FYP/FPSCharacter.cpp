@@ -122,7 +122,6 @@ void AFPSCharacter::BeginPlay()
 		}
 		UE_LOG(LogTemp, Warning, TEXT("Spawn third person weapon"));
 		VisibleWeapon->AttachToComponent(GetMesh(), FAttachmentTransformRules(EAttachmentRule::SnapToTarget, true), TEXT("GripPoint"));
-		VisibleWeapon->SetOwnerNoSee(true);
 		VisibleWeapon->Tags.Add(FName("Enemy"));
 	}
 	else

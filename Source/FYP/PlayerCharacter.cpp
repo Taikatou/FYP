@@ -80,7 +80,6 @@ void APlayerCharacter::BeginPlay()
 		}
 		Weapon->AttachToComponent(FPSMesh, FAttachmentTransformRules(EAttachmentRule::SnapToTarget, true), TEXT("GripPoint"));
 		Weapon->AnimInstance = FPSMesh->GetAnimInstance();
-		Weapon->SetOwnerOnlySee(true);
 	}
 	else
 	{

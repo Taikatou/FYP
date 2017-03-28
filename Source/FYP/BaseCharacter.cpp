@@ -69,7 +69,7 @@ void ABaseCharacter::Pause()
 	}
 }
 
-void ABaseCharacter::SetName(FText NewName)
+void ABaseCharacter::SetName(FText NewName) const
 {
 	AGamePlayPlayerController* controller = Cast<AGamePlayPlayerController>(GetController());
 	if (controller)
@@ -78,7 +78,7 @@ void ABaseCharacter::SetName(FText NewName)
 	}
 }
 
-FText ABaseCharacter::GetName()
+FText ABaseCharacter::GetName() const
 {
 	AGamePlayPlayerController* controller = Cast<AGamePlayPlayerController>(GetController());
 	if (controller)
@@ -108,7 +108,7 @@ float ABaseCharacter::TakeDamage(float DamageAmount, FDamageEvent const& DamageE
 	return DamageAmount;
 }
 
-void ABaseCharacter::UpdateHealth()
+void ABaseCharacter::UpdateHealth() const
 {
 	UpdateHealthEvent.Broadcast();
 	auto Controller = GetGamePlayController();
@@ -151,4 +151,11 @@ void ABaseCharacter::PlayDeathAnimation() const
 	{
 		AnimInstance->Montage_Play(DeathAnimation, 1.f);
 	}
+}
+
+void ABaseCharacter::GetLifetimeReplicatedProps(TArray< FLifetimeProperty > & OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+	DOREPLIFETIME(ABaseCharacter, InitialLife);
+	DOREPLIFETIME(ABaseCharacter, CurrentLife);
 }

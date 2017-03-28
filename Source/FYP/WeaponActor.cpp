@@ -19,26 +19,11 @@ AWeaponActor::AWeaponActor()
 	WeaponMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Weapon Mesh"));
 	WeaponMesh->bCastDynamicShadow = false;
 	WeaponMesh->CastShadow = false;
-	WeaponMesh->SetOnlyOwnerSee(true);
 
 	FP_MuzzleLocation = CreateDefaultSubobject<USceneComponent>(TEXT("MuzzleLocation"));
 	
 	FP_MuzzleLocation->SetupAttachment(WeaponMesh);
 	FP_MuzzleLocation->SetRelativeLocation(FVector(0.2f, 48.4f, -10.6f));
-}
-
-// Called when the game starts or when spawned
-void AWeaponActor::BeginPlay()
-{
-	Super::BeginPlay();
-	
-}
-
-// Called every frame
-void AWeaponActor::Tick( float DeltaTime )
-{
-	Super::Tick( DeltaTime );
-
 }
 
 UAnimMontage* AWeaponActor::FireWeapon(FRotator SpawnRotation, AController* Controller, UCameraComponent* Camera, FVector SpawnLocation)
@@ -72,14 +57,4 @@ FVector AWeaponActor::GetSpawnLocation(FRotator SpawnRotation)
 	// MuzzleOffset is in camera space, so transform it to world space before offsetting from the character location to find the final muzzle position
 	const FVector SpawnLocation = (FP_MuzzleLocation != nullptr ? FP_MuzzleLocation->GetComponentLocation() : GetActorLocation()) + SpawnRotation.RotateVector(GunOffset);
 	return SpawnLocation;
-}
-
-void AWeaponActor::SetOwnerOnlySee(bool visible) const
-{
-	WeaponMesh->SetOnlyOwnerSee(visible);
-}
-
-void AWeaponActor::SetOwnerNoSee(bool visible) const
-{
-	WeaponMesh->SetOwnerNoSee(visible);
 }
