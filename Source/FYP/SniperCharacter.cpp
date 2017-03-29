@@ -40,18 +40,6 @@ void ASniperCharacter::EndGame()
 	}
 }
 
-FVector ASniperCharacter::GetSpawnLocation()
-{
-	if(Aiming && false)
-	{
-		return CameraLocation->GetComponentLocation();
-	}
-	else
-	{
-		return Super::GetSpawnLocation();
-	}
-}
-
 void ASniperCharacter::EndPlay(EEndPlayReason::Type EndPlayReason)
 {
 	if(Aiming)

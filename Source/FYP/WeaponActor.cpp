@@ -58,3 +58,9 @@ FVector AWeaponActor::GetSpawnLocation(FRotator SpawnRotation)
 	const FVector SpawnLocation = (FP_MuzzleLocation != nullptr ? FP_MuzzleLocation->GetComponentLocation() : GetActorLocation()) + SpawnRotation.RotateVector(GunOffset);
 	return SpawnLocation;
 }
+
+void AWeaponActor::GetLifetimeReplicatedProps(TArray< FLifetimeProperty > & OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+	DOREPLIFETIME(AWeaponActor, FP_MuzzleLocation);
+}

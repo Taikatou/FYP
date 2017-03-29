@@ -13,10 +13,9 @@ void AExplosiveProjectileActor::BeginPlay()
 {
 	Super::BeginPlay();
 	FTimerHandle handle;
-	GetWorld()->GetTimerManager().SetTimer(handle, this, &AExplosiveProjectileActor::OnDetonate, 5.f, false);
 }
 
-bool AExplosiveProjectileActor::OnDetonate_Validate()
+bool AExplosiveProjectileActor::OnDetonate_Validate(UPrimitiveComponent* OtherComp)
 {
 	return true;
 }
@@ -35,7 +34,7 @@ void AExplosiveProjectileActor::Explosion_Implementation()
 }
 
 
-void AExplosiveProjectileActor::OnDetonate_Implementation()
+void AExplosiveProjectileActor::OnDetonate_Implementation(UPrimitiveComponent* OtherComp)
 {
 	UE_LOG(LogTemp, Warning, TEXT("Start detonation"));
 
@@ -58,6 +57,10 @@ void AExplosiveProjectileActor::OnDetonate_Implementation()
 				GetInstigatorController(), this, UDamageType::StaticClass());
 		}
 	}
+	if ((OtherComp != nullptr) && OtherComp->IsSimulatingPhysics())
+	{
+		OtherComp->AddImpulseAtLocation(GetVelocity() * 100.0f, GetActorLocation());
+	}
 	Explosion();
 	Destroy();
 }
@@ -70,5 +73,5 @@ bool AExplosiveProjectileActor::CompleteHit_Validate(UPrimitiveComponent* HitCom
 
 void AExplosiveProjectileActor::CompleteHit_Implementation(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
-	OnDetonate();
+	OnDetonate(OtherComp);
 }

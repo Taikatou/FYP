@@ -26,7 +26,7 @@ public:
 	void BeginPlay() override;
 
 	UFUNCTION(Server, reliable, WithValidation)
-		void OnDetonate();
+		void OnDetonate(UPrimitiveComponent* OtherComp);
 
 	UFUNCTION(NetMulticast, reliable, WithValidation)
 		void Explosion();

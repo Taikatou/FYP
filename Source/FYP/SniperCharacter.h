@@ -37,7 +37,5 @@ public:
 	UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
 		class USceneComponent* CameraLocation;
 
-	FVector GetSpawnLocation() override;
-
 	void EndPlay(EEndPlayReason::Type EndPlayReason) override;
 };
