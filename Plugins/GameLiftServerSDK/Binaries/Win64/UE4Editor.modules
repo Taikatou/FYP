@@ -1,0 +1,9 @@
+{
+	"Changelist" : 3249277,
+	"CompatibleChangelist" : 3195953,
+	"BuildId" : "d95dafa1-068c-4029-bc06-e3780133c1e5",
+	"Modules" : 
+	{
+		"GameLiftServerSDK" : "UE4Editor-GameLiftServerSDK-7983.dll"
+	}
+}
