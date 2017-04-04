@@ -85,7 +85,7 @@ void AGamePlayPlayerController::IncrementKills(int32 Killed)
 	UE_LOG(LogTemp, Warning, TEXT("player died, %d"), TotalKills);
 }
 
-void AGamePlayPlayerController::SetName(FText NewName)
+void AGamePlayPlayerController::SetPlayerName(FText NewName)
 {
 	Name = FText(NewName);
 }

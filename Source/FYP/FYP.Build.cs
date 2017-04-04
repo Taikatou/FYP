@@ -6,7 +6,7 @@ public class FYP : ModuleRules
 {
 	public FYP(TargetInfo Target)
 	{
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "UMG", "Slate", "SlateCore", "AIModule", "GameplayTasks", "GameLiftServerSDK" });
+		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "UMG", "Slate", "SlateCore", "AIModule", "GameplayTasks", "GameLiftServerSDK", "RHI" });
 
         PrivateDependencyModuleNames.AddRange(new string[] { "GoogleAnalytics" });
 

@@ -65,7 +65,7 @@ public:
 		FText Name;
 
 	UFUNCTION(BlueprintCallable, Category = "Name")
-		void SetName(FText NewName);
+		void SetPlayerName(FText NewName);
 
 	UFUNCTION(BlueprintCallable, Category = "Name")
 		FText GetName() const;

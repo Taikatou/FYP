@@ -74,7 +74,7 @@ void ABaseCharacter::SetName(FText NewName) const
 	AGamePlayPlayerController* controller = Cast<AGamePlayPlayerController>(GetController());
 	if (controller)
 	{
-		controller->SetName(NewName);
+		controller->SetPlayerName(NewName);
 	}
 }
 
